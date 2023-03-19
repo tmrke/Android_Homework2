@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/md_theme_dark_surface"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="@dimen/profile_image_size"
+            android:id="@+id/imageViewPostProfileImage"
+            android:backgroundTint="@color/md_theme_dark_primary"
 
-            android:layout_height="@dimen/profile_image_size"
-            android:layout_margin="16dp"
-
+            android:layout_width="@dimen/post_profile_image_size"
+            android:layout_height="@dimen/post_profile_image_size"
+            android:layout_margin="@dimen/general_margin"
             android:background="@color/md_theme_dark_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,28 +28,27 @@
             android:id="@+id/textViewEvolitist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_margin="@dimen/general_margin"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/evolitist"
+            android:textSize="@dimen/post_name_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageViewPostProfileImage"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/general_margin"
+            android:layout_marginTop="@dimen/between_texts_margin"
+            android:layout_marginEnd="@dimen/general_margin"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageViewPostProfileImage"
             app:layout_constraintTop_toBottomOf="@id/textViewEvolitist" />
 
         <!-- горизонтальная линия для раздела типа br -->
@@ -54,7 +56,7 @@
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/general_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewDate" />
 
@@ -62,31 +64,33 @@
             android:id="@+id/textViewLoremIpsum"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/general_margin"
             android:text="@string/lorem_ipsum"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider" />
 
         <ImageView
-            android:id="@+id/imageViewBigImage"
+            android:id="@+id/imageViewMedia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
+            android:layout_marginVertical="@dimen/general_margin"
             android:adjustViewBounds="true"
-            android:src="@drawable/big_image"
+            android:contentDescription="@string/media_description"
+            android:src="@drawable/media"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewLoremIpsum" />
 
-        <!--
-       <com.google.android.material.imageview.ShapeableImageView
-           android:id="@+id/imageViewLikesCount"
-           здесь сделать сердечко с цифрой
-            />
-            -->
-
-
+        <Button
+            android:id="@+id/imageButtonFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/general_margin"
+            android:drawableLeft="@drawable/favorite"
+            android:text="@string/likes_count"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageViewMedia" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
