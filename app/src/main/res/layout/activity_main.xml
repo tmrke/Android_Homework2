@@ -14,8 +14,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <include layout="@layout/view_profile_card"/>
-        <include layout="@layout/view_post_card"/>
+        <include
+            layout="@layout/view_profile_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/general_margin" />
+
+        <include
+            layout="@layout/view_images_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/general_margin"
+            android:layout_marginBottom="@dimen/general_margin" />
+
+        <include
+            layout="@layout/view_post_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/general_margin" />
 
     </LinearLayout>
 

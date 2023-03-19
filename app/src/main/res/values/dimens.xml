@@ -4,8 +4,6 @@
     <dimen name="general_margin">16dp</dimen>
     <dimen name="user_profile_image_size">64dp</dimen>
     <dimen name="between_texts_margin">4dp</dimen>
-    <dimen name="between_images_margin">8dp</dimen>
-    <dimen name="images_vertical_margin">18dp</dimen>
 
     <dimen name="post_name_text_size">14sp</dimen>
     <dimen name="user_name_text_size">22sp</dimen>
