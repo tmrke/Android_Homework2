@@ -12,6 +12,4 @@
     <dimen name="data_profile_numbers_text_size">28sp</dimen>
 
     <dimen name="bottom_navigation_padding">96dp</dimen>
-
-
 </resources>

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardBackgroundColor="@color/md_theme_dark_background">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,12 +15,10 @@
 
             android:layout_height="@dimen/post_profile_image_size"
             android:layout_margin="@dimen/general_margin"
-            android:background="@color/md_theme_dark_background"
-            android:backgroundTint="@color/md_theme_dark_primary"
+            android:background="@color/md_theme_dark_primary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/rounded_image"
-            tools:background="@color/md_theme_dark_background" />
+            app:shapeAppearance="@style/rounded_image" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/textViewEvolitist"
@@ -31,7 +28,6 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/evolitist"
-            android:textColor="@color/md_theme_light_onSecondary"
             android:textSize="@dimen/post_name_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageViewPostProfileImage"
@@ -47,7 +43,6 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/date"
-            android:textColor="@color/md_theme_light_onSecondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageViewPostProfileImage"
             app:layout_constraintTop_toBottomOf="@id/textViewEvolitist" />
@@ -66,7 +61,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/general_margin"
             android:text="@string/lorem_ipsum"
-            android:textColor="@color/md_theme_light_onSecondary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/divider" />
@@ -90,12 +84,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/general_margin"
+            android:backgroundTint="@color/md_theme_light_inverseSurface"
             android:drawableLeft="@drawable/favorite"
             android:text="@string/likes_count"
-            android:textColor="@color/md_theme_dark_primary"
+            android:textColor="@color/md_theme_light_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageViewMedia"
-            />
+            app:layout_constraintTop_toBottomOf="@id/imageViewMedia" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
