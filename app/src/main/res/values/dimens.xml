@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="image_size">40dp</dimen>
+    <dimen name="post_profile_image_size">40dp</dimen>
+    <dimen name="general_margin">16dp</dimen>
+    <dimen name="user_profile_image_size">64dp</dimen>
+    <dimen name="between_texts_margin">4dp</dimen>
+
+    <dimen name="post_name_text_size">14sp</dimen>
+    <dimen name="user_name_text_size">22sp</dimen>
+    <dimen name="status_text_size">12sp</dimen>
+    <dimen name="data_profile_text_size">12sp</dimen>
+    <dimen name="data_profile_numbers_text_size">28sp</dimen>
+
+    <dimen name="bottom_navigation_padding">96dp</dimen>
 </resources>
