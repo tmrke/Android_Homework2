@@ -29,7 +29,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:shapeAppearance="@style/rounded_image"
-                    tools:background="@color/md_theme_dark_primary" />
+                    tools:background="@color/md_theme_dark_primary"
+                    tools:ignore="ImageContrastCheck" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -88,12 +89,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textViewImagesCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/images_count"
                         android:textSize="@dimen/data_profile_numbers_text_size" />
 
                     <TextView
+                        android:id="@+id/textViewImages"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/images"
@@ -108,12 +111,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textViewSubscribersCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/subscribers_count"
                         android:textSize="@dimen/data_profile_numbers_text_size" />
 
                     <TextView
+                        android:id="@+id/textViewSubscribers"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/subscribers"
@@ -128,12 +133,14 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textViewPostsCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/posts_count"
                         android:textSize="@dimen/data_profile_numbers_text_size" />
 
                     <TextView
+                        android:id="@+id/textViewPosts"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/posts"
@@ -149,15 +156,17 @@
                 app:layout_constraintTop_toBottomOf="@id/linerLayoutProfileData" />
 
             <Button
+                android:id="@+id/buttonSubscribe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/general_margin"
                 android:text="@string/button_subscribe"
+                app:buttonSubscribeColor="@color/md_theme_dark_surfaceVariant"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/divider2"
-                app:layout_constraintVertical_bias="1.0" />
+                tools:ignore="VisualLintButtonSize" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
