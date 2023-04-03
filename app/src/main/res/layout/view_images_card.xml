@@ -1,53 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewImagesCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/LinearLayoutImagesButton"
-            android:layout_width="0dp"
+            android:id="@+id/linearLayoutImagesButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/general_margin"
+            android:layout_marginStart="@dimen/general_margin"
+            android:layout_marginTop="@dimen/general_margin"
+            android:layout_marginEnd="@dimen/general_margin"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:layout_width="0dp"
+                android:id="@+id/textViewImages"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="start"
                 android:text="@string/Images" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:id="@+id/buttonImages"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:drawableEnd="@drawable/chevron_right"
-                android:elevation="0dp"
-                />
+                android:elevation="0dp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayoutImages"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/general_margin"
+            android:layout_marginStart="@dimen/general_margin"
+            android:layout_marginEnd="@dimen/general_margin"
+            android:layout_marginBottom="@dimen/general_margin"
+
             android:orientation="horizontal"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/LinearLayoutImagesButton">
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutImagesButton">
 
             <ImageView
+                android:id="@+id/image1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -55,15 +62,7 @@
                 android:src="@drawable/media_small" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_weight="1"
-                android:contentDescription="@string/media_small"
-
-                android:src="@drawable/media_small" />
-
-            <ImageView
+                android:id="@+id/image2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -73,6 +72,17 @@
                 android:src="@drawable/media_small" />
 
             <ImageView
+                android:id="@+id/image3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:contentDescription="@string/media_small"
+
+                android:src="@drawable/media_small" />
+
+            <ImageView
+                android:id="@+id/image4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -81,6 +91,5 @@
 
                 android:src="@drawable/media_small" />
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

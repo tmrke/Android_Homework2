@@ -1,17 +1,18 @@
-package ru.ageev.android_homework2;
+package ru.ageev.android_homework2.profile;
 
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
+import com.google.android.material.card.MaterialCardView
+import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.databinding.ViewProfileCardBinding
 import kotlin.jvm.JvmOverloads;
 
 class ViewProfileCard @JvmOverloads constructor(
     context: Context, attrSet: AttributeSet? = null, defAttrsSet: Int = 0
-) : ConstraintLayout(context, attrSet, defAttrsSet) {
+) : MaterialCardView(context, attrSet, defAttrsSet) {
     private var binding: ViewProfileCardBinding
 
     init {
