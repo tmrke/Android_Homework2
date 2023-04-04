@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.post
+package ru.ageev.android_homework2.first_screen.post
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

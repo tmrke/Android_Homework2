@@ -13,4 +13,8 @@
         <attr name="buttonSubscribeColor" format="color" />
         <attr name="imageProfile" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="RecyclerViewImages">
+        <attr name="url_image1" format="reference"/>
+    </declare-styleable>
 </resources>

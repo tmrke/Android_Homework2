@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.profile
+package ru.ageev.android_homework2.first_screen.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

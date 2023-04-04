@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.images
+package ru.ageev.android_homework2.first_screen.images
 
 
 import android.view.LayoutInflater
@@ -20,6 +20,5 @@ class ImagesAdapter :
     }
 
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
-        holder.bind()
     }
 }
