@@ -4,11 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.ageev.android_homework2.databinding.ActivityMainBinding
-import ru.ageev.android_homework2.images.ImagesAdapter
-import ru.ageev.android_homework2.post.PostAdapter
-import ru.ageev.android_homework2.profile.ProfileAdapter
+import ru.ageev.android_homework2.first_screen.images.ImagesAdapter
+import ru.ageev.android_homework2.first_screen.post.PostAdapter
+import ru.ageev.android_homework2.first_screen.profile.ProfileAdapter
 
 class MainActivity : AppCompatActivity() {
 

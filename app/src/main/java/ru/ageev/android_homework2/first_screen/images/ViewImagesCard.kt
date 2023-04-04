@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.images
+package ru.ageev.android_homework2.first_screen.images
 
 import android.content.Context
 import android.util.AttributeSet
