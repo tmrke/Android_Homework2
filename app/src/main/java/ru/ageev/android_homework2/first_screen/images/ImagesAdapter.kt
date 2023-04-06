@@ -12,6 +12,10 @@ class ImagesAdapter :
         val binding =
             ViewImagesCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
+        binding.buttonImages.setOnClickListener{
+
+        }
+
         return ImagesViewHolder(binding)
     }
 
