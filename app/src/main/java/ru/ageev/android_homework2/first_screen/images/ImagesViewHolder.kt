@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.ageev.android_homework2.databinding.ViewImagesCardBinding
 
 class ImagesViewHolder(
-    private val binding: ViewImagesCardBinding
+    val binding: ViewImagesCardBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-
+    val buttonImages: Button = binding.buttonImages
 }
