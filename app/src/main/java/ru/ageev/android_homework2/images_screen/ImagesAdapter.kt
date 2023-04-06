@@ -3,6 +3,7 @@ package ru.ageev.android_homework2.images_screen
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.ageev.android_homework2.R
@@ -13,7 +14,10 @@ class ImagesAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerViewImagesViewHolder>() {
     private lateinit var binding: RecyclerViewImagesBinding
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewImagesViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): RecyclerViewImagesViewHolder {
         binding =
             RecyclerViewImagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
@@ -30,4 +34,5 @@ class ImagesAdapter(private val context: Context) :
 
         attrs.recycle()
     }
+
 }
