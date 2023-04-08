@@ -13,13 +13,12 @@ import ru.ageev.android_homework2.first_screen.profile.ProfileAdapter
 import ru.ageev.android_homework2.images_screen.ViewImagesCardScreen
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
 
-    private lateinit var profileAdapter: Adapter
-    private lateinit var postAdapter: Adapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-         val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val recyclerView = binding.recyclerView
@@ -28,13 +27,9 @@ class MainActivity : AppCompatActivity() {
         val imagesAdapter = ImagesAdapter()
         val postAdapter = PostAdapter()
 
+        imagesAdapter.onClick = { startActivity(ViewImagesCardScreen.createIntent(this)) }
+
         val concatAdapter = ConcatAdapter(profileAdapter, imagesAdapter, postAdapter)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
         recyclerView.adapter = concatAdapter
-
-        imagesAdapter.buttonImages?.setOnClickListener {
-            startActivity(ViewImagesCardScreen.createIntent(this))
-        }
     }
 }

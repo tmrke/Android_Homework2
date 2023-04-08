@@ -1,13 +1,14 @@
 package ru.ageev.android_homework2.first_screen.images
 
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.ageev.android_homework2.databinding.ViewImagesCardBinding
 
 class ImagesViewHolder(
-    val binding: ViewImagesCardBinding
+    private val binding: ViewImagesCardBinding, val onClick: () -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-    val buttonImages: Button = binding.buttonImages
+    fun bind(item: ImagesData) {
+        binding.buttonImages.setOnClickListener {
+            onClick()
+        }
+    }
 }

@@ -13,10 +13,8 @@ class ViewImagesCard @JvmOverloads constructor(
     defAttrsSet: Int = 0
 ) : ConstraintLayout(context, attrSet, defAttrsSet) {
     private var binding: ViewImagesCardBinding
-    private var buttonImages: Button
 
     init {
         binding = ViewImagesCardBinding.inflate(LayoutInflater.from(context), this, true)
-        buttonImages = binding.buttonImages
     }
 }
