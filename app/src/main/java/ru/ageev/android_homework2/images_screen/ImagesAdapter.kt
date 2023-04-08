@@ -3,23 +3,21 @@ package ru.ageev.android_homework2.images_screen
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.databinding.RecyclerViewImagesBinding
+import ru.ageev.android_homework2.databinding.ViewImagesCardScreenBinding
 
 
 class ImagesAdapter(private val context: Context) :
     RecyclerView.Adapter<RecyclerViewImagesViewHolder>() {
-    private lateinit var binding: RecyclerViewImagesBinding
+    private lateinit var binding: ViewImagesCardScreenBinding
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): RecyclerViewImagesViewHolder {
         binding =
-            RecyclerViewImagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ViewImagesCardScreenBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return RecyclerViewImagesViewHolder(binding)
     }
