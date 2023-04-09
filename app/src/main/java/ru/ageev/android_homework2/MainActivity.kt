@@ -2,10 +2,7 @@ package ru.ageev.android_homework2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Adapter
-import android.widget.Button
 import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.LinearLayoutManager
 import ru.ageev.android_homework2.databinding.ActivityMainBinding
 import ru.ageev.android_homework2.first_screen.images.ImagesAdapter
 import ru.ageev.android_homework2.first_screen.post.PostAdapter

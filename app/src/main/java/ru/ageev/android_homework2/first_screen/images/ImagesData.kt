@@ -6,7 +6,7 @@ import java.util.*
 
 data class ImagesData(
     val id: String = UUID.randomUUID().toString(),
-    val textImages: String = "images",
+    val textImages: String,
     val buttonImages: Button,
-    val images: List<ImageView>
+    val imageUrl1: String
 )
