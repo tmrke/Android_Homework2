@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.Adapter
 import androidx.constraintlayout.widget.ConstraintLayout
+import coil.Coil
 import ru.ageev.android_homework2.databinding.ViewImagesCardScreenBinding
 
 class ViewImagesCardScreen @JvmOverloads constructor(
@@ -16,7 +18,18 @@ class ViewImagesCardScreen @JvmOverloads constructor(
 
     init {
         binding = ViewImagesCardScreenBinding.inflate(LayoutInflater.from(context), this, true)
+        val adapter = ImagesAdapter()
+        binding.viewImagesCardScreen.adapter = adapter
+
+        val images = mutableListOf<ImagesDataScreen>().apply {
+            repeat(15) {
+                add(ImagesDataScreen())
+            }
+        }
+
+        adapter.submitList(images)
     }
+
 
     companion object {
         fun createIntent(context: Context): Intent {

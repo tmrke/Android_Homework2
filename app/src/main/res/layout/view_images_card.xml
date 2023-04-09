@@ -91,5 +91,6 @@
 
                 android:src="@drawable/media_small" />
         </LinearLayout>
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
