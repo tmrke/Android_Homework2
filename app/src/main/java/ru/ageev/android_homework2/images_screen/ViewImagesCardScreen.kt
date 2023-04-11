@@ -14,6 +14,7 @@ class ViewImagesCardScreen @JvmOverloads constructor(
     attrSet: AttributeSet? = null,
     defAttrsSet: Int = 0
 ) : ConstraintLayout(context, attrSet, defAttrsSet) {
+
     private var binding: ViewImagesCardScreenBinding
 
     init {

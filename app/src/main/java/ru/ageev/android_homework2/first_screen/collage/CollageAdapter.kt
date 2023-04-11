@@ -24,7 +24,7 @@ class CollageAdapter : ListAdapter<CollageData, CollageViewHolder>(diffUtilCallb
         val binding =
             ViewCollageCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return CollageViewHolder(binding, onClick)
+        return CollageViewHolder(binding, onClick, parent.context)
     }
 
     override fun onBindViewHolder(holder: CollageViewHolder, position: Int) {
