@@ -1,5 +1,6 @@
 package ru.ageev.android_homework2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.ConcatAdapter
@@ -35,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         profileAdapter.submitList(profileList)
         collageAdapter.submitList(collageList)
 
-        collageAdapter.onClick = { startActivity(ViewImagesCardScreen.createIntent(this)) }
+        collageAdapter.onClick = {
+            startActivity(ViewImagesCardScreen.createIntent(this))
+        }
 
         val concatAdapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
         recyclerView.adapter = concatAdapter
