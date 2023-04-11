@@ -12,7 +12,6 @@ class ImagesViewHolderScreen(
 ) : RecyclerView.ViewHolder(binding.root) {
     private val imageView = ImageView(binding.root.context)
         fun bind(item: ImagesDataScreen) {
-        binding.root.addView(imageView)
-        imageView.load(item.uri)
+
     }
 }

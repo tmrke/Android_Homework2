@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import coil.ImageLoader
 import ru.ageev.android_homework2.databinding.ViewImagesCardScreenBinding
 
 

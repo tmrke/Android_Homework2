@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.ConcatAdapter
 import ru.ageev.android_homework2.databinding.ActivityMainBinding
-import ru.ageev.android_homework2.first_screen.images.ImagesAdapter
-import ru.ageev.android_homework2.first_screen.images.ViewImagesCard
+import ru.ageev.android_homework2.first_screen.collage.CollageAdapter
+import ru.ageev.android_homework2.first_screen.collage.CollageData
 import ru.ageev.android_homework2.first_screen.post.PostAdapter
+import ru.ageev.android_homework2.first_screen.post.PostData
 import ru.ageev.android_homework2.first_screen.profile.ProfileAdapter
+import ru.ageev.android_homework2.first_screen.profile.ProfileData
 import ru.ageev.android_homework2.images_screen.ViewImagesCardScreen
 
 class MainActivity : AppCompatActivity() {
@@ -21,19 +23,21 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = binding.recyclerView
 
-
         val profileAdapter = ProfileAdapter()
-        val imagesAdapter = ImagesAdapter()
+        val collageAdapter = CollageAdapter()
         val postAdapter = PostAdapter()
 
-        val images: ViewImagesCard = ViewImagesCard(binding.root.context, null, 0)
+        val postList = listOf(PostData())
+        val profileList = listOf(ProfileData())
+        val collageList = listOf(CollageData())
 
-        //добавить список
-//        imagesAdapter.submitList(images)
+        postAdapter.submitList(postList)
+        profileAdapter.submitList(profileList)
+        collageAdapter.submitList(collageList)
 
-        imagesAdapter.onClick = { startActivity(ViewImagesCardScreen.createIntent(this)) }
+        collageAdapter.onClick = { startActivity(ViewImagesCardScreen.createIntent(this)) }
 
-        val concatAdapter = ConcatAdapter(profileAdapter, imagesAdapter, postAdapter)
+        val concatAdapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
         recyclerView.adapter = concatAdapter
     }
 }
