@@ -11,10 +11,9 @@ import ru.ageev.android_homework2.databinding.ViewImagesCardScreenBinding
 
 class ViewImagesCardScreen @JvmOverloads constructor(
     context: Context,
-    attrSet: AttributeSet? = null,
+    attrSet: AttributeSet?,
     defAttrsSet: Int = 0
 ) : ConstraintLayout(context, attrSet, defAttrsSet) {
-
     private var binding: ViewImagesCardScreenBinding
 
     init {
@@ -34,7 +33,7 @@ class ViewImagesCardScreen @JvmOverloads constructor(
 
     companion object {
         fun createIntent(context: Context): Intent {
-            return Intent(context, ViewImagesCardScreen::class.java)
+            return Intent(context, ViewImagesCardScreen::class.java) //создать активити, по аналогии с мэйн активити и ее сюда передать вместо (ViewImagesCardScreen::class.java)
         }
     }
 }

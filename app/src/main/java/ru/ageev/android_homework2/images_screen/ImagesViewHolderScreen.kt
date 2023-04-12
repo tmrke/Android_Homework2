@@ -8,7 +8,7 @@ import coil.load
 
 import ru.ageev.android_homework2.databinding.ViewImagesCardScreenBinding
 
-class ImagesViewHolderScreen(
+class ImagesViewHolderScreen (
     private val binding: ViewImagesCardScreenBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: ImagesDataScreen) {
