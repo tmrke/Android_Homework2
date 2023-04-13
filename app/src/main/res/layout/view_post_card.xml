@@ -72,23 +72,26 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/media_description"
             android:src="@drawable/media"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewPostText" />
 
         <!-- здесь не получается, если указать drawableStart -->
         <!-- И при указании цвета фона для кнопки теряется ее форма, а цвет не применяется -->
-        <Button
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.Material3.Button.ElevatedButton"
             android:id="@+id/imageButtonFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/general_margin"
-            android:backgroundTint="@color/md_theme_light_inverseSurface"
-            android:drawableLeft="@drawable/favorite"
+            app:icon="@drawable/favorite"
+
             android:text="@string/likes_count"
-            android:textColor="@color/md_theme_light_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageViewMedia" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>
