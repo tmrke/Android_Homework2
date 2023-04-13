@@ -18,7 +18,7 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<ProfileData>() {
     }
 }
 
-class ProfileAdapter : ListAdapter<ProfileData, ProfileViewHolder>(diffUtilCallback) {
+class ProfileAdapter : ListAdapter<ProfileData, ProfileViewHolder>(diffUtilCallback) {      // поменят на  :адаптер
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding =
             ViewProfileCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)

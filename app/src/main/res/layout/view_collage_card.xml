@@ -5,18 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="@dimen/general_margin">
 
         <LinearLayout
-            android:id="@+id/linearLayoutImagesButton"
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/general_margin"
-            android:layout_marginTop="@dimen/general_margin"
-            android:layout_marginEnd="@dimen/general_margin"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,69 +25,88 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Images" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/buttonImages"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:drawableEnd="@drawable/chevron_right"
-                android:elevation="0dp" />
+                android:contentDescription="@string/images"
+                android:scaleType="fitEnd"
+                android:src="@drawable/chevron_right" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayoutImages"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/general_margin"
-            android:layout_marginEnd="@dimen/general_margin"
-            android:layout_marginBottom="@dimen/general_margin"
+            android:layout_marginTop="@dimen/general_margin"
 
             android:orientation="horizontal"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linearLayoutImagesButton">
+            app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
             <ImageView
                 android:id="@+id/image1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="2dp"
                 android:contentDescription="@string/media_small"
-                android:src="@drawable/media_small" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/media_small"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/image2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/image2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_gravity="start"
-                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
                 android:contentDescription="@string/media_small"
-
-                android:src="@drawable/media_small" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/media_small"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/image3"
+                app:layout_constraintStart_toEndOf="@+id/image1"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/image3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_gravity="start"
-                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
                 android:contentDescription="@string/media_small"
-
-                android:src="@drawable/media_small" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/media_small"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@+id/image4"
+                app:layout_constraintStart_toEndOf="@+id/image2"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/image4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_gravity="start"
-                android:layout_weight="1"
+                android:layout_marginHorizontal="2dp"
                 android:contentDescription="@string/media_small"
+                android:scaleType="centerCrop"
+                android:src="@drawable/media_small"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/image3"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                android:src="@drawable/media_small" />
-        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
