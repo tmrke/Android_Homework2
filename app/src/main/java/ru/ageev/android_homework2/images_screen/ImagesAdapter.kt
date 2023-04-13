@@ -2,9 +2,10 @@ package ru.ageev.android_homework2.images_screen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import ru.ageev.android_homework2.databinding.ViewImagesCardScreenBinding
+import ru.ageev.android_homework2.databinding.ActivityImagesBinding
 
 
 val diffUtilCallback = object : DiffUtil.ItemCallback<ImagesDataScreen>() {
@@ -20,10 +21,10 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<ImagesDataScreen>() {
 class ImagesAdapter :
     ListAdapter<ImagesDataScreen, ImagesViewHolderScreen>(diffUtilCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesViewHolderScreen {
-        val binding =
-            ViewImagesCardScreenBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val imageView = ImageView(parent.context)
+        imageView.scaleType = ImageView.ScaleType.CENTER_CROP
 
-        return ImagesViewHolderScreen(binding)
+        return ImagesViewHolderScreen(imageView)
     }
 
     override fun onBindViewHolder(holder: ImagesViewHolderScreen, position: Int) {

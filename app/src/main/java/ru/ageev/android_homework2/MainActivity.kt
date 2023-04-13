@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         collageAdapter.submitList(collageList)
 
         collageAdapter.onClick = {
-            startActivity(ViewImagesCardScreen.createIntent(this))
+            startActivity(ImagesActivity.createIntent(this))
         }
 
         val concatAdapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
