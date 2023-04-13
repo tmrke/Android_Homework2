@@ -9,7 +9,8 @@ import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.databinding.ViewCollageCardBinding
 
 class CollageViewHolder(
-    private val binding: ViewCollageCardBinding, val onClick: () -> Unit,
+    private val binding: ViewCollageCardBinding,
+    val onClick: () -> Unit,
     private val context: Context
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: CollageData) {

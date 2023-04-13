@@ -8,7 +8,6 @@ import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.ageev.android_homework2.databinding.ActivityImagesBinding
 import ru.ageev.android_homework2.images_screen.ImagesAdapter
-import ru.ageev.android_homework2.images_screen.ImagesDataScreen
 
 class ImagesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImagesBinding
