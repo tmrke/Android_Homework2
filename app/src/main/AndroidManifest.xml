@@ -23,8 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ru.ageev.android_homework2.images_screen.ViewImagesCardScreen"/>
-
+        <activity android:name=".ImagesActivity" />
 
     </application>
 

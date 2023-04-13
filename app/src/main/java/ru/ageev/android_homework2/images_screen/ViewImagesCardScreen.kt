@@ -4,36 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.Adapter
 import androidx.constraintlayout.widget.ConstraintLayout
-import coil.Coil
-import ru.ageev.android_homework2.databinding.ViewImagesCardScreenBinding
+import ru.ageev.android_homework2.ImagesActivity
+import ru.ageev.android_homework2.databinding.ActivityImagesBinding
 
 class ViewImagesCardScreen @JvmOverloads constructor(
     context: Context,
     attrSet: AttributeSet?,
     defAttrsSet: Int = 0
 ) : ConstraintLayout(context, attrSet, defAttrsSet) {
-    private var binding: ViewImagesCardScreenBinding
+    private var binding: ActivityImagesBinding
 
     init {
-        binding = ViewImagesCardScreenBinding.inflate(LayoutInflater.from(context), this, true)
-        val adapter = ImagesAdapter()
-        binding.viewImagesCardScreen.adapter = adapter
-
-        val images = mutableListOf<ImagesDataScreen>().apply {
-            repeat(15) {
-                add(ImagesDataScreen())
-            }
-        }
-
-        adapter.submitList(images)
-    }
-
-
-    companion object {
-        fun createIntent(context: Context): Intent {
-            return Intent(context, ViewImagesCardScreen::class.java) //создать активити, по аналогии с мэйн активити и ее сюда передать вместо (ViewImagesCardScreen::class.java)
-        }
+        binding = ActivityImagesBinding.inflate(LayoutInflater.from(context), this, true)
     }
 }
