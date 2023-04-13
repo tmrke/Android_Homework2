@@ -1,33 +1,22 @@
 package ru.ageev.android_homework2.images_screen
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import ru.ageev.android_homework2.databinding.ActivityImagesBinding
 
-
-val diffUtilCallback = object : DiffUtil.ItemCallback<ImagesDataScreen>() {
-    override fun areItemsTheSame(oldItem: ImagesDataScreen, newItem: ImagesDataScreen): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: ImagesDataScreen, newItem: ImagesDataScreen): Boolean {
-        return oldItem == newItem
-    }
-}
-
-class ImagesAdapter :
-    ListAdapter<ImagesDataScreen, ImagesViewHolderScreen>(diffUtilCallback) {
+class ImagesAdapter : RecyclerView.Adapter<ImagesViewHolderScreen>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesViewHolderScreen {
-        val imageView = ImageView(parent.context)
-        imageView.scaleType = ImageView.ScaleType.CENTER_CROP
+        val binding =
+            ActivityImagesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ImagesViewHolderScreen(imageView)
+        return ImagesViewHolderScreen(binding)
     }
 
     override fun onBindViewHolder(holder: ImagesViewHolderScreen, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind()
+    }
+
+    override fun getItemCount(): Int {
+        return 1
     }
 }

@@ -1,6 +1,5 @@
 package ru.ageev.android_homework2
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.ConcatAdapter
@@ -11,7 +10,6 @@ import ru.ageev.android_homework2.first_screen.post.PostAdapter
 import ru.ageev.android_homework2.first_screen.post.PostData
 import ru.ageev.android_homework2.first_screen.profile.ProfileAdapter
 import ru.ageev.android_homework2.first_screen.profile.ProfileData
-import ru.ageev.android_homework2.images_screen.ViewImagesCardScreen
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
