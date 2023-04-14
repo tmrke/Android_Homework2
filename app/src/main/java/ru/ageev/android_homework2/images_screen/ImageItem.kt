@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
+import coil.load
+import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.databinding.ItemImageBinding
 
 class ImageItem @JvmOverloads constructor(

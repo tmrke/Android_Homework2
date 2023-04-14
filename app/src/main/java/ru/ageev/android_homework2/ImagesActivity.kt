@@ -15,7 +15,7 @@ class ImagesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImagesBinding
 
     private val dataList = mutableListOf<ImageData>().apply {
-        repeat(15) {
+        repeat(30) {
             add(ImageData())
         }
     }
@@ -31,6 +31,7 @@ class ImagesActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.recyclerViewImages.adapter = listAdapter
+        setContentView(binding.root)
     }
 
     companion object {
