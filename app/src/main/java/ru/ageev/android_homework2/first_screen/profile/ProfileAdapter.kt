@@ -8,17 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.ageev.android_homework2.databinding.ViewProfileCardBinding
 import ru.ageev.android_homework2.first_screen.post.PostData
 
-val diffUtilCallback = object : DiffUtil.ItemCallback<ProfileData>() {
-    override fun areItemsTheSame(oldItem: ProfileData, newItem: ProfileData): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: ProfileData, newItem: ProfileData): Boolean {
-        return oldItem == newItem
-    }
-}
-
-class ProfileAdapter : ListAdapter<ProfileData, ProfileViewHolder>(diffUtilCallback) {      // поменят на  :адаптер
+class ProfileAdapter(private val profiles: List<ProfileData>) :
+    RecyclerView.Adapter<ProfileViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding =
             ViewProfileCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,7 +17,11 @@ class ProfileAdapter : ListAdapter<ProfileData, ProfileViewHolder>(diffUtilCallb
         return ProfileViewHolder(binding)
     }
 
+    override fun getItemCount(): Int {
+        return profiles.size
+    }
+
     override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(profiles[position])
     }
 }
