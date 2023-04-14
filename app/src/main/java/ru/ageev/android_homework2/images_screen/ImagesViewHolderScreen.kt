@@ -10,7 +10,7 @@ class ImagesViewHolderScreen(
     private val binding: ItemImageBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: ImageData) {
-//        binding.image.load(item.imageUri)
-        binding.image.setImageResource(R.drawable.media)
+        val uri: String = "https://i.pinimg.com/564x/98/3a/64/983a6470c037bb11390faf4c868f9c5c.jpg"
+        binding.image.load(item.imageUri)
     }
 }

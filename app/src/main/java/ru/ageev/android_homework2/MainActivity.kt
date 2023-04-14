@@ -10,9 +10,16 @@ import ru.ageev.android_homework2.first_screen.post.PostAdapter
 import ru.ageev.android_homework2.first_screen.post.PostData
 import ru.ageev.android_homework2.first_screen.profile.ProfileAdapter
 import ru.ageev.android_homework2.first_screen.profile.ProfileData
+import ru.ageev.android_homework2.images_screen.ImageData
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    private val dataList = mutableListOf<ImageData>().apply {
+        repeat(30) {
+            add(ImageData())
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         postAdapter.submitList(listOf(PostData(), PostData(), PostData()))
 
         collageAdapter.onClick = {
-            startActivity(ImagesActivity.createIntent(this))
+            startActivity(ImagesActivity.createIntent(this, dataList))
         }
 
         val concatAdapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
