@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:menu="@menu/navigation_menu"
-            app:navigationIcon="@drawable/ic_back_24"
+            app:navigationIcon="@drawable/leading_icon"
             app:title="Images"
             app:titleCentered="true"
 
