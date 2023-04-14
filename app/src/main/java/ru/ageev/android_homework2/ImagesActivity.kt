@@ -7,19 +7,30 @@ import android.os.PersistableBundle
 
 import androidx.appcompat.app.AppCompatActivity
 import ru.ageev.android_homework2.databinding.ActivityImagesBinding
+import ru.ageev.android_homework2.images_screen.ImageData
+import ru.ageev.android_homework2.images_screen.ImageItem
 import ru.ageev.android_homework2.images_screen.ImagesAdapter
 
 class ImagesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImagesBinding
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    private val dataList = mutableListOf<ImageData>().apply {
+        repeat(15) {
+            add(ImageData())
+        }
+    }
+
+    private val listAdapter by lazy {
+        ImagesAdapter(dataList)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         binding = ActivityImagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter = ImagesAdapter()
-        binding.recyclerViewImages.adapter = adapter
+        binding.recyclerViewImages.adapter = listAdapter
     }
 
     companion object {
