@@ -3,8 +3,6 @@ package ru.ageev.android_homework2
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
-
 
 import androidx.appcompat.app.AppCompatActivity
 import ru.ageev.android_homework2.databinding.ActivityImagesBinding
@@ -20,10 +18,15 @@ class ImagesActivity : AppCompatActivity() {
         binding = ActivityImagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dataList = intent.getParcelableArrayExtra(ARG_TEXT_KEY)?.map { it as ImageData } ?: emptyList()
+        val dataList =
+            intent.getParcelableArrayExtra(ARG_TEXT_KEY)?.map { it as ImageData } ?: emptyList()
         val listAdapter = ImagesAdapter(dataList)
 
         binding.recyclerViewImages.adapter = listAdapter
+
+        binding.toolBar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     companion object {
