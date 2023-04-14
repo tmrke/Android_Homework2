@@ -39,6 +39,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(ImagesActivity.createIntent(this, dataList))
         }
 
+        postAdapter.onClick = {
+            startActivity(PostActivity.createIntent(this))
+        }
+
         val concatAdapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
         recyclerView.adapter = concatAdapter
     }

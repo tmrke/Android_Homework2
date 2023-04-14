@@ -24,6 +24,7 @@
         </activity>
 
         <activity android:name=".ImagesActivity" />
+        <activity android:name=".PostActivity" />
 
     </application>
 
