@@ -3,26 +3,16 @@ package ru.ageev.android_homework2
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.os.Parcelable
+
 
 import androidx.appcompat.app.AppCompatActivity
 import ru.ageev.android_homework2.databinding.ActivityImagesBinding
 import ru.ageev.android_homework2.images_screen.ImageData
-import ru.ageev.android_homework2.images_screen.ImageItem
 import ru.ageev.android_homework2.images_screen.ImagesAdapter
 
 class ImagesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImagesBinding
-
-    private val dataList = mutableListOf<ImageData>().apply {
-        repeat(30) {
-            add(ImageData())
-        }
-    }
-
-    private val listAdapter by lazy {
-        ImagesAdapter(dataList)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,14 +20,19 @@ class ImagesActivity : AppCompatActivity() {
         binding = ActivityImagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val dataList = intent.getParcelableArrayExtra(ARG_TEXT_KEY)?.map { it as ImageData } ?: emptyList()
+        val listAdapter = ImagesAdapter(dataList)
+
         binding.recyclerViewImages.adapter = listAdapter
-        setContentView(binding.root)
     }
 
     companion object {
-        fun createIntent(context: Context): Intent {
-            return Intent(context, ImagesActivity::class.java)
+        private const val ARG_TEXT_KEY = "ARG_TEXT_KEY"
+
+        fun createIntent(context: Context, dataList: List<ImageData>): Intent {
+            return Intent(context, ImagesActivity::class.java).apply {
+                putExtra(ARG_TEXT_KEY, dataList.toTypedArray())
+            }
         }
     }
-
 }
