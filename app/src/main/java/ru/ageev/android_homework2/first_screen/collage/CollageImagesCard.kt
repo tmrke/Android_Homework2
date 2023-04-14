@@ -16,4 +16,6 @@ class CollageImagesCard @JvmOverloads constructor(
     init {
         binding = ViewCollageCardBinding.inflate(LayoutInflater.from(context), this, true)
     }
+
+
 }
