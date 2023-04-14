@@ -22,17 +22,11 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView = binding.recyclerView
 
-        val profileAdapter = ProfileAdapter()
-        val collageAdapter = CollageAdapter()
+        val profileAdapter = ProfileAdapter(listOf(ProfileData()))
+        val collageAdapter = CollageAdapter(listOf(CollageData()))
         val postAdapter = PostAdapter()
 
-        val postList = listOf(PostData())
-        val profileList = listOf(ProfileData())
-        val collageList = listOf(CollageData())
-
-        postAdapter.submitList(postList)
-        profileAdapter.submitList(profileList)
-        collageAdapter.submitList(collageList)
+        postAdapter.submitList(listOf(PostData(), PostData(), PostData()))
 
         collageAdapter.onClick = {
             startActivity(ImagesActivity.createIntent(this))
