@@ -9,7 +9,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/between_images_margin"
-        android:adjustViewBounds="true"
         android:contentDescription="@string/images"
         android:src="@drawable/media"
         app:layout_constraintBottom_toBottomOf="parent"
