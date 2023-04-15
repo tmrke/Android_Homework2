@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activityPost"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -23,25 +22,111 @@
             app:title="Post"
             app:titleCentered="true" />
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ru.ageev.android_homework2.first_screen.post.ViewPostCard
-        android:id="@+id/post"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        android:paddingBottom="50dp"
+        >
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageViewPostProfileImage"
+                android:layout_width="@dimen/post_profile_image_size"
+                android:layout_height="@dimen/post_profile_image_size"
+                android:layout_margin="@dimen/general_margin"
+                android:background="@color/md_theme_dark_primary"
+                app:layout_constraintEnd_toStartOf="@+id/textViewProfileName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:shapeAppearance="@style/rounded_image"
+                app:layout_constraintBottom_toTopOf="@+id/divider"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textViewProfileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/general_margin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/evolitist"
+                android:textSize="@dimen/post_name_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageViewPostProfileImage"
+                app:layout_constraintBottom_toTopOf="@+id/textViewDate"
+              />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textViewDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/general_margin"
+                android:layout_marginTop="@dimen/between_texts_margin"
+                android:layout_marginEnd="@dimen/general_margin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageViewPostProfileImage"
+                app:layout_constraintTop_toBottomOf="@id/textViewProfileName" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/general_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewDate" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textViewPostText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/general_margin"
+                android:layout_marginTop="4dp"
+                android:text="@string/lorem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <ImageView
+                android:id="@+id/imageViewMedia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/general_margin"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/media_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/media"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViewPostText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/imageButtonFavorite"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/general_margin"
+                android:text="@string/likes_count"
+
+                app:icon="@drawable/favorite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageViewMedia" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
