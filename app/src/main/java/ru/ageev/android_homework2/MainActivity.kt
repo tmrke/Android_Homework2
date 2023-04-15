@@ -11,6 +11,7 @@ import ru.ageev.android_homework2.first_screen.post.PostData
 import ru.ageev.android_homework2.first_screen.profile.ProfileAdapter
 import ru.ageev.android_homework2.first_screen.profile.ProfileData
 import ru.ageev.android_homework2.images_screen.ImageData
+import ru.ageev.android_homework2.post_screen.PostItem
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         postAdapter.onClick = {
-            startActivity(PostActivity.createIntent(this))
+            startActivity(PostActivity.createIntent(this, PostData()))
         }
 
         val concatAdapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)

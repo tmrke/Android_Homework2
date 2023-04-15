@@ -16,6 +16,5 @@ class PostItem @JvmOverloads constructor(
 
     init {
         binding = ActivityPostBinding.inflate(LayoutInflater.from(context), this, true)
-        //подумать как передать данные из поста с Main сюда
     }
 }
