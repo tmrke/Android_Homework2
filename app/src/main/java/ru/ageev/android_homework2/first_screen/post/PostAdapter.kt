@@ -27,6 +27,6 @@ class PostAdapter : ListAdapter<PostData, PostViewHolder>(diffUtilCallback) {
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(getItem(position))
     }
 }
