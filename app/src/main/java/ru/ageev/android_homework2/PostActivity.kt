@@ -25,7 +25,7 @@ class PostActivity : AppCompatActivity() {
             textViewDate.text = postData?.date
             textViewPostText.text = postData?.text
             imageViewPostProfileImage.load(postData?.profileImageUrl)
-            binding.toolBar.setNavigationOnClickListener {
+            toolBar.setNavigationOnClickListener {
                 onBackPressed()
             }
         }
