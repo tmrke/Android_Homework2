@@ -14,13 +14,15 @@ class CollageViewHolder(
     private val context: Context
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: CollageData) {
-        binding.image1.load(context.getString(R.string.url_image1))
-        binding.image2.load(context.getString(R.string.url_image1))
-        binding.image3.load(context.getString(R.string.url_image1))
-        binding.image4.load(context.getString(R.string.url_image1))
+        with(binding) {
+            image1.load(item.imageUrl1)
+            image2.load(item.imageUrl2)
+            image3.load(item.imageUrl3)
+            image4.load(item.imageUrl4)
 
-        binding.buttonImages.setOnClickListener {
-            onClick()
+            buttonImages.setOnClickListener {
+                onClick()
+            }
         }
     }
 }
