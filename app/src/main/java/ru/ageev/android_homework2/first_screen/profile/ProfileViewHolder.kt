@@ -10,7 +10,7 @@ class ProfileViewHolder(
     private val binding: ViewProfileCardBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: ProfileData) {
-        binding.imageViewUserProfileImage.load("https://www.pinclipart.com/picdir/big/332-3324748_confused-person-png-clipart.png")
+        binding.imageViewUserProfileImage.load(item.profileImageUrl)
         binding.textViewUserName.text = item.name
         binding.textViewUserStatus.text = item.status
     }
