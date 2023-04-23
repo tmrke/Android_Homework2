@@ -11,6 +11,7 @@ import ru.ageev.android_homework2.first_screen.post.PostData
 
 class PostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPostBinding
+    //TODO поменять на делегат
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
