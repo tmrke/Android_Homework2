@@ -5,18 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
+import by.kirich1409.viewbindingdelegate.CreateMethod
+import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import ru.ageev.android_homework2.databinding.ActivityPostBinding
 import ru.ageev.android_homework2.first_screen.post.PostData
 
 class PostActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityPostBinding
-    //TODO поменять на делегат
+    private val binding: ActivityPostBinding by viewBinding(createMethod = CreateMethod.INFLATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val postData: PostData? = intent.extras?.getParcelable(ARG_TEXT_KEY)

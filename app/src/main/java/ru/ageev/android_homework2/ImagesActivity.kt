@@ -5,18 +5,19 @@ import android.content.Intent
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
+import by.kirich1409.viewbindingdelegate.CreateMethod
+import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.ageev.android_homework2.databinding.ActivityImagesBinding
+
 import ru.ageev.android_homework2.images_screen.ImageData
 import ru.ageev.android_homework2.images_screen.ImagesAdapter
 
 class ImagesActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityImagesBinding
-    //TODO поменять на делегат
+    private val binding: ActivityImagesBinding by viewBinding(createMethod = CreateMethod.INFLATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityImagesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val dataList =
