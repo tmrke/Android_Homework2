@@ -3,7 +3,6 @@ package ru.ageev.android_homework2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.ConcatAdapter
-import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.ageev.android_homework2.databinding.ActivityMainBinding
 import ru.ageev.android_homework2.first_screen.collage.CollageAdapter
 import ru.ageev.android_homework2.first_screen.collage.CollageData
@@ -14,13 +13,15 @@ import ru.ageev.android_homework2.first_screen.profile.ProfileData
 import ru.ageev.android_homework2.images_screen.ImageData
 
 class MainActivity : AppCompatActivity() {
-    private val binding by viewBinding(ActivityMainBinding::bind)
+    private lateinit var binding: ActivityMainBinding
+    //TODO поменять на делегат
 
     private val dataList = List(30) { ImageData() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val profileAdapter = ProfileAdapter(listOf(ProfileData()))
