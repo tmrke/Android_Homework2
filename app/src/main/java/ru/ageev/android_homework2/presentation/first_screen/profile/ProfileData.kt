@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.first_screen.profile
+package ru.ageev.android_homework2.presentation.first_screen.profile
 
 import java.util.*
 

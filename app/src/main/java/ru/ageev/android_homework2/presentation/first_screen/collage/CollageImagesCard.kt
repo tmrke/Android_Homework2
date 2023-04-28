@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.first_screen.collage
+package ru.ageev.android_homework2.presentation.first_screen.collage
 
 import android.content.Context
 import android.util.AttributeSet

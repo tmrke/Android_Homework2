@@ -1,7 +1,8 @@
-package ru.ageev.android_homework2.images_screen
+package ru.ageev.android_homework2.presentation.images_screen
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import ru.ageev.android_homework2.data.ImageData
 
 import ru.ageev.android_homework2.databinding.ItemImageBinding
 

@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.first_screen.post
+package ru.ageev.android_homework2.data
 
 import android.os.Parcelable
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum

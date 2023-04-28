@@ -1,9 +1,10 @@
-package ru.ageev.android_homework2.first_screen.post
+package ru.ageev.android_homework2.presentation.first_screen.post
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import ru.ageev.android_homework2.data.PostData
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
 
 val diffUtilCallback = object : DiffUtil.ItemCallback<PostData>() {

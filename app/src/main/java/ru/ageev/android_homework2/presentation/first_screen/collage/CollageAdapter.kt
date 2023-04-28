@@ -1,9 +1,10 @@
-package ru.ageev.android_homework2.first_screen.collage
+package ru.ageev.android_homework2.presentation.first_screen.collage
 
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.ageev.android_homework2.data.CollageData
 import ru.ageev.android_homework2.databinding.ViewCollageCardBinding
 
 class CollageAdapter(private val collages: List<CollageData>) :
