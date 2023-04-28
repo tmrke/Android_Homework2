@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.images_screen
+package ru.ageev.android_homework2.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

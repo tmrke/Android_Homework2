@@ -9,7 +9,7 @@ import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import ru.ageev.android_homework2.databinding.ActivityPostBinding
-import ru.ageev.android_homework2.first_screen.post.PostData
+import ru.ageev.android_homework2.data.PostData
 
 class PostActivity : AppCompatActivity() {
     private val binding: ActivityPostBinding by viewBinding(createMethod = CreateMethod.INFLATE)

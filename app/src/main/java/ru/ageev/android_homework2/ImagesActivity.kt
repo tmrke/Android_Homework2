@@ -9,8 +9,8 @@ import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.ageev.android_homework2.databinding.ActivityImagesBinding
 
-import ru.ageev.android_homework2.images_screen.ImageData
-import ru.ageev.android_homework2.images_screen.ImagesAdapter
+import ru.ageev.android_homework2.data.ImageData
+import ru.ageev.android_homework2.presentation.images_screen.ImagesAdapter
 
 class ImagesActivity : AppCompatActivity() {
     private val binding: ActivityImagesBinding by viewBinding(createMethod = CreateMethod.INFLATE)
