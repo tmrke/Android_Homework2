@@ -9,5 +9,4 @@
         android:name="ru.ageev.android_homework2.presentation.profile_screen.ProfileFragment"
         android:label="ProfileFragment"/>
 
-
 </navigation>
