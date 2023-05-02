@@ -1,26 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/profileFragment"
+    >
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileFragment"
-        android:label="ProfileFragment">
-
-        <action
-            android:id="@+id/action_profileFragment_to_imagesFragment"
-            app:destination="@id/imagesFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/imagesFragment"
-        android:name="ru.ageev.android_homework2.presentation.images_screen.ImagesFragment"
-        android:label="ImagesFragment">
-
-        <action
-            android:id="@+id/action_imagesFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+        android:name="ru.ageev.android_homework2.presentation.profile_screen.ProfileFragment"
+        android:label="ProfileFragment"/>
 
 
 </navigation>
