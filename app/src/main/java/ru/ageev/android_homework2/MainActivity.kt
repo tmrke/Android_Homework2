@@ -28,8 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        viewModel.getProfile()
-
         val profileAdapter = ProfileAdapter(listOf(ProfileData()))
         val collageAdapter = CollageAdapter(listOf(CollageData()))
         val postAdapter = PostAdapter()
@@ -45,5 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.recyclerView.adapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
+
+        viewModel.getProfile()
     }
 }
