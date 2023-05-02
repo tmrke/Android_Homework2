@@ -14,7 +14,7 @@
         <attr name="imageProfile" format="reference" />
     </declare-styleable>
 
-    <declare-styleable name="RecyclerViewImages">
-        <attr name="uri" format="reference"/>
-    </declare-styleable>
+<!--    <declare-styleable name="RecyclerViewImages">-->
+<!--        <attr name="uri" format="reference"/>-->
+<!--    </declare-styleable>-->
 </resources>

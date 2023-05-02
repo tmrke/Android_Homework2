@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.profile_screen.profile
+package ru.ageev.android_homework2.presentation.profile_screen
 
 import android.os.Bundle
 import android.view.View
@@ -15,6 +15,8 @@ import ru.ageev.android_homework2.data.PostData
 import ru.ageev.android_homework2.databinding.FragmentProfileBinding
 import ru.ageev.android_homework2.presentation.profile_screen.collage.CollageAdapter
 import ru.ageev.android_homework2.presentation.profile_screen.post.PostAdapter
+import ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileAdapter
+import ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileViewModel
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -22,10 +24,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
     private val viewModel by viewModels<ProfileViewModel>()
 
-    @Inject
-    private val dataList = List(30) { ImageData() }
 
-    @Inject
     val profile = viewModel.profileLiveData.value
 
 
@@ -48,7 +47,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 //        }
 
         binding.recyclerView.adapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
-
-        viewModel.getProfile()
+//
+//        viewModel.getProfile()
     }
 }
