@@ -25,29 +25,28 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val viewModel by viewModels<ProfileViewModel>()
 
 
-    val profile = viewModel.profileLiveData.value
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
 
-        val profileAdapter = ProfileAdapter(profile)
         val collageAdapter = CollageAdapter(listOf(CollageData()))
         val postAdapter = PostAdapter()
 
         postAdapter.submitList(listOf(PostData(), PostData(), PostData()))
 
         collageAdapter.onClick = {
-            navController.navigate(R.id.imagesFragment) //TODO как то еще передать dataList
+            navController.navigate(R.id.imagesFragment)
         }
 
 //        postAdapter.onClick = {
-//            navController.navigate(R.id.postFragment) //TODO как то еще передать PostData()
+//            navController.navigate(R.id.postFragment)
 //        }
-
-        binding.recyclerView.adapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
 //
-//        viewModel.getProfile()
+        viewModel.getProfile()
+
+        viewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
+            val profileAdapter = ProfileAdapter(profile)
+            binding.recyclerView.adapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
+        }
     }
 }

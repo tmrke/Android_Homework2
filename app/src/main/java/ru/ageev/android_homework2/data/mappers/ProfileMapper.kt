@@ -1,7 +1,7 @@
 package ru.ageev.android_homework2.data.mappers
 
 import ru.ageev.android_homework2.data.model.Profile
-import ru.ageev.android_homework2.data.remote.ApiProfile
+import ru.ageev.android_homework2.data.remote.model.ApiProfile
 import javax.inject.Inject
 
 class ProfileMapper @Inject constructor() {

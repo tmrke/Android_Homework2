@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.data.remote
+package ru.ageev.android_homework2.data.remote.model
 
 import kotlinx.serialization.Serializable
 

@@ -2,6 +2,7 @@ package ru.ageev.android_homework2.data.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Path
+import ru.ageev.android_homework2.data.remote.model.ApiProfile
 
 interface NanopostApiService {
     @GET("api/v1/profile/{profileId}")
