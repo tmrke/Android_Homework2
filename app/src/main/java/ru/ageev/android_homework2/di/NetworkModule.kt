@@ -32,7 +32,7 @@ abstract class NetworkModule {
                 .build()
         }
 
-        // Json { ignoreUnknownKeys = true } добавить
+        // TODO  Json { ignoreUnknownKeys = true } ошибка с imagesCount, если не добавить
 
         @Provides
         @Singleton

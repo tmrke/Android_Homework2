@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.first_screen.post
+package ru.ageev.android_homework2.presentation.profile_screen.post
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.first_screen.post
+package ru.ageev.android_homework2.presentation.post_screen
 
 import android.content.Context
 import android.util.AttributeSet
