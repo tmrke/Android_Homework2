@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.first_screen.collage
+package ru.ageev.android_homework2.presentation.profile_screen.collage
 
 
 import android.view.LayoutInflater
