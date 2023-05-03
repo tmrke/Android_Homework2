@@ -7,7 +7,7 @@ import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import coil.load
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.data.PostData
+import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.FragmentPostBinding
 
 class PostFragment : Fragment(R.layout.fragment_post) {
@@ -17,13 +17,13 @@ class PostFragment : Fragment(R.layout.fragment_post) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
 
-        val postData: PostData = PostData()
+        val post: Post = Post()
 
         with(binding) {
-            imageViewMedia.load(postData.postImageUrl)
-            textViewDate.text = postData.date
-            textViewPostText.text = postData.text
-            imageViewPostProfileImage.load(postData.profileImageUrl)
+            imageViewMedia.load(post.postImageUrl)
+            textViewDate.text = post.date
+            textViewPostText.text = post.text
+            imageViewPostProfileImage.load(post.profileImageUrl)
 
             toolBar.setNavigationOnClickListener {
                 navController.navigate(R.id.profileFragment)

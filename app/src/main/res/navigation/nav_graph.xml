@@ -6,7 +6,18 @@
     >
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ru.ageev.android_homework2.presentation.profile_screen.ProfileFragment"
-        android:label="ProfileFragment"/>
+        android:name="ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileFragment"
+        android:label="ProfileFragment">
+        <action
+            android:id="@+id/action_profileFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="ru.ageev.android_homework2.presentation.post_screen.PostFragment"
+        android:label="post">
+
+    </fragment>
 
 </navigation>

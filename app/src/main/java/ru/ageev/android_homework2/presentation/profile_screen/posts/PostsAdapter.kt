@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.post_screen
+package ru.ageev.android_homework2.presentation.profile_screen.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
+import javax.inject.Inject
 
 val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
     override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
@@ -17,17 +18,18 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
     }
 }
 
-class PostAdapter : ListAdapter<Post, PostViewHolder>(diffUtilCallback) {
+class PostsAdapter @Inject constructor(private var list: List<Post>) :
+    ListAdapter<Post, PostsViewHolder>(diffUtilCallback) {
     var onClick: () -> Unit = {}
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
         val binding: ViewPostCardBinding =
             ViewPostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val context = parent.context
 
-        return PostViewHolder(binding, context, onClick)
+        return PostsViewHolder(binding, context, onClick)
     }
 
-    override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 }
