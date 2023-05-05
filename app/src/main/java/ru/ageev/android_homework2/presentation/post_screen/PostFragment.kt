@@ -17,13 +17,12 @@ class PostFragment : Fragment(R.layout.fragment_post) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
 
-        val post: Post = Post()
+//        val post: Post = Post()
 
         with(binding) {
-            imageViewMedia.load(post.postImageUrl)
-            textViewDate.text = post.date
-            textViewPostText.text = post.text
-            imageViewPostProfileImage.load(post.profileImageUrl)
+//            imageViewMedia.load(post.postImageUrl)
+//            textViewDate.text = post.date
+//          imageViewPostProfileImage.load(post.profileImageUrl)
 
             toolBar.setNavigationOnClickListener {
                 navController.navigate(R.id.profileFragment)

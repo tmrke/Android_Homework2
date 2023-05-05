@@ -1,6 +1,9 @@
 package ru.ageev.android_homework2.data.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Like(
-    val liked: Boolean,
-    val likesCount: Int
+    var liked: Boolean,
+    var likesCount: Int
 )

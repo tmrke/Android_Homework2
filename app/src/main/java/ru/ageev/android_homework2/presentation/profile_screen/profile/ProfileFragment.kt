@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.data.CollageData
-import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.FragmentProfileBinding
-import ru.ageev.android_homework2.presentation.profile_screen.collage.CollageAdapter
 import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsAdapter
 import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsViewModel
 
@@ -27,28 +24,27 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
 
-        val collageAdapter = CollageAdapter(listOf(CollageData()))
+//        val collageAdapter = CollageAdapter(listOf(CollageData()))
+//
+//        collageAdapter.onClick = {
+//            navController.navigate(R.id.imagesFragment)
+//        }
 
-        collageAdapter.onClick = {
-            navController.navigate(R.id.imagesFragment)
-        }
 
-        profileViewModel.getProfile()
-        postsViewModel.getPosts()
-
-        postsViewModel.postsLiveData.observe(viewLifecycleOwner) { post ->
-            val postsAdapter = PostsAdapter(post)
-
-            postsAdapter.onClick = {
-                navController.navigate(R.id.postFragment)
-            }
-        }
+        postsViewModel.loadPost()
+        profileViewModel.getProfile("evo")
 
 
         profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             val profileAdapter = ProfileAdapter(profile)
-            binding.recyclerView.adapter =
-                ConcatAdapter(profileAdapter)
+            val postsAdapter = PostsAdapter()
+            val concatAdapter = ConcatAdapter(profileAdapter, postsAdapter)
+
+            binding.recyclerView.adapter = concatAdapter
+
+            postsViewModel.postsLiveData.observe(viewLifecycleOwner) {
+                postsAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+            }
         }
     }
 }

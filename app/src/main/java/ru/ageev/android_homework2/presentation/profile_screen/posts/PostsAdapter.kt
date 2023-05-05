@@ -2,8 +2,8 @@ package ru.ageev.android_homework2.presentation.profile_screen.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
 import javax.inject.Inject
@@ -18,8 +18,8 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
     }
 }
 
-class PostsAdapter @Inject constructor(private var list: List<Post>) :
-    ListAdapter<Post, PostsViewHolder>(diffUtilCallback) {
+class PostsAdapter @Inject constructor() :
+    PagingDataAdapter<Post, PostsViewHolder>(diffUtilCallback) {
     var onClick: () -> Unit = {}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
         val binding: ViewPostCardBinding =
@@ -30,6 +30,8 @@ class PostsAdapter @Inject constructor(private var list: List<Post>) :
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        getItem(position)?.let {
+            holder.bind(it)
+        }
     }
 }
