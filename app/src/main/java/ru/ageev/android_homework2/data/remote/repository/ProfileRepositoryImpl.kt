@@ -1,9 +1,17 @@
 package ru.ageev.android_homework2.data.remote.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.map
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.map
 import ru.ageev.android_homework2.data.mappers.PostMapper
 import ru.ageev.android_homework2.data.mappers.ProfileMapper
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.data.model.Profile
+import ru.ageev.android_homework2.data.paging.PostPagingSource
 import ru.ageev.android_homework2.data.remote.NanopostApiService
 import javax.inject.Inject
 
@@ -16,7 +24,14 @@ class ProfileRepositoryImpl @Inject constructor(
         return profileMapper.toProfile(apiService.getProfile(profilerId))
     }
 
-    override suspend fun getPosts(profilerId: String): List<Post> {
-        return postsMapper.toPosts(apiService.getPosts(profilerId))
+    override suspend fun getProfilePosts(): Flow<PagingData<Post>> {
+        return Pager(
+            config = PagingConfig(30, enablePlaceholders = false),
+            pagingSourceFactory = { PostPagingSource(apiService) }
+        ).flow.map { pagingData ->
+            pagingData.map { apiPost ->
+                postsMapper.toPost(apiPost)
+            }
+        }
     }
 }

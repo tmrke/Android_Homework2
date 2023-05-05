@@ -15,8 +15,8 @@ class PostViewHolder(
     fun bind(item: Post) {
         with(binding) {
             textViewPostText.text = item.text
-            imageViewMedia.load(item.postImageUrl)
-            imageViewPostProfileImage.load(item.profileImageUrl)
+//            imageViewMedia.load(item.postImageUrl)
+//            imageViewPostProfileImage.load(item.profileImageUrl)
 
             viewPostCard.setOnClickListener {
                 onClick()

@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.Image
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
@@ -18,11 +19,32 @@ class PostsViewHolder(
     fun bind(item: Post) {
         with(binding) {
             textViewPostText.text = item.text
-            textViewDate.text = item.dataCreated.toString()
-            textViewProfileName.text = item.owner.username
-            imageButtonFavorite.text = item.likesCount.toString()
-//        binding.imageViewMedia.load(item.images)
-//        TODO сделайть лайк active / inactive
+//            textViewDate.text = item.dataCreated
+//            textViewProfileName.text = item.owner.username
+//            imageViewMedia.load(item.images)
+
+            if (item.likes.liked) {
+                imageButtonFavorite.setIconResource(R.drawable.heart)
+            } else {
+                imageButtonFavorite.setIconResource(R.drawable.favorite)
+            }
+
+            imageButtonFavorite.text = item.likes.likesCount.toString()
+
+
+            imageButtonFavorite.setOnClickListener {
+                if (item.likes.liked) {
+                    imageButtonFavorite.text = item.likes.likesCount--.toString()
+                    imageButtonFavorite.setIconResource(R.drawable.favorite)
+                } else {
+                    imageButtonFavorite.text = item.likes.likesCount++.toString()
+                    imageButtonFavorite.setIconResource(R.drawable.heart)
+                }
+
+                item.likes.liked = !item.likes.liked
+            }
+
+            imageButtonFavorite.text = item.likes.likesCount.toString()
 
             viewPostCard.setOnClickListener {
                 onClick()

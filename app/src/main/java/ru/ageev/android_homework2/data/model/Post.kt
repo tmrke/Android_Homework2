@@ -5,11 +5,11 @@ import java.util.Objects
 
 data class Post(
     val id: String,
-    val owner: Profile,
-    val likesCount: Int,
-    val dataCreated: Int,
-    val text: String,
-    val images: Array<Image>,
-    val likes: Objects
+   // val dataCreated: String,
+    val text: String?,
+    val likes:Like
+    // val images: Array<Image>,
+    //val owner: Profile,
+
 )
 
