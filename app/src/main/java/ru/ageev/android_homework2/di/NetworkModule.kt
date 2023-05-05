@@ -22,10 +22,6 @@ import javax.inject.Qualifier
 
 import javax.inject.Singleton
 
-private val json1 = Json {
-    ignoreUnknownKeys = true
-}
-
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class NetworkModule {
@@ -49,6 +45,7 @@ abstract class NetworkModule {
                 .addConverterFactory(json)
                 .build()
         }
+
 
         @Provides
         fun provideJsonConvertor(): Converter.Factory {

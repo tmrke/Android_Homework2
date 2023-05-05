@@ -28,4 +28,6 @@
     <string name="back">back</string>
     <string name="my_profile">My profile</string>
     <string name="post">Post</string>
+    <string name="nanopost">Nanopost</string>
+    <string name="continue_text">Continue</string>
 </resources>
