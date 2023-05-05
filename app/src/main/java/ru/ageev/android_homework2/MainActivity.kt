@@ -7,15 +7,14 @@ import ru.ageev.android_homework2.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-    }
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+        }
 
 //    private val binding: ActivityMainBinding by viewBinding(createMethod = CreateMethod.INFLATE)
 //    private val viewModel: ProfileViewModel by viewModels()
