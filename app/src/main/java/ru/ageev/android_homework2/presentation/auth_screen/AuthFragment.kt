@@ -23,22 +23,19 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonContinue.setOnClickListener {
-
-            lifecycleScope.launch {
-                val username = binding.editText.text.toString()
-                viewModel.checkUsername(username)
-
-                viewModel.checkUsernameLiveData.observe(viewLifecycleOwner) { response ->
-                    when (response) {
-                        CheckUsernameEnumResponse.TooShort -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
-                        CheckUsernameEnumResponse.TooLong -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
-                        CheckUsernameEnumResponse.InvalidCharacters -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
-                        CheckUsernameEnumResponse.Taken -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
-                        CheckUsernameEnumResponse.Free -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
-                    }
-                }
+        viewModel.checkUsernameLiveData.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                CheckUsernameEnumResponse.TooShort -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
+                CheckUsernameEnumResponse.TooLong -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
+                CheckUsernameEnumResponse.InvalidCharacters -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
+                CheckUsernameEnumResponse.Taken -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
+                CheckUsernameEnumResponse.Free -> Toast.makeText(context,response.name,Toast.LENGTH_LONG).show()
             }
+        }
+
+        binding.buttonContinue.setOnClickListener {
+            val username = binding.editText.text.toString()
+            viewModel.checkUsername(username)
         }
     }
 }

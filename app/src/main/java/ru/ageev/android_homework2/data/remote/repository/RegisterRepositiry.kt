@@ -9,7 +9,7 @@ class RegisterRepository @Inject constructor(
     private val apiAuthApiService: NanopostAuthApiService
 ) {
     suspend fun checkUsername(username: String) : CheckUsernameEnumResponse {
-        return apiAuthApiService.checkUsername(username)
+        return apiAuthApiService.checkUsername(username).result
 
     }
 }

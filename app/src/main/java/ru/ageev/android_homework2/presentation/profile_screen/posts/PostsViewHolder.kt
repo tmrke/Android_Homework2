@@ -23,21 +23,24 @@ class PostsViewHolder(
 //            textViewProfileName.text = item.owner.username
 //            imageViewMedia.load(item.images)
 
-            if (item.likes.liked) {
-                imageButtonFavorite.setIconResource(R.drawable.heart)
-            } else {
-                imageButtonFavorite.setIconResource(R.drawable.favorite)
-            }
+            imageButtonFavorite.setIconResource(
+                if (item.likes.liked) {
+                    R.drawable.heart
+                } else {
+                    R.drawable.favorite
+                }
+            )
+
 
             imageButtonFavorite.text = item.likes.likesCount.toString()
 
 
             imageButtonFavorite.setOnClickListener {
                 if (item.likes.liked) {
-                    imageButtonFavorite.text = item.likes.likesCount--.toString()
+                    imageButtonFavorite.text = item.likes.likesCount.toString()
                     imageButtonFavorite.setIconResource(R.drawable.favorite)
                 } else {
-                    imageButtonFavorite.text = item.likes.likesCount++.toString()
+                    imageButtonFavorite.text = (item.likes.likesCount + 1).toString()
                     imageButtonFavorite.setIconResource(R.drawable.heart)
                 }
 
