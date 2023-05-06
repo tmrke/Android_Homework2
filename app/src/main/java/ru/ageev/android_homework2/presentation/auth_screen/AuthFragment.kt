@@ -34,7 +34,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
         }
 
         binding.buttonContinue.setOnClickListener {
-            val username = binding.editText.text.toString()
+            val username = binding.editTextUsername.text.toString()
             viewModel.checkUsername(username)
         }
     }
