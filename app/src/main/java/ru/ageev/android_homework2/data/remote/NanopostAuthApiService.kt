@@ -17,7 +17,6 @@ interface NanopostAuthApiService {
     ): CheckUsernameResponse
 
 
-
     @POST("api/auth/register")
     fun register(
         @Body registrationRequest: RegistrationRequest
