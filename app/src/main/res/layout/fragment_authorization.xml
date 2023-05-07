@@ -45,11 +45,35 @@
         android:gravity="center"
         app:endIconDrawable="@drawable/ic_eye"
         app:endIconMode="password_toggle"
+        android:visibility="invisible"
 
         app:helperText="password">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:padding="16dp"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutTextPasswordConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:gravity="center"
+        app:endIconDrawable="@drawable/ic_eye"
+        app:endIconMode="password_toggle"
+        android:visibility="invisible"
+
+        app:helperText="confirm password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPasswordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
