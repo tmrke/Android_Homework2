@@ -12,13 +12,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val getProfileUseCase: GetProfileUseCase
+    private val getProfileUseCase: GetProfileUseCase,
 ) : ViewModel() {
 
     private val _profileLiveData = MutableLiveData<Profile>()
     val profileLiveData: LiveData<Profile> = _profileLiveData
 
-    fun getProfile(profileId: String = "evo") {
+    fun getProfile(profileId: String) {
         viewModelScope.launch {
             getProfileUseCase.execute(profileId).also { profile ->
                 _profileLiveData.postValue(profile)           // постит не сразу целиком, а асинхронно

@@ -8,14 +8,14 @@ class ProfileMapper @Inject constructor() {
     fun toProfile(apiModel: ApiProfile) = Profile(
         id = apiModel.id,
         username = apiModel.username,
-        bio = apiModel.bio,
-        avatarId = apiModel.avatarId,
-        avatarSmall = apiModel.avatarSmall,
-        avatarLarge = apiModel.avatarLarge,
+        //bio = apiModel.bio,
+//        avatarId = apiModel.avatarId,
+//        avatarSmall = apiModel.avatarSmall,
+//        avatarLarge = apiModel.avatarLarge,
+//        displayName = apiModel.displayName,
         subscribed =  apiModel.subscribed,
-        displayName = apiModel.displayName,
         imagesCount = apiModel.imagesCount,
         postsCount = apiModel.postsCount,
-        subscribersCount = apiModel.subscribersCount
+        subscribersCount = apiModel.subscribersCount,
     )
 }

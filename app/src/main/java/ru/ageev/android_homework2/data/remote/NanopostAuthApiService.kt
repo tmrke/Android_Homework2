@@ -9,6 +9,7 @@ import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameResponse
+import ru.ageev.android_homework2.data.remote.model.response.TokenResponse
 
 interface NanopostAuthApiService {
 
@@ -19,7 +20,13 @@ interface NanopostAuthApiService {
 
 
     @POST("api/auth/register")
-    fun register(
+    suspend fun register(
         @Body registrationRequest: RegistrationRequest
-    ): PrefsStorage
+    ): TokenResponse
+
+    @GET("/api/auth/login")
+    suspend fun login(
+        @Query("username") username: String,
+        @Query("password") password: String,
+    ): TokenResponse
 }
