@@ -10,8 +10,11 @@ import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
+import ru.ageev.android_homework2.data.remote.model.response.TokenResponse
 import ru.ageev.android_homework2.domain.CheckUsernameUseCase
+import ru.ageev.android_homework2.domain.LoginUseCase
 import ru.ageev.android_homework2.domain.RegisterUseCase
+import java.util.function.ToLongBiFunction
 import javax.inject.Inject
 import kotlin.Exception
 
@@ -19,6 +22,7 @@ import kotlin.Exception
 class AuthViewModel @Inject constructor(
     private val checkUsernameUseCase: CheckUsernameUseCase,
     private val registerUseCase: RegisterUseCase,
+    private val loginUseCase: LoginUseCase,
 ) : ViewModel() {
 
     private val _checkUsernameLiveData = MutableLiveData<CheckUsernameEnumResponse>()
@@ -37,20 +41,40 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    private val _registerLiveData = MutableLiveData<PrefsStorage>()
-    val registerLiveData: LiveData<PrefsStorage> = _registerLiveData
+    private val _registerLiveData = MutableLiveData<TokenResponse>()
+    val registerLiveData: LiveData<TokenResponse> = _registerLiveData
 
     fun register(registrationRequest: RegistrationRequest) {
         viewModelScope.launch {
             try {
-                //TODO подумать тут как определить полученный токен
-                registerUseCase.execute(registrationRequest).let { response ->
-                    _registerLiveData.postValue(response)
+                registerUseCase.execute(registrationRequest).let { token ->
+                    _registerLiveData.postValue(token)
                 }
             } catch (e: Exception) {
                 Log.e("Auth", e.message ?: "")
             }
         }
+    }
+
+    private val _loginLiveData = MutableLiveData<TokenResponse>()
+    val loginLiveData: LiveData<TokenResponse> = _loginLiveData
+
+    fun login(registrationRequest: RegistrationRequest) {
+        viewModelScope.launch {
+            try {
+                loginUseCase.execute(registrationRequest).let { token ->
+                    _loginLiveData.postValue(token)
+                }
+            } catch (e: Exception) {
+                Log.e("Auth", e.message ?: "")
+            }
+        }
+    }
+
+    val _usernameLiveData = MutableLiveData<String>()
+
+    fun setUsername(username: String) {
+        _usernameLiveData.postValue(username)
     }
 
 }

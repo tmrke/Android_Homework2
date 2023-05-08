@@ -10,12 +10,14 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.databinding.FragmentProfileBinding
+import ru.ageev.android_homework2.presentation.auth_screen.AuthViewModel
 import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsAdapter
 import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsViewModel
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
+    private val authViewModel by viewModels<AuthViewModel>()
     private val profileViewModel by viewModels<ProfileViewModel>()
     private val postsViewModel by viewModels<PostsViewModel>()
 
@@ -30,15 +32,20 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 //            navController.navigate(R.id.imagesFragment)
 //        }
 
+        authViewModel._usernameLiveData.observe(viewLifecycleOwner) { username ->
+            profileViewModel.getProfile(username)
+
+            // TODO как осуществить передачу username
+        }
+
+
 
         postsViewModel.loadPost()
-        profileViewModel.getProfile("evo")
-
 
         profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             val profileAdapter = ProfileAdapter(profile)
             val postsAdapter = PostsAdapter()
-            val concatAdapter = ConcatAdapter(profileAdapter, postsAdapter)
+            val concatAdapter = ConcatAdapter(profileAdapter)
 
             binding.recyclerView.adapter = concatAdapter
 
