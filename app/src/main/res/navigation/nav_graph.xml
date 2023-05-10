@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/authFragment">
     <fragment
         android:id="@+id/profileFragment"
         android:name="ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileFragment"
@@ -17,6 +17,9 @@
         android:name="ru.ageev.android_homework2.presentation.post_screen.PostFragment"
         android:label="post">
 
+        <argument
+            android:name="postId"
+            app:argType="string" />
     </fragment>
 
     <fragment

@@ -24,7 +24,7 @@ class PostsAdapter @Inject constructor(
 ) :
     PagingDataAdapter<Post, PostsViewHolder>(diffUtilCallback) {
 
-    var onClick: () -> Unit = {}
+    var onClick: (String) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
         val binding: ViewPostCardBinding =

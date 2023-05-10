@@ -12,36 +12,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-            binding = ActivityMainBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-        }
+        //если токен сохранен то в логин
+        //возможно будет 2 навграфа
+        //сделать свою viewModel и обратиться к prefs для того что бы выбрать свой nav_graph
 
-//    private val binding: ActivityMainBinding by viewBinding(createMethod = CreateMethod.INFLATE)
-//    private val viewModel: ProfileViewModel by viewModels()
-//
-//    private val dataList = List(30) { ImageData() }
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        setContentView(binding.root)
-//
-//        val profileAdapter = ProfileAdapter(listOf(ProfileData()))
-//        val collageAdapter = CollageAdapter(listOf(CollageData()))
-//        val postAdapter = PostAdapter()
-//
-//        postAdapter.submitList(listOf(PostData(), PostData(), PostData()))
-//
-//        collageAdapter.onClick = {
-//            startActivity(ImagesActivity.createIntent(this, dataList))
-//        }
-//
-//        postAdapter.onClick = {
-//            startActivity(PostActivity.createIntent(this, PostData()))
-//        }
-//
-//        binding.recyclerView.adapter = ConcatAdapter(profileAdapter, collageAdapter, postAdapter)
-//
-//        viewModel.getProfile()
-//    }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
 }

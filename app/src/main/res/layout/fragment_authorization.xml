@@ -6,6 +6,8 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <!--TODO обернуть в NestedScrollView -->
+
     <TextView
         android:id="@+id/textViewNanoPost"
         android:layout_width="match_parent"
@@ -30,11 +32,10 @@
             android:id="@+id/editTextUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="tmrke"
             android:inputType="text"
             android:padding="16dp"
-            android:textSize="16sp"
-            android:autofillHints="tmrke"
-            />
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,9 +46,9 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="@dimen/general_margin"
         android:gravity="center"
+        android:visibility="gone"
         app:endIconDrawable="@drawable/ic_eye"
         app:endIconMode="password_toggle"
-        android:visibility="gone"
 
         app:helperText="password">
 
@@ -55,11 +56,10 @@
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="qwerty12345"
             android:inputType="textPassword"
             android:padding="16dp"
-            android:textSize="16sp"
-            android:autofillHints="qwerty12345"
-            />
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,9 +70,9 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="@dimen/general_margin"
         android:gravity="center"
+        android:visibility="gone"
         app:endIconDrawable="@drawable/ic_eye"
         app:endIconMode="password_toggle"
-        android:visibility="gone"
 
         app:helperText="confirm password">
 

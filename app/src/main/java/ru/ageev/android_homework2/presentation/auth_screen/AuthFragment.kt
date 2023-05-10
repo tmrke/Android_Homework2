@@ -2,8 +2,14 @@ package ru.ageev.android_homework2.presentation.auth_screen
 
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsets
 import android.widget.Toast
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -18,13 +24,27 @@ import ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileVie
 class AuthFragment : Fragment(R.layout.fragment_authorization) {
     private val binding by viewBinding(FragmentAuthorizationBinding::bind)
     private val authViewModel by viewModels<AuthViewModel>()
-    private val profileViewModel by viewModels<ProfileViewModel>()
+    private val profileViewModel by activityViewModels<ProfileViewModel>()
 
     private lateinit var registrationRequest: RegistrationRequest
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->         //IME - клавиатура
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+
+            binding.root.updatePadding(
+                bottom = imeInsets.bottom
+            )
+
+            WindowInsetsCompat.Builder()
+                .setInsets(
+                    WindowInsetsCompat.Type.ime(),
+                    Insets.of(imeInsets.left, 0, imeInsets.right, imeInsets.bottom)
+                ).build()
+        }
 
         var resultEnum = ResultEnum.ToCheckUsername
 
@@ -94,10 +114,11 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                     }
 
                     ResultEnum.ToLogin -> {
-                        registrationRequest = RegistrationRequest(
-                            editTextUsername.text.toString(),
-                            editTextPassword.text.toString()
-                        )
+                        registrationRequest =
+                            RegistrationRequest(      //TODO переделать в Repository
+                                editTextUsername.text.toString(),
+                                editTextPassword.text.toString()
+                            )
 
                         authViewModel.setUsername(editTextUsername.text.toString())
                         authViewModel.login(registrationRequest)
@@ -146,7 +167,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
 
         authViewModel.loginLiveData.observe(viewLifecycleOwner) { token ->
-            //TODO обработка неверного пароля
+            //TODO обработка неверного пароля поймать через Exception
 
 
             authViewModel.setUsername(registrationRequest.username)

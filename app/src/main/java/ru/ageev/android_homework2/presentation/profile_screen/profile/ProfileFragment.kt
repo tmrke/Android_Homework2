@@ -19,7 +19,6 @@ import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsViewMod
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
-    private val authViewModel by viewModels<AuthViewModel>()
     private val profileViewModel by viewModels<ProfileViewModel>()
     private val postsViewModel by viewModels<PostsViewModel>()
     private val postViewModel by viewModels<PostViewModel>()
@@ -36,7 +35,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 //        }
 
 
-        profileViewModel.getProfile("tmrke")
+        profileViewModel.getProfile("evo")
+
+        profileViewModel.usernameLiveData.observe(viewLifecycleOwner){
+            profileViewModel.getProfile(profileViewModel.usernameLiveData.value.toString())
+        }
 
         profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             postsViewModel.loadPosts(profile.id)
@@ -45,7 +48,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             val profileAdapter = ProfileAdapter(profile)
             val postsAdapter = PostsAdapter(postViewModel)
-            postsAdapter.onClick = { navController.navigate(R.id.postFragment) }
+
+            postsAdapter.onClick = {
+                navController.navigate(ProfileFragmentDirections.actionProfileFragmentToPostFragment("")) //TODO
+            }
 
             val concatAdapter = ConcatAdapter(profileAdapter, postsAdapter)
 
