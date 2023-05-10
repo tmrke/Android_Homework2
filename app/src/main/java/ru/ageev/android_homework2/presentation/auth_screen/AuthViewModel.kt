@@ -7,14 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.android_homework2.data.remote.model.response.TokenResponse
 import ru.ageev.android_homework2.domain.CheckUsernameUseCase
 import ru.ageev.android_homework2.domain.LoginUseCase
 import ru.ageev.android_homework2.domain.RegisterUseCase
-import java.util.function.ToLongBiFunction
 import javax.inject.Inject
 import kotlin.Exception
 
@@ -71,10 +69,10 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    val _usernameLiveData = MutableLiveData<String>()
+    var usernameLiveData = MutableLiveData<String>()
 
     fun setUsername(username: String) {
-        _usernameLiveData.postValue(username)
+        usernameLiveData.postValue(username)
     }
 
 }

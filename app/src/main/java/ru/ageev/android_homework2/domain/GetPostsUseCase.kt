@@ -9,7 +9,7 @@ import javax.inject.Inject
 class GetPostsUseCase @Inject constructor(
     private val repository: ProfileRepository
 ) {
-    suspend fun execute(profileId: String = "evo"): Flow<PagingData<Post>> {
+    suspend fun execute(profileId: String): Flow<PagingData<Post>> {
         return repository.getProfilePosts(profileId)
     }
 }

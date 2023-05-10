@@ -10,9 +10,9 @@ class ProfileViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Profile) {
         with(binding) {
-           imageViewUserProfileImage.load(item.avatarSmall)
-           textViewUserStatus.text = item.bio
-            textViewUserName.text = item.username
+//           imageViewUserProfileImage.load(item.avatarSmall)
+//           textViewUserStatus.text = item.bio
+            textViewUserName.text = item.displayName ?: item.username
             textViewImagesCount.text = item.imagesCount.toString()
             textViewPostsCount.text = item.postsCount.toString()
             textViewSubscribersCount.text = item.subscribersCount.toString()
