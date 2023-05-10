@@ -35,11 +35,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 //        }
 
 
-        profileViewModel.getProfile("evo")
-
-        profileViewModel.usernameLiveData.observe(viewLifecycleOwner){
-            profileViewModel.getProfile(profileViewModel.usernameLiveData.value.toString())
-        }
+        profileViewModel.getProfile(
+            //profileViewModel.getUsername()
+            "evo"
+        )
 
         profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             postsViewModel.loadPosts(profile.id)
@@ -50,7 +49,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val postsAdapter = PostsAdapter(postViewModel)
 
             postsAdapter.onClick = {
-                navController.navigate(ProfileFragmentDirections.actionProfileFragmentToPostFragment("")) //TODO
+                navController.navigate(
+                    ProfileFragmentDirections.actionProfileFragmentToPostFragment("")
+                )
             }
 
             val concatAdapter = ConcatAdapter(profileAdapter, postsAdapter)

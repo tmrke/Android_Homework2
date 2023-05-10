@@ -6,16 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.domain.GetProfileUseCase
+import ru.ageev.android_homework2.domain.GetUsernameUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val getProfileUseCase: GetProfileUseCase,
+    private val getUsernameUseCase: GetUsernameUseCase
 ) : ViewModel() {
-
-    var usernameLiveData: LiveData<String> = MutableLiveData<String>()
 
     private val _profileLiveData = MutableLiveData<Profile>()
     val profileLiveData: LiveData<Profile> = _profileLiveData
@@ -23,8 +24,12 @@ class ProfileViewModel @Inject constructor(
     fun getProfile(profileId: String) {
         viewModelScope.launch {
             getProfileUseCase.execute(profileId).also { profile ->
-                _profileLiveData.postValue(profile)           // постит не сразу целиком, а асинхронно
+                _profileLiveData.postValue(profile)
             }
         }
+    }
+
+    fun getUsername(): String {
+        return getUsernameUseCase.execute()
     }
 }
