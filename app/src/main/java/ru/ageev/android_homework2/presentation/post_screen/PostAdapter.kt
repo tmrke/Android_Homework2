@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import ru.ageev.android_homework2.data.model.Post
-import ru.ageev.android_homework2.databinding.FragmentPostBinding
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
 
 val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
@@ -20,8 +19,8 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
 
 class PostAdapter : ListAdapter<Post, PostViewHolder>(diffUtilCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val binding: FragmentPostBinding =
-            FragmentPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: ViewPostCardBinding =
+            ViewPostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return PostViewHolder(binding)
     }

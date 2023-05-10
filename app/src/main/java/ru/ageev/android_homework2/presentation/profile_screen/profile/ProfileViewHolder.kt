@@ -11,7 +11,7 @@ class ProfileViewHolder(
     fun bind(item: Profile) {
         with(binding) {
            imageViewUserProfileImage.load(item.avatarSmall)
-           textViewUserStatus.text = item.bio ?: " "
+           textViewUserStatus.text = item.bio
             textViewUserName.text = item.username
             textViewImagesCount.text = item.imagesCount.toString()
             textViewPostsCount.text = item.postsCount.toString()

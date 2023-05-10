@@ -15,13 +15,13 @@ class PostViewModel @Inject constructor(
     private val getPostUseCase: GetPostUseCase
 ) : ViewModel() {
 
-    private val _postsLiveData = MutableLiveData<Post>()
-    val postsLiveData: LiveData<Post> = _postsLiveData
+    private val _postLiveData = MutableLiveData<Post>()
+    val postLiveData: LiveData<Post> = _postLiveData
 
     fun getPost(postId: String) {                    //В адапетере, нужно поменять List<Post> на PagingData<Post>
         viewModelScope.launch {
             getPostUseCase.execute(postId).also{posts ->       //кэшируем, что бы не подгружать эти значания кадый раз при открытии окна
-                _postsLiveData.postValue(posts)
+                _postLiveData.postValue(posts)
             }
         }
     }
