@@ -12,10 +12,10 @@ class PostViewHolder(
         with(binding) {
             textViewPostText.text = post.text
 
-//            imageViewMedia1.load(item.images?.get(0)?.images?.get(2)?.url)
-//            imageViewMedia2.load(item.images?.get(1)?.images?.get(2)?.url)
-//            imageViewMedia3.load(item.images?.get(2)?.images?.get(2)?.url)
-//            imageViewMedia4.load(item.images?.get(3)?.images?.get(2)?.url)
+//            imageViewMedia1.load(post.images?.get(0)?.images?.get(2)?.url)
+//            imageViewMedia2.load(post.images?.get(1)?.images?.get(2)?.url)
+//            imageViewMedia3.load(post.images?.get(2)?.images?.get(2)?.url)
+//            imageViewMedia4.load(post.images?.get(3)?.images?.get(2)?.url)
 
             imageButtonFavorite.setIconResource(
                 if (post.likes.liked) {

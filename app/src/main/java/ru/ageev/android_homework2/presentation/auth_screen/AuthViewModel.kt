@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.android_homework2.data.remote.model.response.TokenResponse
@@ -21,6 +22,7 @@ class AuthViewModel @Inject constructor(
     private val checkUsernameUseCase: CheckUsernameUseCase,
     private val registerUseCase: RegisterUseCase,
     private val loginUseCase: LoginUseCase,
+    private val prefsStorage: PrefsStorage,
 ) : ViewModel() {
 
     private val _checkUsernameLiveData = MutableLiveData<CheckUsernameEnumResponse>()
@@ -43,6 +45,8 @@ class AuthViewModel @Inject constructor(
     val registerLiveData: LiveData<TokenResponse> = _registerLiveData
 
     fun register(registrationRequest: RegistrationRequest) {
+        prefsStorage.username = registrationRequest.username
+
         viewModelScope.launch {
             try {
                 registerUseCase.execute(registrationRequest).let { token ->
@@ -58,6 +62,8 @@ class AuthViewModel @Inject constructor(
     val loginLiveData: LiveData<TokenResponse> = _loginLiveData
 
     fun login(registrationRequest: RegistrationRequest) {
+        prefsStorage.username = registrationRequest.username
+
         viewModelScope.launch {
             try {
                 loginUseCase.execute(registrationRequest).let { token ->
@@ -69,10 +75,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
-    var usernameLiveData = MutableLiveData<String>()
-
     fun setUsername(username: String) {
-        usernameLiveData.postValue(username)
+        prefsStorage.username = username
     }
-
 }

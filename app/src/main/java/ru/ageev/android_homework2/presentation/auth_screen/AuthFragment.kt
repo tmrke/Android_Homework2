@@ -15,18 +15,17 @@ import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
+import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.android_homework2.databinding.FragmentAuthorizationBinding
 import ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileViewModel
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AuthFragment : Fragment(R.layout.fragment_authorization) {
     private val binding by viewBinding(FragmentAuthorizationBinding::bind)
     private val authViewModel by viewModels<AuthViewModel>()
-    private val profileViewModel by activityViewModels<ProfileViewModel>()
-
-    private lateinit var registrationRequest: RegistrationRequest
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -93,7 +92,8 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
                     ResultEnum.ToPasswordConfirm -> {
                         if (editTextPassword.text.toString() == editTextPasswordConfirm.text.toString()) {
-                            registrationRequest = RegistrationRequest(
+
+                            val registrationRequest = RegistrationRequest(
                                 editTextUsername.text.toString(),
                                 editTextPasswordConfirm.text.toString()
                             )
@@ -114,13 +114,12 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                     }
 
                     ResultEnum.ToLogin -> {
-                        registrationRequest =
-                            RegistrationRequest(      //TODO переделать в Repository
+                        val registrationRequest =
+                            RegistrationRequest(
                                 editTextUsername.text.toString(),
                                 editTextPassword.text.toString()
                             )
 
-                        authViewModel.setUsername(editTextUsername.text.toString())
                         authViewModel.login(registrationRequest)
                     }
                 }
@@ -168,9 +167,6 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
         authViewModel.loginLiveData.observe(viewLifecycleOwner) { token ->
             //TODO обработка неверного пароля поймать через Exception
-
-
-            authViewModel.setUsername(registrationRequest.username)
             navController.navigate(R.id.profileFragment)
         }
     }
