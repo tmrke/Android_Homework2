@@ -30,8 +30,8 @@ class PostsAdapter @Inject constructor() :
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
-        getItem(position)?.let {
-            holder.bind(it)
+        getItem(position)?.let { post ->
+            holder.bind(post)
         }
     }
 }

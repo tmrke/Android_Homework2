@@ -24,7 +24,7 @@ class ProfileRepositoryImpl @Inject constructor(
         return profileMapper.toProfile(apiService.getProfile(profilerId))
     }
 
-    override suspend fun getProfilePosts(): Flow<PagingData<Post>> {
+    override suspend fun getProfilePosts(profilerId: String): Flow<PagingData<Post>> {
         return Pager(
             config = PagingConfig(30, enablePlaceholders = false),
             pagingSourceFactory = { PostPagingSource(apiService) }
