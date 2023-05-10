@@ -11,6 +11,6 @@ class PostMapper @Inject constructor() {
         text = apiModel.text,
         //dataCreated = apiModel.dataCreated.toString(),
         likes = apiModel.likes,
-        images = apiModel.images
+        //images = apiModel.images
     )
 }

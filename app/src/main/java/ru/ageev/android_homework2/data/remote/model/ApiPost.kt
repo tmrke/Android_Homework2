@@ -9,6 +9,6 @@ data class ApiPost(
     val id: String,
     //val dataCreated: Int,
     val text: String? = null,
-    val images: Array<Image>?,
+//    val images: Array<Image>?,
     var likes: Like,
 )

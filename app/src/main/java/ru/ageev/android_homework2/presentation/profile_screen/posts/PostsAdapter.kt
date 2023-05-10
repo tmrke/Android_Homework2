@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
+import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
 import javax.inject.Inject
 
 val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
@@ -18,15 +19,19 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
     }
 }
 
-class PostsAdapter @Inject constructor() :
+class PostsAdapter @Inject constructor(
+    private val postViewModel: PostViewModel
+) :
     PagingDataAdapter<Post, PostsViewHolder>(diffUtilCallback) {
+
     var onClick: () -> Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
         val binding: ViewPostCardBinding =
             ViewPostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val context = parent.context
 
-        return PostsViewHolder(binding, context, onClick)
+
+        return PostsViewHolder(binding, postViewModel, onClick)
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {

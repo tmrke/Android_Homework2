@@ -1,39 +1,56 @@
 package ru.ageev.android_homework2.presentation.profile_screen.posts
 
 import android.content.Context
-import android.media.Image
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Post
-import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
-import java.util.Objects
+import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
 
 class PostsViewHolder(
     private val binding: ViewPostCardBinding,
-    private val context: Context,
-    private val onClick: () -> Unit
+    private val postViewModel: PostViewModel,
+    private val onClick: () -> Unit,
 
-) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Post) {
+    ) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(post: Post) {
         with(binding) {
-            textViewPostText.text = item.text
+            textViewPostText.text = post.text
 //            textViewDate.text = item.dataCreated
 //            textViewProfileName.text = item.owner.username
-            //imageViewMedia.load(item.images?.get(0)?.images?.get(0))
+//            imageViewMedia.load(item.images?.get(0)?.images?.get(0))
 
             imageButtonFavorite.setIconResource(
-                if (item.likes.liked) {
+                if (post.likes.liked) {
                     R.drawable.heart
                 } else {
                     R.drawable.favorite
                 }
             )
 
-            imageButtonFavorite.text = item.likes.likesCount.toString()
+            imageButtonFavorite.text = post.likes.likesCount.toString()
 
-            viewPostCard.setOnClickListener {
+            imageButtonFavorite.setOnClickListener {
+                if (post.likes.liked) {
+                    imageButtonFavorite.text = post.likes.likesCount.toString()
+                    imageButtonFavorite.setIconResource(R.drawable.favorite)
+                } else {
+                    imageButtonFavorite.text = (post.likes.likesCount + 1).toString()
+                    imageButtonFavorite.setIconResource(R.drawable.heart)
+                }
+
+                post.likes.liked = !post.likes.liked
+            }
+
+            textViewPostText.setOnClickListener {
+                postViewModel.getPost(post.id)
+                onClick()
+            }
+
+            imageViewMedia.setOnClickListener {
+                postViewModel.getPost(post.id)
                 onClick()
             }
         }
