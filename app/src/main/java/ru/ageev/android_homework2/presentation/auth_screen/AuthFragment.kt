@@ -99,6 +99,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                             editTextPassword.text.toString()
                         )
 
+                        authViewModel.setUsername(editTextUsername.text.toString())
                         authViewModel.login(registrationRequest)
                     }
                 }
@@ -147,7 +148,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
         authViewModel.loginLiveData.observe(viewLifecycleOwner) { token ->
             //TODO обработка неверного пароля
 
-            //TODO как передать username
+
             authViewModel.setUsername(registrationRequest.username)
             navController.navigate(R.id.profileFragment)
         }

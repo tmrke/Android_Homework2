@@ -2,6 +2,7 @@ package ru.ageev.android_homework2.presentation.profile_screen.profile
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -14,7 +15,6 @@ import ru.ageev.android_homework2.presentation.auth_screen.AuthViewModel
 import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
 import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsAdapter
 import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsViewModel
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -35,14 +35,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 //            navController.navigate(R.id.imagesFragment)
 //        }
 
-        profileViewModel.getProfile("evo")
-        postsViewModel.loadPosts()
 
-//        authViewModel._usernameLiveData.observe(viewLifecycleOwner) { username ->
-//
-//            // TODO как осуществить передачу username
-//        }
+        profileViewModel.getProfile("tmrke")
 
+        profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
+            postsViewModel.loadPosts(profile.id)
+        }
 
         profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             val profileAdapter = ProfileAdapter(profile)

@@ -1,7 +1,6 @@
 package ru.ageev.android_homework2.data.paging
 
 
-
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import ru.ageev.android_homework2.data.remote.NanopostApiService
@@ -9,7 +8,10 @@ import ru.ageev.android_homework2.data.remote.model.ApiPost
 import java.lang.Exception
 
 class PostPagingSource
-    (private val apiService: NanopostApiService) :
+    (
+    private val apiService: NanopostApiService,
+    private val profileId: String,
+) :
     PagingSource<String, ApiPost>() {
     override fun getRefreshKey(state: PagingState<String, ApiPost>): String? {
         return null
@@ -18,7 +20,7 @@ class PostPagingSource
     override suspend fun load(params: LoadParams<String>): LoadResult<String, ApiPost> {
         return try {
             val response = apiService.getProfilePosts(
-                profileId = "evo",
+                profileId = profileId,
                 count = params.loadSize,
                 offset = null
             )

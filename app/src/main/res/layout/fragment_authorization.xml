@@ -32,7 +32,9 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:padding="16dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:autofillHints="tmrke"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +57,9 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:padding="16dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:autofillHints="qwerty12345"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 

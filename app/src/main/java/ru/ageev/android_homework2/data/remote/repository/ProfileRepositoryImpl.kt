@@ -5,7 +5,6 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import ru.ageev.android_homework2.data.mappers.PostMapper
 import ru.ageev.android_homework2.data.mappers.ProfileMapper
@@ -27,7 +26,7 @@ class ProfileRepositoryImpl @Inject constructor(
     override suspend fun getProfilePosts(profilerId: String): Flow<PagingData<Post>> {
         return Pager(
             config = PagingConfig(30, enablePlaceholders = false),
-            pagingSourceFactory = { PostPagingSource(apiService) }
+            pagingSourceFactory = { PostPagingSource(apiService, profilerId) }
         ).flow.map { pagingData ->
             pagingData.map { apiPost ->
                 postsMapper.toPost(apiPost)
