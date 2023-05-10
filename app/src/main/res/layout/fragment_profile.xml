@@ -21,6 +21,7 @@
             app:navigationIcon="@drawable/ic_back_24"
             app:navigationIconTint="@color/md_theme_light_onPrimary"
             app:title="@string/my_profile"
+            android:paddingTop="@dimen/general_margin"
             app:titleCentered="true" />
 
     </com.google.android.material.appbar.AppBarLayout>

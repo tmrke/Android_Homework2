@@ -12,7 +12,7 @@ import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
 class PostsViewHolder(
     private val binding: ViewPostCardBinding,
     private val postViewModel: PostViewModel,
-    private val onClick: () -> Unit,
+    private val onClick: (String) -> Unit,
 
     ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
@@ -46,12 +46,12 @@ class PostsViewHolder(
 
             textViewPostText.setOnClickListener {
                 postViewModel.getPost(post.id)
-                onClick()
+                onClick(post.id)
             }
 
             imageViewMedia.setOnClickListener {
                 postViewModel.getPost(post.id)
-                onClick()
+                onClick(post.id)
             }
         }
     }
