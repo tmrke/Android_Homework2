@@ -18,7 +18,7 @@ class ProfileViewModel @Inject constructor(
     private val _profileLiveData = MutableLiveData<Profile>()
     val profileLiveData: LiveData<Profile> = _profileLiveData
 
-    fun getProfile(profileId: String) {
+    fun getProfile(profileId: String = "evo") {
         viewModelScope.launch {
             getProfileUseCase.execute(profileId).also { profile ->
                 _profileLiveData.postValue(profile)           // постит не сразу целиком, а асинхронно

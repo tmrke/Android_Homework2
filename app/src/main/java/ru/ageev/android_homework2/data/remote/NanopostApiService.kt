@@ -17,7 +17,12 @@ interface NanopostApiService {
     suspend fun getProfilePosts(
         @Path("profileId") profileId: String,
         @Query("count") count: Int,
-        @Query("offset") offset:String?
+        @Query("offset") offset: String?
     ): PagedDataResponse<ApiPost>
+
+    @GET("api/v1/post/{postId}")
+    suspend fun getPost(
+        @Path("postId") postId: String
+    ): ApiPost
 
 }

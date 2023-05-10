@@ -3,13 +3,9 @@ package ru.ageev.android_homework2.data.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Post(
-    val images: Array<Image>?,
+data class Image(
+    val images:Array<ImageSize>,
     val id: String,
-    // val dataCreated: String,
-    val text: String?,
-    val likes: Like,
     //val owner: Profile,
-
+    //dateCreated:String
 )
-

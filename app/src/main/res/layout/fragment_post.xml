@@ -99,10 +99,10 @@
                 app:layout_constraintTop_toBottomOf="@id/divider" />
 
             <ImageView
-                android:id="@+id/imageViewMedia"
+                android:id="@+id/imageViewMedia1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/general_margin"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/general_margin"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/media_description"
                 android:scaleType="centerCrop"
@@ -110,6 +110,47 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewPostText" />
+
+            <ImageView
+                android:id="@+id/imageViewMedia2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/general_margin"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/media_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/media"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageViewMedia1" />
+
+            <ImageView
+                android:id="@+id/imageViewMedia3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/general_margin"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/media_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/media"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageViewMedia2" />
+
+            <ImageView
+                android:id="@+id/imageViewMedia4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/general_margin"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/media_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/media"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageViewMedia3" />
+
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/imageButtonFavorite"
@@ -122,7 +163,7 @@
                 app:icon="@drawable/favorite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageViewMedia" />
+                app:layout_constraintTop_toBottomOf="@id/imageViewMedia4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

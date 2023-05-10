@@ -10,5 +10,5 @@ import ru.ageev.android_homework2.data.model.Profile
 interface ProfileRepository {
     suspend fun getProfile(profilerId: String): Profile
 
-    suspend fun getProfilePosts(): Flow<PagingData<Post>>
+    suspend fun getProfilePosts(profilerId: String): Flow<PagingData<Post>>
 }

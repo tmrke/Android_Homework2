@@ -32,26 +32,25 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 //            navController.navigate(R.id.imagesFragment)
 //        }
 
-        authViewModel._usernameLiveData.observe(viewLifecycleOwner) { username ->
-            profileViewModel.getProfile(username)
-
-            // TODO как осуществить передачу username
-        }
-
-
-
+        profileViewModel.getProfile("evo")
         postsViewModel.loadPost()
+
+//        authViewModel._usernameLiveData.observe(viewLifecycleOwner) { username ->
+//
+//            // TODO как осуществить передачу username
+//        }
+
 
         profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             val profileAdapter = ProfileAdapter(profile)
             val postsAdapter = PostsAdapter()
-            val concatAdapter = ConcatAdapter(profileAdapter)
+            val concatAdapter = ConcatAdapter(profileAdapter, postsAdapter)
+
+            postsViewModel.postsLiveData.observe(viewLifecycleOwner) { posts ->
+                postsAdapter.submitData(viewLifecycleOwner.lifecycle, posts)
+            }
 
             binding.recyclerView.adapter = concatAdapter
-
-            postsViewModel.postsLiveData.observe(viewLifecycleOwner) {
-                postsAdapter.submitData(viewLifecycleOwner.lifecycle, it)
-            }
         }
     }
 }

@@ -45,7 +45,7 @@
         android:gravity="center"
         app:endIconDrawable="@drawable/ic_eye"
         app:endIconMode="password_toggle"
-        android:visibility="invisible"
+        android:visibility="gone"
 
         app:helperText="password">
 
@@ -68,7 +68,7 @@
         android:gravity="center"
         app:endIconDrawable="@drawable/ic_eye"
         app:endIconMode="password_toggle"
-        android:visibility="invisible"
+        android:visibility="gone"
 
         app:helperText="confirm password">
 
