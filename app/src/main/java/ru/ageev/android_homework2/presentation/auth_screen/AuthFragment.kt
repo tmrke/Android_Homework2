@@ -160,7 +160,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
             }
         }
 
-        authViewModel.registerLiveData.observe(viewLifecycleOwner) { token ->
+        authViewModel.registerLiveData.observe(viewLifecycleOwner) {
             navController.navigate(R.id.profileFragment)
         }
 

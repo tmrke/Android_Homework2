@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
@@ -17,10 +18,16 @@ class PostsViewHolder(
     ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         with(binding) {
-            textViewPostText.text = post.text
+
+            textViewPost.text = post.text
 //            textViewDate.text = item.dataCreated
 //            textViewProfileName.text = item.owner.username
-//            imageViewMedia.load(item.images?.get(0)?.images?.get(0))
+
+            //val url = post.images?.get(0)?.images?.get(0)?.url
+
+
+
+            imageViewMedia.load("https://funik.ru/wp-content/uploads/2018/10/17478da42271207e1d86.jpg")
 
             imageButtonFavorite.setIconResource(
                 if (post.likes.liked) {
@@ -44,7 +51,7 @@ class PostsViewHolder(
                 post.likes.liked = !post.likes.liked
             }
 
-            textViewPostText.setOnClickListener {
+            textViewPost.setOnClickListener {
                 postViewModel.getPost(post.id)
                 onClick(post.id)
             }

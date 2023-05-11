@@ -2,6 +2,7 @@ package ru.ageev.android_homework2.presentation.profile_screen.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.navArgument
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import ru.ageev.android_homework2.data.model.Post
@@ -37,6 +38,10 @@ class PostsAdapter @Inject constructor(
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         getItem(position)?.let { post ->
             holder.bind(post)
+
+            holder.itemView.setOnClickListener {
+                onClick(post.id)
+            }
         }
     }
 }

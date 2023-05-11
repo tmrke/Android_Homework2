@@ -10,6 +10,6 @@ class ImagesViewHolderScreen(
     private val binding: ItemImageBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: ImageData) {
-        binding.image.load(item.imageUrl)
+        binding.imageViewPost.load(item.imageUrl)
     }
 }
