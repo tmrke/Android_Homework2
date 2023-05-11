@@ -52,14 +52,12 @@ class PostFragment : Fragment(R.layout.fragment_post) {
             navController.navigate(R.id.profileFragment)
         }
 
-
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {     //
             navController = Navigation.findNavController(requireView())
             if (navController.currentDestination?.id == R.id.postFragment) {
                 navController.navigate(R.id.profileFragment)
             }
         }
-
     }
 
     private fun clickLike(post: Post) {

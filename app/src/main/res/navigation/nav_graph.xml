@@ -10,6 +10,9 @@
         <action
             android:id="@+id/action_profileFragment_to_postFragment"
             app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_createPost"
+            app:destination="@id/createPostFragment" />
     </fragment>
 
     <fragment
@@ -30,5 +33,10 @@
             android:id="@+id/action_authFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="ru.ageev.android_homework2.ui.creator_post_screen.CreatorPostFragment"
+        android:label="create"/>
 
 </navigation>

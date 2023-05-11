@@ -4,9 +4,9 @@
 
 
     <item
-        android:id="@+id/createPost"
+        android:id="@+id/createPostMenu"
         android:icon="@drawable/ic_yes"
         android:title="@string/create"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
 </menu>
