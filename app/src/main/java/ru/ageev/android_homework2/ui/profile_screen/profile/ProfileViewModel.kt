@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.data.model.Profile
+import ru.ageev.android_homework2.domain.DeleteTokenUseCase
 import ru.ageev.android_homework2.domain.GetProfileUseCase
 import ru.ageev.android_homework2.domain.GetUsernameUseCase
 import javax.inject.Inject
@@ -14,7 +15,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val getProfileUseCase: GetProfileUseCase,
-    private val getUsernameUseCase: GetUsernameUseCase
+    private val getUsernameUseCase: GetUsernameUseCase,
+    private val deleteTokenUseCase: DeleteTokenUseCase,
 ) : ViewModel() {
 
     private val _profileLiveData = MutableLiveData<Profile>()
@@ -26,6 +28,10 @@ class ProfileViewModel @Inject constructor(
                 _profileLiveData.postValue(profile)
             }
         }
+    }
+
+    fun deleteToken() {
+        deleteTokenUseCase.execute()
     }
 
     fun getUsername(): String {
