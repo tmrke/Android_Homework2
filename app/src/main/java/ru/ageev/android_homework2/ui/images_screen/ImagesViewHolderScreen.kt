@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.images_screen
+package ru.ageev.android_homework2.ui.images_screen
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load

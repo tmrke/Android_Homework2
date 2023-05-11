@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.profile_screen.posts
+package ru.ageev.android_homework2.ui.profile_screen.posts
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,8 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.domain.GetPostsUseCase
-import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
-import ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileViewModel
 import javax.inject.Inject
 
 @HiltViewModel

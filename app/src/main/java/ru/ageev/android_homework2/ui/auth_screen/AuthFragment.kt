@@ -1,26 +1,21 @@
-package ru.ageev.android_homework2.presentation.auth_screen
+package ru.ageev.android_homework2.ui.auth_screen
 
 import android.os.Bundle
 import android.view.View
-import android.view.WindowInsets
 import android.widget.Toast
 import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.android_homework2.databinding.FragmentAuthorizationBinding
-import ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileViewModel
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class AuthFragment : Fragment(R.layout.fragment_authorization) {

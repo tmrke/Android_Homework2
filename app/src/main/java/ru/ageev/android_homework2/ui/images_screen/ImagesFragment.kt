@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.images_screen
+package ru.ageev.android_homework2.ui.images_screen
 
 import android.os.Bundle
 import android.view.View
@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.ImageData
 import ru.ageev.android_homework2.databinding.FragmentImagesBinding
-import ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileViewModel
+import ru.ageev.android_homework2.ui.profile_screen.profile.ProfileViewModel
 
 @AndroidEntryPoint
 class ImagesFragment : Fragment(R.layout.fragment_images) {

@@ -1,13 +1,12 @@
-package ru.ageev.android_homework2.presentation.post_screen
+package ru.ageev.android_homework2.ui.post_screen
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
-import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Post
@@ -20,7 +19,7 @@ class PostFragment : Fragment(R.layout.fragment_post) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navController = Navigation.findNavController(view)
+        var navController = Navigation.findNavController(view)
 
         val postId = arguments?.getString("postId")
 
@@ -52,6 +51,15 @@ class PostFragment : Fragment(R.layout.fragment_post) {
         binding.toolBar.setNavigationOnClickListener {
             navController.navigate(R.id.profileFragment)
         }
+
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {     //
+            navController = Navigation.findNavController(requireView())
+            if (navController.currentDestination?.id == R.id.postFragment) {
+                navController.navigate(R.id.profileFragment)
+            }
+        }
+
     }
 
     private fun clickLike(post: Post) {

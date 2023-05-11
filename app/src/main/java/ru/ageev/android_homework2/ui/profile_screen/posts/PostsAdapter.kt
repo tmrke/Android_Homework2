@@ -1,13 +1,12 @@
-package ru.ageev.android_homework2.presentation.profile_screen.posts
+package ru.ageev.android_homework2.ui.profile_screen.posts
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.navArgument
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
-import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
+import ru.ageev.android_homework2.ui.post_screen.PostViewModel
 import javax.inject.Inject
 
 val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {

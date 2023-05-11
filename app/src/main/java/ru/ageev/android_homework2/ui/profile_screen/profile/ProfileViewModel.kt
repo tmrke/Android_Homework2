@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.profile_screen.profile
+package ru.ageev.android_homework2.ui.profile_screen.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.domain.GetProfileUseCase
 import ru.ageev.android_homework2.domain.GetUsernameUseCase

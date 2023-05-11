@@ -1,14 +1,11 @@
-package ru.ageev.android_homework2.presentation.profile_screen.posts
+package ru.ageev.android_homework2.ui.profile_screen.posts
 
-import android.content.Context
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
-import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
+import ru.ageev.android_homework2.ui.post_screen.PostViewModel
 
 class PostsViewHolder(
     private val binding: ViewPostCardBinding,
