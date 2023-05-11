@@ -68,6 +68,7 @@ class AuthViewModel @Inject constructor(
             try {
                 loginUseCase.execute(registrationRequest).let { token ->
                     _loginLiveData.postValue(token)
+                    prefsStorage.token = token.token
                 }
             } catch (e: Exception) {
                 Log.e("Auth", e.message ?: "")
