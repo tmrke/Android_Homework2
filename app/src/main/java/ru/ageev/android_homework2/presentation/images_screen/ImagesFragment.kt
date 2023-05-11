@@ -24,7 +24,7 @@ class ImagesFragment : Fragment(R.layout.fragment_images) {
         val dataList = List(30) { ImageData() }
         val listAdapter = ImagesAdapter(dataList)
 
-        binding.recyclerViewImages.adapter = listAdapter
+        binding.recyclerView.adapter = listAdapter
 
         binding.toolBar.setNavigationOnClickListener {
             navController.navigate(R.id.profileFragment)

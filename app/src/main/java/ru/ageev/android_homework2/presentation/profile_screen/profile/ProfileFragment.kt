@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
+import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.FragmentProfileBinding
 import ru.ageev.android_homework2.presentation.auth_screen.AuthViewModel
 import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
@@ -48,9 +49,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val profileAdapter = ProfileAdapter(profile)
             val postsAdapter = PostsAdapter(postViewModel)
 
-            postsAdapter.onClick = {
+            postsAdapter.onClick = { postId ->
                 navController.navigate(
-                    ProfileFragmentDirections.actionProfileFragmentToPostFragment("")
+                    ProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
                 )
             }
 
