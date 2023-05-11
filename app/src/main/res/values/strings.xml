@@ -31,4 +31,6 @@
     <string name="nanopost">Nanopost</string>
     <string name="continue_text">Continue</string>
     <string name="register">Register</string>
+    <string name="create">create</string>
+    <string name="add_image">add image</string>
 </resources>
