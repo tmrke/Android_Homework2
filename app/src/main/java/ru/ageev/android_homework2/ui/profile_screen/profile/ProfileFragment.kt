@@ -32,6 +32,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 //            navController.navigate(R.id.imagesFragment)
 //        }
 
+        binding.floatingActionButton.setOnClickListener {
+            navController.navigate(R.id.createPostFragment)
+        }
+
 
         profileViewModel.getProfile(
             //profileViewModel.getUsername()
