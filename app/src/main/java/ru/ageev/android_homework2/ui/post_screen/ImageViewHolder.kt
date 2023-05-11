@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.post_screen
+package ru.ageev.android_homework2.ui.post_screen
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load

@@ -1,8 +1,7 @@
-package ru.ageev.android_homework2.presentation.profile_screen.profile
+package ru.ageev.android_homework2.ui.profile_screen.profile
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.databinding.ViewProfileCardBinding
 

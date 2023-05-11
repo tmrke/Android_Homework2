@@ -1,8 +1,7 @@
-package ru.ageev.android_homework2.presentation.profile_screen.profile
+package ru.ageev.android_homework2.ui.profile_screen.profile
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -10,12 +9,10 @@ import androidx.recyclerview.widget.ConcatAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.FragmentProfileBinding
-import ru.ageev.android_homework2.presentation.auth_screen.AuthViewModel
-import ru.ageev.android_homework2.presentation.post_screen.PostViewModel
-import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsAdapter
-import ru.ageev.android_homework2.presentation.profile_screen.posts.PostsViewModel
+import ru.ageev.android_homework2.ui.post_screen.PostViewModel
+import ru.ageev.android_homework2.ui.profile_screen.posts.PostsAdapter
+import ru.ageev.android_homework2.ui.profile_screen.posts.PostsViewModel
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {

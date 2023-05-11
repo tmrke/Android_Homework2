@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.presentation.auth_screen
+package ru.ageev.android_homework2.ui.auth_screen
 
 import android.util.Log
 import androidx.lifecycle.LiveData

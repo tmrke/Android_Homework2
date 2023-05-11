@@ -5,7 +5,7 @@
     app:startDestination="@id/profileFragment">
     <fragment
         android:id="@+id/profileFragment"
-        android:name="ru.ageev.android_homework2.presentation.profile_screen.profile.ProfileFragment"
+        android:name="ru.ageev.android_homework2.ui.profile_screen.profile.ProfileFragment"
         android:label="ProfileFragment">
         <action
             android:id="@+id/action_profileFragment_to_postFragment"
@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/postFragment"
-        android:name="ru.ageev.android_homework2.presentation.post_screen.PostFragment"
+        android:name="ru.ageev.android_homework2.ui.post_screen.PostFragment"
         android:label="post">
 
         <argument
@@ -24,7 +24,7 @@
 
     <fragment
         android:id="@+id/authFragment"
-        android:name="ru.ageev.android_homework2.presentation.auth_screen.AuthFragment"
+        android:name="ru.ageev.android_homework2.ui.auth_screen.AuthFragment"
         android:label="auth">
         <action
             android:id="@+id/action_authFragment_to_profileFragment"
