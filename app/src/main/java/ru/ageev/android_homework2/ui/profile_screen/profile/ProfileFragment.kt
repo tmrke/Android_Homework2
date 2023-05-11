@@ -2,6 +2,11 @@ package ru.ageev.android_homework2.ui.profile_screen.profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.addCallback
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -21,16 +26,31 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val postsViewModel by viewModels<PostsViewModel>()
     private val postViewModel by viewModels<PostViewModel>()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->         //IME - клавиатура
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+
+            binding.root.updatePadding(
+                bottom = imeInsets.bottom
+            )
+
+            WindowInsetsCompat.Builder()
+                .setInsets(
+                    WindowInsetsCompat.Type.ime(),
+                    Insets.of(imeInsets.left, 0, imeInsets.right, imeInsets.bottom)
+                ).build()
+        }
 
 //        val collageAdapter = CollageAdapter(listOf(CollageData()))
 //
 //        collageAdapter.onClick = {
 //            navController.navigate(R.id.imagesFragment)
 //        }
+
+        binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
 
         binding.floatingActionButton.setOnClickListener {
             navController.navigate(R.id.createPostFragment)
@@ -63,6 +83,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
 
             binding.recyclerView.adapter = concatAdapter
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            requireActivity().moveTaskToBack(true)
+        }
+
+        binding.toolBar.menu.findItem(R.id.actionExit).setOnMenuItemClickListener {
+            profileViewModel.deleteToken()
+
+            navController.navigate(R.id.authFragment)
+
+            true
         }
     }
 }

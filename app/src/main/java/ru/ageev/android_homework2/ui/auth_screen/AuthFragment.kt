@@ -30,13 +30,13 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
 
             binding.root.updatePadding(
-                bottom = imeInsets.bottom
+                bottom = imeInsets.bottom,
             )
 
             WindowInsetsCompat.Builder()
                 .setInsets(
                     WindowInsetsCompat.Type.ime(),
-                    Insets.of(imeInsets.left, 0, imeInsets.right, imeInsets.bottom)
+                    Insets.of(imeInsets.left, imeInsets.right, imeInsets.right, imeInsets.bottom)
                 ).build()
         }
 

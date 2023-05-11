@@ -27,15 +27,12 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
             }
         }
 
-
-
         binding.toolBar.menu.findItem(R.id.createPostMenu).let { icon ->
             icon.setOnMenuItemClickListener {
 
                 //TODO сохрание данных в пост
 
                 navController.navigate(R.id.profileFragment)
-
                 true
             }
 
