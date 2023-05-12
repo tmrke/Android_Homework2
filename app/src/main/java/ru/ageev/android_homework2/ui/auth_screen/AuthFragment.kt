@@ -162,7 +162,12 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
         authViewModel.loginLiveData.observe(viewLifecycleOwner) { token ->
             //TODO обработка неверного пароля поймать через Exception
-            navController.navigate(R.id.profileFragment)
+
+            if (token.token == null) {
+                Toast.makeText(context, "incorrect password", Toast.LENGTH_LONG).show()
+            } else {
+                navController.navigate(R.id.profileFragment)
+            }
         }
     }
 

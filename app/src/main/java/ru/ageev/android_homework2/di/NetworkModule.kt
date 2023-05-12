@@ -107,7 +107,6 @@ abstract class NetworkModule {
         ): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                // TODO fix client
                 .client(
                     OkHttpClient()
                         .newBuilder()
