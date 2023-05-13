@@ -1,6 +1,12 @@
 package ru.ageev.android_homework2.data.remote
 
+import android.app.DownloadManager.Request
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.GET
+import retrofit2.http.Multipart
+import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 import ru.ageev.android_homework2.data.remote.model.ApiPost
@@ -23,6 +29,16 @@ interface NanopostApiService {
     @GET("api/v1/post/{postId}")
     suspend fun getPost(
         @Path("postId") postId: String
+    ): ApiPost
+
+    @PUT("api/v1/post")
+    @Multipart
+    suspend fun createPost(
+        @Part("text") text: RequestBody?,
+        @Part image1: MultipartBody.Part?,
+        @Part image2: MultipartBody.Part?,
+        @Part image3: MultipartBody.Part?,
+        @Part image4: MultipartBody.Part?,
     ): ApiPost
 
 }

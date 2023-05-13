@@ -1,5 +1,6 @@
 package ru.ageev.android_homework2.ui.creator_post_screen
 
+import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,7 @@ import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.NewPost
 import ru.ageev.android_homework2.databinding.FragmentCreatorPostBinding
+import ru.ageev.android_homework2.service.CreatePostService
 
 class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
     private val binding by viewBinding(FragmentCreatorPostBinding::bind)
@@ -22,7 +24,7 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
 
 
     //TODO узнать как получить размер изображения
-    private var imagesUriList: MutableList<Uri> = mutableListOf()
+    private var imagesUriList: MutableList<Uri> = mutableListOf() //Хранить во вьюмодели
     private val adapter = ImagesCreatorPostAdapter(imagesUriList)
 
 
@@ -32,7 +34,7 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
                 lifecycleScope.launch {
                     val position = imagesUriList.size
                     imagesUriList.add(uri)
-                    adapter.notifyItemInserted(position)
+                    adapter.notifyDataSetChanged()
 
                     adapter.onCancelClick = { position ->
                         imagesUriList.removeAt(position)
@@ -51,6 +53,14 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
 
         binding.imageButtonAddImage.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+
+            requireContext().startService(
+                CreatePostService.newIntent(
+                    requireContext(),
+                    binding.editText.text.toString(),
+                    imagesUriList
+                )
+            )
         }
 
 
