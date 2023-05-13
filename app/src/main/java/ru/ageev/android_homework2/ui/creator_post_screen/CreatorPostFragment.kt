@@ -1,5 +1,6 @@
 package ru.ageev.android_homework2.ui.creator_post_screen
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
@@ -19,10 +20,9 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
     private val binding by viewBinding(FragmentCreatorPostBinding::bind)
     private val creatorViewModel by viewModels<CreatorPostViewModel>()
 
-    private var toDeleteUri: String? = null
 
     //TODO узнать как получить размер изображения
-    private var imagesUriList: MutableList<String> = mutableListOf()
+    private var imagesUriList: MutableList<Uri> = mutableListOf()
     private val adapter = ImagesCreatorPostAdapter(imagesUriList)
 
 
@@ -30,10 +30,15 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
             uri?.let {
                 lifecycleScope.launch {
-                    imagesUriList.add(uri.toString())
+                    val position = imagesUriList.size
+                    imagesUriList.add(uri)
+                    adapter.notifyItemInserted(position)
 
-                    //TODO какая то рама с удалением, посмотреть
-                    adapter.onCancelClick = { imagesUriList.remove(uri.toString()) }
+                    adapter.onCancelClick = { position ->
+                        imagesUriList.removeAt(position)
+                        adapter.notifyItemRemoved(position)
+                    }
+
                     binding.recyclerView.adapter = adapter
                 }
             }
