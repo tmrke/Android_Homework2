@@ -3,6 +3,7 @@ package ru.ageev.android_homework2.di
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -14,6 +15,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.create
@@ -40,6 +42,7 @@ abstract class NetworkModule {
         fun provideAuthRetrofit(
             httpClient: OkHttpClient,
             json: Converter.Factory,
+            authInterceptor: Interceptor
         ): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -73,23 +76,32 @@ abstract class NetworkModule {
         }
 
 
+        @Singleton
+        @Provides
+        fun provideResponseCodeLiveData(): MutableLiveData<Int> {
+            return MutableLiveData()
+        }
+
         @Provides
         @Singleton
-        fun provideAuthInterceptor(     //Редактор запросов. После формирования запроса, Interceptor добавляет к нему заголовки например
-            prefsStorage: PrefsStorage
+        fun provideAuthInterceptor(
+            //Редактор запросов. После формирования запроса, Interceptor добавляет к нему заголовки например
+            prefsStorage: PrefsStorage,
+            responseCodeLiveData: MutableLiveData<Int>,
         ): Interceptor {
             return Interceptor { chain ->
                 val request = chain.request().newBuilder()
-
                 val token = prefsStorage.token
 
-                request.addHeader(              //TODO проверить токен
+                val response = chain.proceed(request.build())
+                responseCodeLiveData.postValue(response.code)
+
+                request.addHeader(
                     "Authorization",
                     "Bearer $token"
                 ).build()
 
-
-                chain.proceed(request.build())
+                response
             }
         }
 

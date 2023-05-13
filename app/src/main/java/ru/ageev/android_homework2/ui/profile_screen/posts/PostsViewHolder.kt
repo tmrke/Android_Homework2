@@ -16,15 +16,23 @@ class PostsViewHolder(
     fun bind(post: Post) {
         with(binding) {
 
-            textViewPost.text = post.text
 //            textViewDate.text = item.dataCreated
 //            textViewProfileName.text = item.owner.username
 
-            //val url = post.images?.get(0)?.images?.get(0)?.url
+            textViewPost.text = post.text
+            val url = post.images?.get(0)?.images?.get(0)?.url
+            imageViewMedia.load(url)
+            //imageViewMedia.load("https://funik.ru/wp-content/uploads/2018/10/17478da42271207e1d86.jpg")
 
+            textViewPost.setOnClickListener {
+                postViewModel.getPost(post.id)
+                onClick(post.id)
+            }
 
-
-            imageViewMedia.load("https://funik.ru/wp-content/uploads/2018/10/17478da42271207e1d86.jpg")
+            imageViewMedia.setOnClickListener {
+                postViewModel.getPost(post.id)
+                onClick(post.id)
+            }
 
             imageButtonFavorite.setIconResource(
                 if (post.likes.liked) {
@@ -46,16 +54,6 @@ class PostsViewHolder(
                 }
 
                 post.likes.liked = !post.likes.liked
-            }
-
-            textViewPost.setOnClickListener {
-                postViewModel.getPost(post.id)
-                onClick(post.id)
-            }
-
-            imageViewMedia.setOnClickListener {
-                postViewModel.getPost(post.id)
-                onClick(post.id)
             }
         }
     }

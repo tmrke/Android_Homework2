@@ -7,9 +7,9 @@ import ru.ageev.android_homework2.data.model.Like
 
 @Serializable
 data class ApiPost(
-    @SerialName("id")val id: String,
+    @SerialName("images") val images: Array<Image>? = null,
+    @SerialName("id") val id: String,
+    @SerialName("text") val text: String? = null,
+    @SerialName("likes") var likes: Like,
     //@SerialName("dataCreated")val dataCreated: Int,
-    @SerialName("text")val text: String? = null,
-    //@SerialName("images")val images: Array<Image>? = emptyArray(),
-    @SerialName("likes")var likes: Like,
 )

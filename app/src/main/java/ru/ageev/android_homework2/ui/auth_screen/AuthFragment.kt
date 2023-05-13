@@ -9,20 +9,25 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.HttpException
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.android_homework2.databinding.FragmentAuthorizationBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AuthFragment : Fragment(R.layout.fragment_authorization) {
     private val binding by viewBinding(FragmentAuthorizationBinding::bind)
     private val authViewModel by viewModels<AuthViewModel>()
 
+    @Inject
+    lateinit var responseCodeLiveData: MutableLiveData<Int>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
@@ -110,13 +115,20 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                     }
 
                     ResultEnum.ToLogin -> {
-                        val registrationRequest =
-                            RegistrationRequest(
-                                editTextUsername.text.toString(),
-                                editTextPassword.text.toString()
-                            )
+                        responseCodeLiveData.observe(viewLifecycleOwner) { response ->
+                            val registrationRequest =
+                                RegistrationRequest(
+                                    editTextUsername.text.toString(),
+                                    editTextPassword.text.toString()
+                                )
 
-                        authViewModel.login(registrationRequest)
+                            authViewModel.login(registrationRequest)
+
+                            if (response == 400) {
+                                Toast.makeText(context, response.toString(), Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
                     }
                 }
             }
@@ -161,10 +173,10 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
         }
 
 
-        authViewModel.loginLiveData.observe(viewLifecycleOwner) { token ->
-            //TODO обработка неверного пароля поймать через Exception
+        authViewModel.loginLiveData.observe(viewLifecycleOwner) {
 
-                navController.navigate(R.id.profileFragment)
+
+            navController.navigate(R.id.profileFragment)
         }
     }
 

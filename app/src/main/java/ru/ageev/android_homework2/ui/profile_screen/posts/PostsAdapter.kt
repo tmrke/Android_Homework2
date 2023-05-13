@@ -18,7 +18,6 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
         return oldItem == newItem
     }
 }
-
 class PostsAdapter @Inject constructor(
     private val postViewModel: PostViewModel
 ) :
