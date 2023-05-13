@@ -93,13 +93,13 @@ abstract class NetworkModule {
                 val request = chain.request().newBuilder()
                 val token = prefsStorage.token
 
-                val response = chain.proceed(request.build())
-                responseCodeLiveData.postValue(response.code)
-
                 request.addHeader(
                     "Authorization",
                     "Bearer $token"
                 ).build()
+
+                val response = chain.proceed(request.build())
+                responseCodeLiveData.postValue(response.code)
 
                 response
             }

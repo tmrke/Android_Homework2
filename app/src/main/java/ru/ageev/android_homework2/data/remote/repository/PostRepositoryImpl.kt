@@ -17,6 +17,10 @@ class PostRepositoryImpl @Inject constructor(
         return postMapper.toPost(apiService.getPost(postId))
     }
 
+    override suspend fun deletePost(postId: String) {
+        apiService.deletePost(postId)
+    }
+
     override suspend fun createPost(text: String?, list: List<ByteArray>?): Post {
         var image0: MultipartBody.Part? = null
 

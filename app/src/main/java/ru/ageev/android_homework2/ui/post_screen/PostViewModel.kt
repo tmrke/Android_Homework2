@@ -7,12 +7,14 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.data.model.Post
-import ru.ageev.android_homework2.domain.GetPostUseCase
+import ru.ageev.android_homework2.domain.post_use_case.DeletePostUseCase
+import ru.ageev.android_homework2.domain.post_use_case.GetPostUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class PostViewModel @Inject constructor(
-    private val getPostUseCase: GetPostUseCase
+    private val getPostUseCase: GetPostUseCase,
+    private val deletePostUseCase: DeletePostUseCase
 ) : ViewModel() {
 
     private val _postLiveData = MutableLiveData<Post>()
@@ -20,9 +22,16 @@ class PostViewModel @Inject constructor(
 
     fun getPost(postId: String) {                    //В адапетере, нужно поменять List<Post> на PagingData<Post>
         viewModelScope.launch {
-            getPostUseCase.execute(postId).also{posts ->       //кэшируем, что бы не подгружать эти значания кадый раз при открытии окна
-                _postLiveData.postValue(posts)
-            }
+            getPostUseCase.execute(postId)
+                .also { posts ->       //кэшируем, что бы не подгружать эти значания кадый раз при открытии окна
+                    _postLiveData.postValue(posts)
+                }
+        }
+    }
+
+    fun deletePost(postId: String) {
+        viewModelScope.launch {
+            deletePostUseCase.execute(postId)
         }
     }
 }

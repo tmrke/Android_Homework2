@@ -25,6 +25,16 @@ class PostFragment : Fragment(R.layout.fragment_post) {
 
         if (postId != null) {
             viewModel.getPost(postId)
+
+            binding.toolBar.menu.findItem(R.id.actionDelete).let { icon ->
+                icon.setOnMenuItemClickListener {
+
+                    viewModel.deletePost(postId)
+                    navController.navigate(R.id.profileFragment)
+
+                    true
+                }
+            }
         }
 
         viewModel.postLiveData.observe(viewLifecycleOwner) { post ->
