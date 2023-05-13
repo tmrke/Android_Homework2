@@ -51,8 +51,6 @@ class CreatePostService : Service(), CoroutineScope by MainScope() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-
-
         intent?.let {
             if (it.action == ACTION_CREATE_POST) {
                 startForeground(NOTIFICATION_ID, createNotification())

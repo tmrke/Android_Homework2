@@ -25,7 +25,7 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
 
     //TODO узнать как получить размер изображения
     private var imagesUriList: MutableList<Uri> = mutableListOf() //Хранить во вьюмодели
-    private val adapter = ImagesCreatorPostAdapter(imagesUriList)
+    private val adapter = ImagesCreatorPostAdapter(imagesUriList) //Хранить во вьюмодели
 
 
     private val pickMedia =
@@ -53,14 +53,6 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
 
         binding.imageButtonAddImage.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-
-            requireContext().startService(
-                CreatePostService.newIntent(
-                    requireContext(),
-                    binding.editText.text.toString(),
-                    imagesUriList
-                )
-            )
         }
 
 
@@ -73,8 +65,14 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
 
         binding.toolBar.menu.findItem(R.id.createPostMenu).let { icon ->
             icon.setOnMenuItemClickListener {
-                val newPost = NewPost(binding.editText.text.toString())
-                //creatorViewModel.addPost(newPost)
+
+                requireContext().startService(
+                    CreatePostService.newIntent(
+                        requireContext(),
+                        binding.editText.text.toString(),
+                        imagesUriList
+                    )
+                )
 
                 navController.navigate(R.id.profileFragment)
                 true

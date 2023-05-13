@@ -1,6 +1,8 @@
 package ru.ageev.android_homework2.di
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -37,7 +39,7 @@ abstract class NetworkModule {
         @AuthClient
         fun provideAuthRetrofit(
             httpClient: OkHttpClient,
-            json: Converter.Factory
+            json: Converter.Factory,
         ): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -78,12 +80,14 @@ abstract class NetworkModule {
         ): Interceptor {
             return Interceptor { chain ->
                 val request = chain.request().newBuilder()
-                prefsStorage.token?.let { token ->
-                    request.addHeader(              //TODO проверить токен
-                        "Authorization",
-                        "Bearer ${prefsStorage.token}"
-                    )
-                }
+
+                val token = prefsStorage.token
+
+                request.addHeader(              //TODO проверить токен
+                    "Authorization",
+                    "Bearer $token"
+                ).build()
+
 
                 chain.proceed(request.build())
             }
@@ -108,15 +112,18 @@ abstract class NetworkModule {
         fun provideRetrofit(
             json: Converter.Factory,
             @ApplicationContext context: Context,
+            authInterceptor: Interceptor
         ): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(
                     OkHttpClient()
                         .newBuilder()
+                        .addInterceptor(authInterceptor)
                         .addInterceptor(ChuckerInterceptor(context))
                         .build()
                 )
+
                 .addConverterFactory(json)
                 .build()
         }

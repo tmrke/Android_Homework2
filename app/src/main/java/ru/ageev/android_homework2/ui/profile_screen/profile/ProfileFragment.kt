@@ -58,8 +58,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
 
         profileViewModel.getProfile(
-            //profileViewModel.getUsername()
-            "evo"
+            profileViewModel.getUsername()
+            //"evo"
         )
 
         profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
