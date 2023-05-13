@@ -3,6 +3,7 @@ package ru.ageev.android_homework2.data.remote
 import android.app.DownloadManager.Request
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.PUT
@@ -25,6 +26,11 @@ interface NanopostApiService {
         @Query("count") count: Int,
         @Query("offset") offset: String?
     ): PagedDataResponse<ApiPost>
+
+    @DELETE("api/v1/post/{postId}")
+    suspend fun deletePost(
+        @Path("postId") postId: String
+    ): ApiPost
 
     @GET("api/v1/post/{postId}")
     suspend fun getPost(

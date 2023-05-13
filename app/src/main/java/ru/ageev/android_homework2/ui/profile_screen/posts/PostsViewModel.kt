@@ -8,7 +8,7 @@ import androidx.paging.PagingData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.data.model.Post
-import ru.ageev.android_homework2.domain.GetPostsUseCase
+import ru.ageev.android_homework2.domain.post_use_case.GetPostsUseCase
 import javax.inject.Inject
 
 @HiltViewModel

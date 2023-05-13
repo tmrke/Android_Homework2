@@ -19,7 +19,7 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:menu="@menu/navigation_menu"
+            app:menu="@menu/post_menu"
             app:navigationIcon="@drawable/leading_icon"
             app:title="Post"
             app:titleCentered="true" />

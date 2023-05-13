@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.domain
+package ru.ageev.android_homework2.domain.post_use_case
 
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow

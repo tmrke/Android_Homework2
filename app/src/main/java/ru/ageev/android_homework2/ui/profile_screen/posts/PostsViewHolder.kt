@@ -15,13 +15,12 @@ class PostsViewHolder(
     ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         with(binding) {
-
-//            textViewDate.text = item.dataCreated
-//            textViewProfileName.text = item.owner.username
-
             textViewPost.text = post.text
-            val url = post.images?.get(0)?.images?.get(0)?.url
-            imageViewMedia.load(url)
+
+            //textViewProfileName.text = post.owner.username
+            //textViewDate.text = post.dataCreated
+            //val url = post.images?.get(0)?.images?.get(0)?.url
+            //imageViewMedia.load(url)
             //imageViewMedia.load("https://funik.ru/wp-content/uploads/2018/10/17478da42271207e1d86.jpg")
 
             textViewPost.setOnClickListener {

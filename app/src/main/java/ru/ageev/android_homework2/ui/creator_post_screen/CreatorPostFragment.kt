@@ -30,12 +30,14 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
             uri?.let {
                 lifecycleScope.launch {
                     val position = imagesUriList.size
-                    adapter.notifyItemInserted(position)
+                    imagesUriList.add(uri)
 
                     adapter.onCancelClick = {
                         imagesUriList.removeAt(position)
                         adapter.notifyItemRemoved(position)
                     }
+
+                    adapter.notifyItemInserted(position)
 
                     binding.recyclerView.adapter = adapter
                 }
@@ -71,6 +73,7 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
                 )
 
                 navController.navigate(R.id.profileFragment)
+
                 true
             }
 

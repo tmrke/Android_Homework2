@@ -1,7 +1,6 @@
 package ru.ageev.android_homework2.service
 
 import android.app.Notification
-import android.app.NotificationChannelGroup
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -16,7 +15,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.domain.CreatePostUseCase
+import ru.ageev.android_homework2.domain.post_use_case.CreatePostUseCase
 import ru.ageev.android_homework2.domain.GetContentUriUseCase
 import javax.inject.Inject
 
