@@ -9,8 +9,10 @@ import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumRe
 import ru.ageev.android_homework2.domain.CreatePostUseCase
 
 class CreatorPostViewModel : ViewModel() {
-    private val _createPostLiveData = MutableLiveData<Post>()
-    val createPostLiveData: LiveData<Post> = _createPostLiveData
+    private val _createPostLiveData = MutableLiveData<List<Uri>>()
+    val createPostLiveData: LiveData<List<Uri>> = _createPostLiveData
 
-
+    fun addImagesUri(imagesUri: List<Uri>) {
+        _createPostLiveData.postValue(imagesUri)
+    }
 }

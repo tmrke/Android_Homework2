@@ -1,6 +1,5 @@
 package ru.ageev.android_homework2.ui.creator_post_screen
 
-import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -14,7 +13,6 @@ import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.data.model.NewPost
 import ru.ageev.android_homework2.databinding.FragmentCreatorPostBinding
 import ru.ageev.android_homework2.service.CreatePostService
 
@@ -23,9 +21,8 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
     private val creatorViewModel by viewModels<CreatorPostViewModel>()
 
 
-    //TODO узнать как получить размер изображения
-    private var imagesUriList: MutableList<Uri> = mutableListOf() //Хранить во вьюмодели
-    private val adapter = ImagesCreatorPostAdapter(imagesUriList) //Хранить во вьюмодели
+    private var imagesUriList: MutableList<Uri> = mutableListOf()
+    private val adapter = ImagesCreatorPostAdapter(imagesUriList)
 
 
     private val pickMedia =
@@ -34,9 +31,9 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
                 lifecycleScope.launch {
                     val position = imagesUriList.size
                     imagesUriList.add(uri)
-                    adapter.notifyDataSetChanged()
+                    adapter.notifyItemInserted(position)
 
-                    adapter.onCancelClick = { position ->
+                    adapter.onCancelClick = {
                         imagesUriList.removeAt(position)
                         adapter.notifyItemRemoved(position)
                     }
