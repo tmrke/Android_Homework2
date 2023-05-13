@@ -30,33 +30,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->         //IME - клавиатура
-            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
-
-            binding.root.updatePadding(
-                bottom = imeInsets.bottom
-            )
-
-            WindowInsetsCompat.Builder()
-                .setInsets(
-                    WindowInsetsCompat.Type.ime(),
-                    Insets.of(imeInsets.left, 0, imeInsets.right, imeInsets.bottom)
-                ).build()
-        }
-
-//        val collageAdapter = CollageAdapter(listOf(CollageData()))
-//
-//        collageAdapter.onClick = {
-//            navController.navigate(R.id.imagesFragment)
-//        }
-
-        binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
-
-        binding.floatingActionButton.setOnClickListener {
-            navController.navigate(R.id.createPostFragment)
-        }
-
-
         profileViewModel.getProfile(
             profileViewModel.getUsername()
             //"evo"
@@ -83,6 +56,32 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
 
             binding.recyclerView.adapter = concatAdapter
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->         //IME - клавиатура
+            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+
+            binding.root.updatePadding(
+                bottom = imeInsets.bottom
+            )
+
+            WindowInsetsCompat.Builder()
+                .setInsets(
+                    WindowInsetsCompat.Type.ime(),
+                    Insets.of(imeInsets.left, 0, imeInsets.right, imeInsets.bottom)
+                ).build()
+        }
+
+//        val collageAdapter = CollageAdapter(listOf(CollageData()))
+//
+//        collageAdapter.onClick = {
+//            navController.navigate(R.id.imagesFragment)
+//        }
+
+        binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
+
+        binding.floatingActionButton.setOnClickListener {
+            navController.navigate(R.id.createPostFragment)
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
