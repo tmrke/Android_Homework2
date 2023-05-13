@@ -18,7 +18,7 @@ import ru.ageev.android_homework2.service.CreatePostService
 
 class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
     private val binding by viewBinding(FragmentCreatorPostBinding::bind)
-    private val creatorViewModel by viewModels<CreatorPostViewModel>()
+    private val viewModel by viewModels<CreatorPostViewModel>()
 
 
     private var imagesUriList: MutableList<Uri> = mutableListOf()
@@ -30,7 +30,6 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
             uri?.let {
                 lifecycleScope.launch {
                     val position = imagesUriList.size
-                    imagesUriList.add(uri)
                     adapter.notifyItemInserted(position)
 
                     adapter.onCancelClick = {
