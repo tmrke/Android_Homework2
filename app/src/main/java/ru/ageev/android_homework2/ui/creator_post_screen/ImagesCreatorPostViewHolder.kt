@@ -1,23 +1,22 @@
 package ru.ageev.android_homework2.ui.creator_post_screen
 
+import android.net.Uri
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 
 import ru.ageev.android_homework2.databinding.ItemImageBinding
+import java.text.FieldPosition
 
-class ImagesCreatorPostViewHolderScreen(
+class ImagesCreatorPostViewHolder(
     private val binding: ItemImageBinding,
-    private val onCancelClick: () -> Boolean
+    private val onCancelClick: (Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(uri: String) {
+    fun bind(uri: Uri, position: Int) {
         binding.imageViewPost.load(uri)
 
         binding.imageButtonDelete.setOnClickListener {
-            binding.imageViewPost.setImageIcon(null)
-            binding.imageButtonDelete.setImageIcon(null)
-
-            onCancelClick()
+            onCancelClick(position)
         }
     }
 }
