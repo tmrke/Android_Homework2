@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.HttpException
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
@@ -163,11 +164,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
         authViewModel.loginLiveData.observe(viewLifecycleOwner) { token ->
             //TODO обработка неверного пароля поймать через Exception
 
-            if (token.token == null) {
-                Toast.makeText(context, "incorrect password", Toast.LENGTH_LONG).show()
-            } else {
                 navController.navigate(R.id.profileFragment)
-            }
         }
     }
 
