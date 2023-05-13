@@ -12,7 +12,17 @@ class CreatorPostViewModel : ViewModel() {
     private val _createPostLiveData = MutableLiveData<List<Uri>>()
     val createPostLiveData: LiveData<List<Uri>> = _createPostLiveData
 
-    fun addImagesUri(imagesUri: List<Uri>) {
+    private var imagesUriList: MutableList<Uri> = mutableListOf()
+
+    fun postValueImagesUri(imagesUri: List<Uri>) {
         _createPostLiveData.postValue(imagesUri)
+    }
+
+    fun addToListImagesUri(uri: Uri) {
+
+    }
+
+    fun deleteFromListImagesUri(uri: Uri) {
+
     }
 }
