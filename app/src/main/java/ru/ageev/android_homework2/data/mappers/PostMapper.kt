@@ -7,10 +7,10 @@ import javax.inject.Inject
 
 class PostMapper @Inject constructor() {
     fun toPost(apiModel: ApiPost) = Post(
+        images = apiModel.images,
         id = apiModel.id,
         text = apiModel.text,
-        //dataCreated = apiModel.dataCreated.toString(),
         likes = apiModel.likes,
-        //images = apiModel.images
+        //dataCreated = apiModel.dataCreated.toString(),
     )
 }
