@@ -5,4 +5,5 @@ import ru.ageev.android_homework2.data.model.Post
 
 interface PostRepository {
     suspend fun getPost(postId: String): Post
+    suspend fun createPost(text: String?, list: List<ByteArray>?): Post
 }

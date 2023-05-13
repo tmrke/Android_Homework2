@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
         android:name=".Nanopost"
@@ -19,7 +20,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-<!--           android:windowSoftInputMode="adjustResize"-->
+            <!--           android:windowSoftInputMode="adjustResize"-->
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.CreatePostService"
+            android:exported="false" />
 
 
     </application>

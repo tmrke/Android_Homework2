@@ -78,13 +78,17 @@ abstract class NetworkModule {
         ): Interceptor {
             return Interceptor { chain ->
                 val request = chain.request().newBuilder()
-                request.addHeader(
-                    "Authorization",
-                    "Bearer ${prefsStorage.token}"
-                )
+                prefsStorage.token?.let { token ->
+                    request.addHeader(              //TODO проверить токен
+                        "Authorization",
+                        "Bearer ${prefsStorage.token}"
+                    )
+                }
+
                 chain.proceed(request.build())
             }
         }
+
 
         @Provides
         @Singleton
