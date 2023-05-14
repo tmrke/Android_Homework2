@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.domain
+package ru.ageev.android_homework2.domain.profile_use_case
 
 import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.data.remote.repository.ProfileRepository

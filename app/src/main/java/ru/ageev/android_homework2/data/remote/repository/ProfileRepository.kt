@@ -11,4 +11,6 @@ interface ProfileRepository {
     suspend fun getProfile(profilerId: String): Profile
 
     suspend fun getProfilePosts(profilerId: String): Flow<PagingData<Post>>
+
+    suspend fun subscribe(profilerId: String)
 }

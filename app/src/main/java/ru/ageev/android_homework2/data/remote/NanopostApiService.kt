@@ -48,4 +48,9 @@ interface NanopostApiService {
         @Part image4: MultipartBody.Part?,
     ): ApiPost
 
+    @PUT("api/v1/profile/{profileId}/subscribe")
+    suspend fun subscribe(
+        @Path("profileId") profileId: String
+    ): ResultResponse
+
 }

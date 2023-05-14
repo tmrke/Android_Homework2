@@ -58,6 +58,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val profileAdapter = ProfileAdapter(profile)
             val postsAdapter = PostsAdapter()
 
+            profileAdapter.onClick = { profileId ->
+                profileViewModel.subscribe(profileId)
+            }
+
             postsAdapter.onClick = { postId ->
                 postViewModel.getPost(postId)
 
@@ -89,7 +93,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 //        }
 
 
-
         binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
 
         binding.floatingActionButton.setOnClickListener {
@@ -107,9 +110,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             true
         }
-    }
-
-    fun load() {
-
     }
 }

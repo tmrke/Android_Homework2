@@ -11,9 +11,9 @@ import ru.ageev.android_homework2.data.PrefsStorage
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.android_homework2.data.remote.model.response.TokenResponse
-import ru.ageev.android_homework2.domain.CheckUsernameUseCase
-import ru.ageev.android_homework2.domain.LoginUseCase
-import ru.ageev.android_homework2.domain.RegisterUseCase
+import ru.ageev.android_homework2.domain.auth_use_case.CheckUsernameUseCase
+import ru.ageev.android_homework2.domain.auth_use_case.LoginUseCase
+import ru.ageev.android_homework2.domain.auth_use_case.RegisterUseCase
 import javax.inject.Inject
 import kotlin.Exception
 
