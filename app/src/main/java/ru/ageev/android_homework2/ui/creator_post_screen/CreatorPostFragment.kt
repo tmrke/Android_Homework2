@@ -71,13 +71,13 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
                         imagesUriList
                     )
                 )
-
                 navController.navigate(R.id.profileFragment)
 
-                true
+                return@setOnMenuItemClickListener true      //сначала осуществляет переход на фрагмент, потом return true
             }
-
         }
+
+
         binding.toolBar.setNavigationOnClickListener {
             navController.navigate(R.id.profileFragment)
         }
