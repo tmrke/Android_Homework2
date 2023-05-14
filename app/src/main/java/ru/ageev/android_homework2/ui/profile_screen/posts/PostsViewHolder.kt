@@ -17,10 +17,13 @@ class PostsViewHolder(
         with(binding) {
             textViewPost.text = post.text
 
-            //textViewProfileName.text = post.owner.username
-            //textViewDate.text = post.dataCreated
-            //val url = post.images?.get(0)?.images?.get(0)?.url
-            //imageViewMedia.load(url)
+            textViewProfileName.text = post.owner.username
+            imageViewPostProfileImage.load(post.owner.avatarUrl ?: R.drawable.profile)
+
+            textViewDate.text = post.dateCreated
+
+//            val url = post.images?.get(0)?.sizes?.get(0)?.url
+//            imageViewMedia.load(url)
             //imageViewMedia.load("https://funik.ru/wp-content/uploads/2018/10/17478da42271207e1d86.jpg")
 
             textViewPost.setOnClickListener {
