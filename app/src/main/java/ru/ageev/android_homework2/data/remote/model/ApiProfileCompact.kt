@@ -1,10 +1,10 @@
-package ru.ageev.android_homework2.data.model
+package ru.ageev.android_homework2.data.remote.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ProfileCompact(
+data class ApiProfileCompact(
     @SerialName("id") val id: String,
     @SerialName("username") val username: String,
     @SerialName("displayName") val displayName: String? = "ololo",
