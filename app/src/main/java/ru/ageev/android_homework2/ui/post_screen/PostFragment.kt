@@ -32,7 +32,7 @@ class PostFragment : Fragment(R.layout.fragment_post) {
                     viewModel.deletePost(postId)
                     navController.navigate(R.id.profileFragment)
 
-                    true
+                    return@setOnMenuItemClickListener true
                 }
             }
         }

@@ -12,6 +12,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import ru.ageev.android_homework2.data.remote.model.ApiPost
 import ru.ageev.android_homework2.data.remote.model.ApiProfile
+import ru.ageev.android_homework2.data.remote.model.response.ResultResponse
 import ru.ageev.android_homework2.data.remote.repository.PagedDataResponse
 
 interface NanopostApiService {
@@ -30,7 +31,7 @@ interface NanopostApiService {
     @DELETE("api/v1/post/{postId}")
     suspend fun deletePost(
         @Path("postId") postId: String
-    ): ApiPost
+    ): ResultResponse
 
     @GET("api/v1/post/{postId}")
     suspend fun getPost(
