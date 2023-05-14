@@ -10,13 +10,13 @@ import javax.inject.Inject
 class ProfileAdapter @Inject constructor(private val profile: Profile?) :
     RecyclerView.Adapter<ProfileViewHolder>() {
 
-    var onClick: () -> Unit = {}
+    var onClick: (String) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding =
             ViewProfileCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ProfileViewHolder(binding)
+        return ProfileViewHolder(binding, onClick)
     }
 
     override fun getItemCount(): Int {

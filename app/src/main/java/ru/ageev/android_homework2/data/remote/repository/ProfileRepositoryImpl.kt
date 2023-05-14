@@ -19,18 +19,22 @@ class ProfileRepositoryImpl @Inject constructor(
     private val profileMapper: ProfileMapper,
     private val postsMapper: PostMapper
 ) : ProfileRepository {
-    override suspend fun getProfile(profilerId: String): Profile {
-        return profileMapper.toProfile(apiService.getProfile(profilerId))
+    override suspend fun getProfile(profileId: String): Profile {
+        return profileMapper.toProfile(apiService.getProfile(profileId))
     }
 
-    override suspend fun getProfilePosts(profilerId: String): Flow<PagingData<Post>> {
+    override suspend fun getProfilePosts(profileId: String): Flow<PagingData<Post>> {
         return Pager(
             config = PagingConfig(30, enablePlaceholders = false),
-            pagingSourceFactory = { PostPagingSource(apiService, profilerId) }
+            pagingSourceFactory = { PostPagingSource(apiService, profileId) }
         ).flow.map { pagingData ->
             pagingData.map { apiPost ->
                 postsMapper.toPost(apiPost)
             }
         }
+    }
+
+    override suspend fun subscribe(profileId: String) {
+        apiService.subscribe(profileId)
     }
 }
