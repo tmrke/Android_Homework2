@@ -56,9 +56,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             postsViewModel.loadPosts(profile.id)
 
             val profileAdapter = ProfileAdapter(profile)
-            val postsAdapter = PostsAdapter(postViewModel)
+            val postsAdapter = PostsAdapter()
 
             postsAdapter.onClick = { postId ->
+                postViewModel.getPost(postId)
+
                 navController.navigate(
                     ProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
                 )
