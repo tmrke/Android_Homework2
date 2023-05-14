@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/general_margin"
                 android:layout_marginTop="4dp"
-                android:text="@string/lorem"
+                android:text=""
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

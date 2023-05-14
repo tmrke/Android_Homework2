@@ -9,7 +9,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import androidx.paging.cachedIn
 import androidx.recyclerview.widget.ConcatAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,37 +28,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val postsViewModel by viewModels<PostsViewModel>()
     private val postViewModel by viewModels<PostViewModel>()
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
-
-        profileViewModel.getProfile(
-            profileViewModel.getUsername()
-            //"evo"
-        )
-
-        profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
-            postsViewModel.loadPosts(profile.id)
-        }
-
-        profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
-            val profileAdapter = ProfileAdapter(profile)
-            val postsAdapter = PostsAdapter(postViewModel)
-
-            postsAdapter.onClick = { postId ->
-                navController.navigate(
-                    ProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
-                )
-            }
-
-            val concatAdapter = ConcatAdapter(profileAdapter, postsAdapter)
-
-            postsViewModel.postsLiveData.observe(viewLifecycleOwner) { posts ->
-                postsAdapter.submitData(viewLifecycleOwner.lifecycle, posts)
-            }
-
-            binding.recyclerView.adapter = concatAdapter
-        }
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->         //IME - клавиатура
             val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
@@ -72,11 +47,46 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 ).build()
         }
 
+        profileViewModel.getProfile(
+            profileViewModel.getUsername()
+            //"evo"
+        )
+
+        profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
+            postsViewModel.loadPosts(profile.id)
+
+            val profileAdapter = ProfileAdapter(profile)
+            val postsAdapter = PostsAdapter(postViewModel)
+
+            postsAdapter.onClick = { postId ->
+                navController.navigate(
+                    ProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
+                )
+            }
+
+            val concatAdapter = ConcatAdapter(profileAdapter, postsAdapter)
+
+            postsViewModel.postsLiveData.cachedIn(viewLifecycleOwner.lifecycleScope)
+                .observe(viewLifecycleOwner) { posts ->
+                    postsAdapter.submitData(viewLifecycleOwner.lifecycle, posts)
+                }
+
+            binding.recyclerView.adapter = concatAdapter
+        }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            //TODO добавить обновление поста
+            postsViewModel.loadPosts(profileViewModel.getUsername())
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
 //        val collageAdapter = CollageAdapter(listOf(CollageData()))
 //
 //        collageAdapter.onClick = {
 //            navController.navigate(R.id.imagesFragment)
 //        }
+
+
 
         binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
 
@@ -95,5 +105,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             true
         }
+    }
+
+    fun load() {
+
     }
 }
