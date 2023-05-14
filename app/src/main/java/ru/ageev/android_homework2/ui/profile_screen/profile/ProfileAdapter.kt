@@ -7,7 +7,11 @@ import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.databinding.ViewProfileCardBinding
 import javax.inject.Inject
 
-class ProfileAdapter @Inject constructor(private val profile: Profile?) : RecyclerView.Adapter<ProfileViewHolder>() {
+class ProfileAdapter @Inject constructor(private val profile: Profile?) :
+    RecyclerView.Adapter<ProfileViewHolder>() {
+
+    var onClick: () -> Unit = {}
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding =
             ViewProfileCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)

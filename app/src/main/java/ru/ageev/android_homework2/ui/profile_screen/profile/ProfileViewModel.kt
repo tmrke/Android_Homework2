@@ -37,4 +37,8 @@ class ProfileViewModel @Inject constructor(
     fun getUsername(): String {
         return getUsernameUseCase.execute()
     }
+
+    fun updateProfile(profileId: String) {
+        getProfile(profileId)
+    }
 }

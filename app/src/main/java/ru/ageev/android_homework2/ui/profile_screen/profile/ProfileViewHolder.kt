@@ -17,6 +17,10 @@ class ProfileViewHolder(
             textViewImagesCount.text = item.imagesCount.toString()
             textViewPostsCount.text = item.postsCount.toString()
             textViewSubscribersCount.text = item.subscribersCount.toString()
+
+            binding.buttonSubscribe.setOnClickListener {
+
+            }
         }
     }
 }
