@@ -10,6 +10,5 @@ data class Post(
     var likes: Like,
     //var owner: ProfileCompact,
     //var dataCreated: String,
-
 )
 
