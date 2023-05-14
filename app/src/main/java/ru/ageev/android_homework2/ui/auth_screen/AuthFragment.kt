@@ -137,6 +137,24 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                     }
                 }
             }
+
+
+            authViewModel.checkUsernameLiveData.observe(viewLifecycleOwner) { response ->
+                when (response) {
+
+                    CheckUsernameEnumResponse.Taken -> {
+                        resultEnum = ResultEnum.ToLogin
+                        binding.textInputLayoutTextPasswordConfirm.visibility = View.GONE
+                    }
+
+                    CheckUsernameEnumResponse.Free -> {
+                        binding.textInputLayoutTextPasswordConfirm.visibility = View.VISIBLE
+                        resultEnum = ResultEnum.ToRegister
+                    }
+
+                    else -> {}
+                }
+            }
         }
 
         authViewModel.registerLiveData.observe(viewLifecycleOwner) {
@@ -145,6 +163,8 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
 
         authViewModel.loginLiveData.observe(viewLifecycleOwner) {
+
+
             navController.navigate(R.id.profileFragment)
         }
     }
