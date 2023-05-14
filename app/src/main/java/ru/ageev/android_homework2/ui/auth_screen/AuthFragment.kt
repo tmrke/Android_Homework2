@@ -13,7 +13,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.HttpException
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
@@ -56,12 +55,16 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                         val username = binding.editTextUsername.text.toString()
 
                         if (username.length < 3 || username.length > 16) {
-                            Toast.makeText(
-                                context,
-                                "usernames length must be more than 2 and less than 17",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            with(textInputLayoutTextUsername) {
+                                error = getString(R.string.short_length_username)
+                                setErrorIconDrawable(R.drawable.ic_warning)
+                            }
                         } else {
+                            with(textInputLayoutTextUsername) {
+                                error = null
+                                setErrorIconDrawable(R.drawable.ic_cancel)
+                            }
+
                             authViewModel.checkUsername(username)
                             textInputLayoutTextPassword.visibility = View.VISIBLE
                         }
@@ -71,22 +74,22 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                         val passwordLength = editTextPassword.text.toString().length
 
                         if (passwordLength < 8) {
-                            Toast.makeText(
-                                context,
-                                "passwords length must be 8 and more",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            with(textInputLayoutTextPassword) {
+                                error = context.getString(R.string.short_password_warning)
+                            }
 
                             resultEnum = ResultEnum.ToCheckUsername
                         } else if (passwordLength >= 16) {
-                            Toast.makeText(
-                                context,
-                                "passwords length must be less than 16",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            with(textInputLayoutTextPassword) {
+                                error = context.getString(R.string.long_password_warning)
+                            }
 
                             resultEnum = ResultEnum.ToCheckUsername
                         } else {
+                            with(textInputLayoutTextPassword) {
+                                error = null
+                            }
+
                             resultEnum = ResultEnum.ToPasswordConfirm
                         }
                     }
@@ -94,23 +97,20 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                     ResultEnum.ToPasswordConfirm -> {
                         if (editTextPassword.text.toString() == editTextPasswordConfirm.text.toString()) {
 
+                            with(textInputLayoutTextPasswordConfirm) {
+                                error = null
+                            }
+
                             val registrationRequest = RegistrationRequest(
                                 editTextUsername.text.toString(),
                                 editTextPasswordConfirm.text.toString()
                             )
 
                             authViewModel.register(registrationRequest)
-                            Toast.makeText(
-                                context,
-                                registrationRequest.username,
-                                Toast.LENGTH_SHORT
-                            ).show()
                         } else {
-                            Toast.makeText(
-                                context,
-                                "passwords must coincide",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            with(textInputLayoutTextPasswordConfirm) {
+                                error = context.getString(R.string.passwords_must_coincide)
+                            }
                         }
                     }
 
@@ -125,8 +125,13 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                             authViewModel.login(registrationRequest)
 
                             if (response == 400) {
-                                Toast.makeText(context, response.toString(), Toast.LENGTH_SHORT)
-                                    .show()
+                                with(textInputLayoutTextPassword) {
+                                    error = context.getString(R.string.incorrect_password)
+                                }
+                            } else {
+                                with(textInputLayoutTextPassword) {
+                                    error = null
+                                }
                             }
                         }
                     }
@@ -139,7 +144,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
                     CheckUsernameEnumResponse.Taken -> {
                         resultEnum = ResultEnum.ToLogin
-                        binding.textInputLayoutTextPasswordConfirm.visibility = View.INVISIBLE
+                        binding.textInputLayoutTextPasswordConfirm.visibility = View.GONE
                     }
 
                     CheckUsernameEnumResponse.Free -> {

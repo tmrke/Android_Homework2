@@ -11,3 +11,4 @@ data class ApiProfileCompact(
     @SerialName("avatarUrl") val avatarUrl: String? = null,
     @SerialName("subscribed") val subscribed: Boolean,
 )
+

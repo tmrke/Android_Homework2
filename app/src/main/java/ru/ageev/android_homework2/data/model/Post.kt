@@ -5,11 +5,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Post(
-    //@SerialName("images") var images: List<Image>?,
-    @SerialName("id") var id: String,
-    @SerialName("text") var text: String?,
-    @SerialName("likes") var likes: Like,
-    @SerialName("owner") var owner: ProfileCompact,
-    @SerialName("dateCreated") var dateCreated: String,
+    @SerialName("images") val images: List<Image>?,
+    @SerialName("id") val id: String,
+    @SerialName("text") val text: String?,
+    @SerialName("likes") val likes: Like,
+    @SerialName("owner") val owner: ProfileCompact,
+    @SerialName("dateCreated") val dateCreated: String,
 )
 

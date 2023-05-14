@@ -5,8 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Image(
-    @SerialName("id") var id: String,
-    @SerialName("sizes") var sizes: List<ImageSize>,
-    @SerialName("owner") var owner: ProfileCompact,
-    @SerialName("dateCreated") var dateCreated: String
+    @SerialName("id") val id: String,
+    @SerialName("sizes") val sizes: List<ImageSize>,
+    @SerialName("owner") val owner: ProfileCompact,
+    @SerialName("dateCreated") val dateCreated: String
 )
+

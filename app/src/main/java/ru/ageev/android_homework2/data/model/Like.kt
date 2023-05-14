@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Like(
     @SerialName("liked") var liked: Boolean,
-    @SerialName("likesCount") var likesCount: Int
+    @SerialName("likesCount") val likesCount: Int
 )
