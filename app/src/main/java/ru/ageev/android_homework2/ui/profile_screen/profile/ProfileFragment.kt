@@ -17,6 +17,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.databinding.FragmentProfileBinding
+import ru.ageev.android_homework2.ui.insets.Inset
 import ru.ageev.android_homework2.ui.post_screen.PostViewModel
 import ru.ageev.android_homework2.ui.profile_screen.posts.PostsAdapter
 import ru.ageev.android_homework2.ui.profile_screen.posts.PostsViewModel
@@ -28,24 +29,26 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val postsViewModel by viewModels<PostsViewModel>()
     private val postViewModel by viewModels<PostViewModel>()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->         //IME - клавиатура
-            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
+        Inset.setInsets(binding.root)
 
-            binding.root.updatePadding(
-                bottom = imeInsets.bottom
-            )
+        binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.bottomMenuFeed -> {
+                    navController.navigate(R.id.feedFragment)
+                    true
+                }
 
-            WindowInsetsCompat.Builder()
-                .setInsets(
-                    WindowInsetsCompat.Type.ime(),
-                    Insets.of(imeInsets.left, 0, imeInsets.right, imeInsets.bottom)
-                ).build()
+                else -> {
+                    true
+                }
+            }
+
         }
+
 
         profileViewModel.getProfile(
             profileViewModel.getUsername()
@@ -81,7 +84,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         binding.swipeRefreshLayout.setOnRefreshListener {
-            //TODO добавить обновление поста
             postsViewModel.loadPosts(profileViewModel.getUsername())
             binding.swipeRefreshLayout.isRefreshing = false
         }

@@ -15,11 +15,11 @@ import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.databinding.FragmentCreatorPostBinding
 import ru.ageev.android_homework2.service.CreatePostService
+import ru.ageev.android_homework2.ui.insets.Inset
 
 class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
     private val binding by viewBinding(FragmentCreatorPostBinding::bind)
     private val viewModel by viewModels<CreatorPostViewModel>()
-
 
     private var imagesUriList: MutableList<Uri> = mutableListOf()
     private val adapter = ImagesCreatorPostAdapter(imagesUriList)
@@ -47,6 +47,8 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var navController = Navigation.findNavController(view)
+
+        Inset.setInsets(binding.root)
 
 
         binding.imageButtonAddImage.setOnClickListener {
@@ -82,6 +84,4 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
             navController.navigate(R.id.profileFragment)
         }
     }
-
-
 }

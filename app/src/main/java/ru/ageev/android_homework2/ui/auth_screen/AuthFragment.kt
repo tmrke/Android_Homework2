@@ -18,6 +18,7 @@ import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.remote.model.RegistrationRequest
 import ru.ageev.android_homework2.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.android_homework2.databinding.FragmentAuthorizationBinding
+import ru.ageev.android_homework2.ui.insets.Inset
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -31,19 +32,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
         super.onViewCreated(view, savedInstanceState)
         val navController = Navigation.findNavController(view)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->         //IME - клавиатура
-            val imeInsets = insets.getInsets(WindowInsetsCompat.Type.ime())
-
-            binding.root.updatePadding(
-                bottom = imeInsets.bottom,
-            )
-
-            WindowInsetsCompat.Builder()
-                .setInsets(
-                    WindowInsetsCompat.Type.ime(),
-                    Insets.of(imeInsets.left, imeInsets.right, imeInsets.right, imeInsets.bottom)
-                ).build()
-        }
+        Inset.setInsets(binding.root)
 
         var resultEnum = ResultEnum.ToCheckUsername
 
