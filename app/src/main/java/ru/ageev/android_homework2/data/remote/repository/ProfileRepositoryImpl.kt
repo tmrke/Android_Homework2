@@ -17,7 +17,7 @@ import javax.inject.Inject
 class ProfileRepositoryImpl @Inject constructor(
     private val apiService: NanopostApiService,
     private val profileMapper: ProfileMapper,
-    private val postsMapper: PostMapper
+    private val postMapper: PostMapper
 ) : ProfileRepository {
     override suspend fun getProfile(profileId: String): Profile {
         return profileMapper.toProfile(apiService.getProfile(profileId))
@@ -29,7 +29,7 @@ class ProfileRepositoryImpl @Inject constructor(
             pagingSourceFactory = { PostPagingSource(apiService, profileId) }
         ).flow.map { pagingData ->
             pagingData.map { apiPost ->
-                postsMapper.toPost(apiPost)
+                postMapper.toPost(apiPost)
             }
         }
     }
