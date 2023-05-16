@@ -107,7 +107,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding.toolBar.menu.findItem(R.id.actionExit).setOnMenuItemClickListener {
             profileViewModel.deleteToken()
-
             navController.navigate(R.id.authFragment)
 
             true

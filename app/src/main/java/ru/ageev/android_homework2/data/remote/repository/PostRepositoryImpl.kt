@@ -1,5 +1,6 @@
 package ru.ageev.android_homework2.data.remote.repository
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -40,6 +41,7 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
+
     override suspend fun createPost(text: String?, list: List<ByteArray>?): Post {
         var image0: MultipartBody.Part? = null
 
@@ -63,7 +65,7 @@ class PostRepositoryImpl @Inject constructor(
 
         var image2: MultipartBody.Part? = null
 
-        list?.getOrNull(2)?.let {
+        list?.getOrNull(2)?.let {           //getOrNull - если элемента нет то выдает null
             image2 = MultipartBody.Part.createFormData(
                 "image3",
                 "image3.jpg",

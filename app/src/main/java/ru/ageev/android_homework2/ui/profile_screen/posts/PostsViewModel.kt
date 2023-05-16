@@ -20,10 +20,9 @@ class PostsViewModel @Inject constructor(
 
     fun loadPosts(profileId: String) {
         viewModelScope.launch {
-            getPostsUseCase.execute(profileId)
-                .collect { posts ->
-                    _postsLiveData.postValue(posts)
-                }
+            getPostsUseCase.execute(profileId).collect { posts ->
+                _postsLiveData.postValue(posts)
+            }
         }
     }
 }
