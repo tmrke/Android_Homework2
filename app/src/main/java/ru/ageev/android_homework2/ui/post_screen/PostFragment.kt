@@ -11,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.FragmentPostBinding
+import ru.ageev.android_homework2.ui.insets.Inset
 
 @AndroidEntryPoint
 class PostFragment : Fragment(R.layout.fragment_post) {
@@ -20,6 +21,8 @@ class PostFragment : Fragment(R.layout.fragment_post) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var navController = Navigation.findNavController(view)
+
+        Inset.setInsets(binding.root)
 
         val postId = arguments?.getString("postId")
 

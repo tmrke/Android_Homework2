@@ -30,7 +30,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="50dp"
+        android:paddingBottom="120dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
@@ -163,33 +163,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imageViewMedia4" />
-
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/recyclerView"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="@dimen/general_margin"-->
-<!--                android:orientation="vertical"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="@id/recyclerView"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/imageViewPost"-->
-<!--                tools:itemCount="5"-->
-<!--                />-->
-
-
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/imageButtonFavorite"-->
-<!--                style="@style/Widget.Material3.Button.ElevatedButton"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="@dimen/general_margin"-->
-<!--                android:text="@string/likes_count"-->
-
-<!--                app:icon="@drawable/favorite"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/recyclerView" />-->
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
