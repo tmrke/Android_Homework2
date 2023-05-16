@@ -53,4 +53,10 @@ interface NanopostApiService {
         @Path("profileId") profileId: String
     ): ResultResponse
 
+    @GET("api/v1/feed")
+    suspend fun getFeed(
+        @Query("count") count: Int,
+        @Query("offset") offset: String?
+    ): PagedDataResponse<ApiPost>
+
 }
