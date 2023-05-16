@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_profileFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_imagesFragment"
+            app:destination="@id/imagesFragment" />
     </fragment>
 
     <fragment
@@ -51,5 +54,10 @@
         android:id="@+id/createPostFragment"
         android:name="ru.ageev.android_homework2.ui.creator_post_screen.CreatorPostFragment"
         android:label="create" />
+
+    <fragment
+        android:id="@+id/imagesFragment"
+        android:name="ru.ageev.android_homework2.ui.images_screen.ImagesFragment"
+        android:label="images" />
 
 </navigation>
