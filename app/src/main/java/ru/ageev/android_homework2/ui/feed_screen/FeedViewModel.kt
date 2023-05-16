@@ -1,5 +1,6 @@
 package ru.ageev.android_homework2.ui.feed_screen
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +16,7 @@ import javax.inject.Inject
 class FeedViewModel @Inject constructor(
     private val feedUseCase: FeedUseCase,
 ) : ViewModel() {
+
     private val _postsLiveData = MutableLiveData<PagingData<Post>>()
     var postsLiveData = MutableLiveData<PagingData<Post>>()
 

@@ -58,5 +58,4 @@ interface NanopostApiService {
         @Query("count") count: Int,
         @Query("offset") offset: String?
     ): PagedDataResponse<ApiPost>
-
 }
