@@ -58,6 +58,14 @@
     <fragment
         android:id="@+id/imagesFragment"
         android:name="ru.ageev.android_homework2.ui.images_screen.ImagesFragment"
-        android:label="images" />
+        android:label="images">
+        <argument
+            android:name="profileId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_imagesFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
 </navigation>

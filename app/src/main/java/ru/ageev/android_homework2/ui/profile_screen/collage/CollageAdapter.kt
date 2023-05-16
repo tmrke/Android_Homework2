@@ -4,10 +4,13 @@ package ru.ageev.android_homework2.ui.profile_screen.collage
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.ageev.android_homework2.data.CollageData
+import ru.ageev.android_homework2.data.ImageData
 import ru.ageev.android_homework2.databinding.ViewCollageCardBinding
+import javax.inject.Inject
 
-class CollageAdapter(private val collages: List<CollageData>) :
+class CollageAdapter @Inject constructor(
+    private val images: List<ImageData>
+) :
     RecyclerView.Adapter<CollageViewHolder>() {
     var onClick: () -> Unit = {}
 
@@ -19,10 +22,10 @@ class CollageAdapter(private val collages: List<CollageData>) :
     }
 
     override fun getItemCount(): Int {
-        return collages.size
+        return 1
     }
 
     override fun onBindViewHolder(holder: CollageViewHolder, position: Int) {
-        holder.bind(collages[position])
+        holder.bind(images[position])
     }
 }

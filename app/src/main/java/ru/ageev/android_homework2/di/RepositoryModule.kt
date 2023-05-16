@@ -4,6 +4,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import ru.ageev.android_homework2.data.remote.repository.ImageRepository
+import ru.ageev.android_homework2.data.remote.repository.ImageRepositoryImpl
 import ru.ageev.android_homework2.data.remote.repository.PostRepository
 import ru.ageev.android_homework2.data.remote.repository.PostRepositoryImpl
 import ru.ageev.android_homework2.data.remote.repository.ProfileRepository
@@ -21,4 +23,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindPostRepository(impl: PostRepositoryImpl): PostRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindImageRepository(impl: ImageRepositoryImpl): ImageRepository
 }

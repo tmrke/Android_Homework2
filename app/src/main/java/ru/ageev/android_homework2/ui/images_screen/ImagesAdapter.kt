@@ -2,24 +2,39 @@ package ru.ageev.android_homework2.ui.images_screen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import ru.ageev.android_homework2.data.ImageData
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
+import ru.ageev.android_homework2.data.model.Image
 import ru.ageev.android_homework2.databinding.ItemImageBinding
 
-class ImagesAdapter(private val images: List<ImageData>) :
-    RecyclerView.Adapter<ImagesViewHolderScreen>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesViewHolderScreen {
+val diffUtilCallback = object : DiffUtil.ItemCallback<Image>() {
+    override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
+        return oldItem == newItem
+    }
+}
+
+class ImagesAdapter : PagingDataAdapter<Image, ImagesViewHolder>(diffUtilCallback) {
+
+    var onClick: (String) -> Unit = {}
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesViewHolder {
         val binding =
             ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return ImagesViewHolderScreen(binding)
+        return ImagesViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ImagesViewHolderScreen, position: Int) {
-        holder.bind(images[position])
-    }
 
-    override fun getItemCount(): Int {
-        return images.size
+    override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
+        getItem(position)?.let { image ->
+            holder.bind(image)
+
+//            holder.itemView.setOnClickListener {
+//                onClick(image.id)
+//            }
+        }
     }
 }
