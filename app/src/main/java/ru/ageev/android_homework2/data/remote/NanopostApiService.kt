@@ -10,6 +10,7 @@ import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
+import ru.ageev.android_homework2.data.remote.model.ApiImage
 import ru.ageev.android_homework2.data.remote.model.ApiPost
 import ru.ageev.android_homework2.data.remote.model.ApiProfile
 import ru.ageev.android_homework2.data.remote.model.response.ResultResponse
@@ -58,4 +59,11 @@ interface NanopostApiService {
         @Query("count") count: Int,
         @Query("offset") offset: String?
     ): PagedDataResponse<ApiPost>
+
+    @GET("api/v1/images/{profileId}")
+    suspend fun getAllImages(
+        @Path("profileId") profileId: String,
+        @Query("count") count: Int,
+        @Query("offset") offset: String?
+    ): PagedDataResponse<ApiImage>
 }
