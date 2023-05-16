@@ -1,5 +1,6 @@
 package ru.ageev.android_homework2.ui.images_screen
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.ageev.android_homework2.data.ImageData
@@ -11,5 +12,6 @@ class ImagesViewHolderScreen(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: ImageData) {
         binding.imageViewPost.load(item.imageUrl)
+        binding.imageButtonDelete.visibility = View.GONE
     }
 }
