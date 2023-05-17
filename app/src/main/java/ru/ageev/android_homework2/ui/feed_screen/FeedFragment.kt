@@ -2,6 +2,7 @@ package ru.ageev.android_homework2.ui.feed_screen
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -19,7 +20,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navController = Navigation.findNavController(view)
+        var navController = Navigation.findNavController(view)
 
         Inset.setInsets(binding.root)
 
@@ -42,6 +43,13 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                 else -> {
                     true
                 }
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            navController = Navigation.findNavController(requireView())
+            if (navController.currentDestination?.id == R.id.feedFragment) {
+                navController.navigate(R.id.myProfileFragment)
             }
         }
     }
