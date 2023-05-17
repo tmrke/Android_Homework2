@@ -6,6 +6,7 @@ import okhttp3.RequestBody
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
@@ -66,4 +67,13 @@ interface NanopostApiService {
         @Query("count") count: Int,
         @Query("offset") offset: String?
     ): PagedDataResponse<ApiImage>
+
+    @PATCH("api/v1/profile/{profileId}")
+    @Multipart
+    suspend fun editProfile(
+        @Path("profileId") profileId: String,
+        @Part("displayName") displayName: RequestBody?,
+        @Part("bio") bio: RequestBody?,
+        @Part avatar: MultipartBody.Part?,
+    ): ResultResponse
 }

@@ -9,7 +9,11 @@ class GetContentUriUseCase @Inject constructor(
 ) {
 
     //переопределяем оператор invoke / можно написать метод execute как в других юзкейсах
-    operator fun invoke(uri: Uri): ByteArray? {
+    operator fun invoke(uri: Uri?): ByteArray? {
+        if (uri == null) {
+            return null
+        }
+
         return contentResolver.openInputStream(uri).use {
             it?.readBytes()
         }
