@@ -1,9 +1,10 @@
-package ru.ageev.android_homework2.ui.profile_screen.profile
+package ru.ageev.android_homework2.ui.profile
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.ageev.android_homework2.data.model.Profile
+import ru.ageev.android_homework2.databinding.ViewMyProfileCardBinding
 import ru.ageev.android_homework2.databinding.ViewProfileCardBinding
 import javax.inject.Inject
 

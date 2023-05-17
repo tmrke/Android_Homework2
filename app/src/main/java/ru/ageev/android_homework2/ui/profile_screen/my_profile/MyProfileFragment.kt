@@ -1,12 +1,8 @@
-package ru.ageev.android_homework2.ui.profile_screen.profile
+package ru.ageev.android_homework2.ui.profile_screen.my_profile
 
 import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
-import androidx.core.graphics.Insets
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -16,16 +12,18 @@ import androidx.recyclerview.widget.ConcatAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
+import ru.ageev.android_homework2.data.ImageData
 import ru.ageev.android_homework2.databinding.FragmentProfileBinding
 import ru.ageev.android_homework2.ui.insets.Inset
 import ru.ageev.android_homework2.ui.post_screen.PostViewModel
+import ru.ageev.android_homework2.ui.profile_screen.collage.CollageAdapter
 import ru.ageev.android_homework2.ui.profile_screen.posts.PostsAdapter
 import ru.ageev.android_homework2.ui.profile_screen.posts.PostsViewModel
 
 @AndroidEntryPoint
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class MyProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentProfileBinding::bind)
-    private val profileViewModel by viewModels<ProfileViewModel>()
+    private val myProfileViewModel by viewModels<MyProfileViewModel>()
     private val postsViewModel by viewModels<PostsViewModel>()
     private val postViewModel by viewModels<PostViewModel>()
 
@@ -50,30 +48,43 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
 
-        profileViewModel.getProfile(
-            profileViewModel.getUsername()
+        myProfileViewModel.getProfile(
+            myProfileViewModel.getUsername()
             //"evo"
         )
 
-        profileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
+        myProfileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             postsViewModel.loadPosts(profile.id)
 
-            val profileAdapter = ProfileAdapter(profile)
+            val myProfileAdapter = MyProfileAdapter(profile)
             val postsAdapter = PostsAdapter()
+            val collageAdapter = CollageAdapter(List(4) { ImageData() })
+//
 
-            profileAdapter.onClick = { profileId ->
-                profileViewModel.subscribe(profileId)
+
+            myProfileAdapter.onClick = { profileId ->
+                navController.navigate(R.id.editFragment)
             }
 
             postsAdapter.onClick = { postId ->
                 postViewModel.getPost(postId)
 
-                navController.navigate(
-                    ProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
-                )
+//                navController.navigate(
+//                    ProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
+//                )
+
+                navController.navigate(R.id.postFragment)
             }
 
-            val concatAdapter = ConcatAdapter(profileAdapter, postsAdapter)
+            collageAdapter.onClick = {
+//               navController.navigate(
+//                   ProfileFragmentDirections.actionProfileFragmentToImagesFragment()
+//               )
+
+                navController.navigate(R.id.imagesFragment)
+            }
+
+            val concatAdapter = ConcatAdapter(myProfileAdapter, collageAdapter, postsAdapter)
 
             postsViewModel.postsLiveData.cachedIn(viewLifecycleOwner.lifecycleScope)
                 .observe(viewLifecycleOwner) { posts ->
@@ -84,16 +95,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         binding.swipeRefreshLayout.setOnRefreshListener {
-            postsViewModel.loadPosts(profileViewModel.getUsername())
+            postsViewModel.loadPosts(myProfileViewModel.getUsername())
             binding.swipeRefreshLayout.isRefreshing = false
         }
-
-//        val collageAdapter = CollageAdapter(listOf(CollageData()))
-//
-//        collageAdapter.onClick = {
-//            navController.navigate(R.id.imagesFragment)
-//        }
-
 
         binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
 
@@ -106,7 +110,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         binding.toolBar.menu.findItem(R.id.actionExit).setOnMenuItemClickListener {
-            profileViewModel.deleteToken()
+            myProfileViewModel.deleteToken()
             navController.navigate(R.id.authFragment)
 
             true

@@ -1,8 +1,5 @@
-package ru.ageev.android_homework2.ui.profile_screen.profile
+package ru.ageev.android_homework2.ui.profile
 
-import androidx.compose.ui.graphics.Color
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import ru.ageev.android_homework2.R
@@ -22,16 +19,7 @@ class ProfileViewHolder(
             textViewPostsCount.text = profile.postsCount.toString()
             textViewSubscribersCount.text = profile.subscribersCount.toString()
 
-
             buttonSubscribe.setOnClickListener {
-                if (profile.subscribed) {
-                    buttonSubscribe.text = "unsubscribe"
-                    buttonSubscribe.setBackgroundColor(R.color.md_theme_light_onSurfaceVariant.hashCode())
-                } else {
-                    buttonSubscribe.text = "subscribe"
-                    buttonSubscribe.setBackgroundColor(R.color.md_theme_dark_surfaceVariant.hashCode())
-                }
-
                 onClick(profile.id)
 
             }

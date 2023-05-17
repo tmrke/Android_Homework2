@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/general_margin"
+            app:menu="@menu/create_post_menu"
+            app:navigationIcon="@drawable/ic_back_24"
+            app:title="@string/my_profile"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageViewUserProfileImage"
+        android:layout_width="@dimen/user_profile_image_size"
+        android:layout_height="@dimen/user_profile_image_size"
+        android:layout_margin="@dimen/general_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:shapeAppearance="@style/rounded_image"
+        tools:background="@color/md_theme_dark_primary"
+        tools:ignore="ImageContrastCheck"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/imageButtonAddImage"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/general_margin"
+        android:text="@string/add_image"
+        app:icon="@drawable/ic_media"
+
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewUserProfileImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageViewUserProfileImage"
+        app:layout_constraintTop_toBottomOf="@id/appbar" />
+
+
+    <TextView
+        android:id="@+id/textViewUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/general_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/name"
+        android:textSize="@dimen/user_name_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewUserProfileImage"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextName"
+        />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/general_margin"
+        android:autofillHints="my post"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewUserName"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonAddImage"
+
+        />
+
+    <TextView
+        android:id="@+id/textViewUserStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/general_margin"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/bio"
+        android:textSize="@dimen/user_name_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewUserName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextBio"
+        />
+
+    <EditText
+        android:id="@+id/editTextBio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/general_margin"
+        android:autofillHints="my post"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewUserStatus"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
