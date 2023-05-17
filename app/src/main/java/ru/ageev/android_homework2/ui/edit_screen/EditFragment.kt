@@ -33,10 +33,27 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
 
         Inset.setInsets(binding.root)
 
+        val uri = arguments?.getString("uri")
+        val name = arguments?.getString("name")
+        val bio = arguments?.getString("bio")
 
-        binding.imageButtonAddImage.setOnClickListener {
-            pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        with(binding) {
+            editTextName.setText(name)
+            editTextBio.setText(bio)
+
+            if (uri == "null") {
+                imageViewUserProfileImage.load(R.drawable.profile)
+            } else {
+                imageViewUserProfileImage.load(uri)
+            }
+
+            imageButtonAddImage.setOnClickListener {
+                pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+            }
         }
+
+
+
 
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
