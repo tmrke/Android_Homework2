@@ -13,7 +13,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.ImageData
-import ru.ageev.android_homework2.databinding.FragmentProfileBinding
+import ru.ageev.android_homework2.databinding.FragmentMyProfileBinding
 import ru.ageev.android_homework2.ui.insets.Inset
 import ru.ageev.android_homework2.ui.post_screen.PostViewModel
 import ru.ageev.android_homework2.ui.profile_screen.collage.CollageAdapter
@@ -22,7 +22,7 @@ import ru.ageev.android_homework2.ui.profile_screen.posts.PostsViewModel
 
 @AndroidEntryPoint
 class MyProfileFragment : Fragment(R.layout.fragment_profile) {
-    private val binding by viewBinding(FragmentProfileBinding::bind)
+    private val binding by viewBinding(FragmentMyProfileBinding::bind)
     private val myProfileViewModel by viewModels<MyProfileViewModel>()
     private val postsViewModel by viewModels<PostsViewModel>()
     private val postViewModel by viewModels<PostViewModel>()
@@ -82,7 +82,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
 
             collageAdapter.onClick = {
                 navController.navigate(
-                    MyProfileFragmentDirections.actionProfileFragmentToImagesFragment(profile.id)
+                    MyProfileFragmentDirections.actionMyProfileFragmentToImagesFragment(profile.id)
                 )
             }
 
@@ -98,6 +98,11 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             postsViewModel.loadPosts(myProfileViewModel.getUsername())
+
+            //TODO Paging обновить через адаптер (типа adapter.load)
+
+            myProfileViewModel.getProfile(myProfileViewModel.getUsername())
+
             binding.swipeRefreshLayout.isRefreshing = false
         }
 

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Post
@@ -43,20 +44,20 @@ class PostFragment : Fragment(R.layout.fragment_post) {
         viewModel.postLiveData.observe(viewLifecycleOwner) { post ->
             binding.textViewPostText.text = post.text
 
-//            if (post.images != null) {
-//                for (i in post.images.indices) {
-//                    val imageUrl = post.images[i].images[0].url
-//                    val imageView = when (i) {
-//                        0 -> binding.imageViewMedia1
-//                        1 -> binding.imageViewMedia2
-//                        2 -> binding.imageViewMedia3
-//                        3 -> binding.imageViewMedia4
-//                        else -> null
-//                    }
-//
-//                    imageView?.load(imageUrl)
-//                }
-//            }
+            if (post.images != null) {
+                for (i in post.images.indices) {
+                    val imageUrl = post.images[0].sizes[0].url
+                    val imageView = when (i) {
+                        0 -> binding.imageViewMedia1
+                        1 -> binding.imageViewMedia2
+                        2 -> binding.imageViewMedia3
+                        3 -> binding.imageViewMedia4
+                        else -> null
+                    }
+
+                    imageView?.load(imageUrl)
+                }
+            }
 
             clickLike(post)
         }

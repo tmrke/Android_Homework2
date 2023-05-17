@@ -18,15 +18,14 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
     private val binding by viewBinding(FragmentFeedBinding::bind)
     private val viewModel by viewModels<FeedViewModel>()
 
+    private val adapter = PostsAdapter()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var navController = Navigation.findNavController(view)
 
         Inset.setInsets(binding.root)
-
         viewModel.getFeed()
-
-        val adapter = PostsAdapter()
         binding.recyclerView.adapter = adapter
 
         viewModel.postsLiveData.observe(viewLifecycleOwner) { posts ->

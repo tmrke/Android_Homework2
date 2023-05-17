@@ -32,9 +32,9 @@ class ImagesAdapter : PagingDataAdapter<Image, ImagesViewHolder>(diffUtilCallbac
         getItem(position)?.let { image ->
             holder.bind(image)
 
-//            holder.itemView.setOnClickListener {
-//                onClick(image.id)
-//            }
+            holder.itemView.setOnClickListener {
+                onClick(image.id)
+            }
         }
     }
 }

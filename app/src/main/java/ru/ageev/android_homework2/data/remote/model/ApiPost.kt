@@ -7,7 +7,7 @@ import ru.ageev.android_homework2.data.model.ProfileCompact
 
 @Serializable
 data class ApiPost(
-    //@SerialName("images") val images: List<ApiImage>? = null,
+    @SerialName("images") val images: List<ApiImage>,
     @SerialName("id") val id: String,
     @SerialName("text") val text: String? = null,
     @SerialName("likes") val likes: Like,

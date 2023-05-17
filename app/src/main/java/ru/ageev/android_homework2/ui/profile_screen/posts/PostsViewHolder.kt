@@ -19,8 +19,9 @@ class PostsViewHolder(
             imageViewPostProfileImage.load(post.owner.avatarUrl ?: R.drawable.profile)
             textViewDate.text = post.dateCreated
 
-//            val url = post.images?.get(0)?.sizes?.get(0)?.url
-//            imageViewMedia.load(url)
+            val url = post.images?.getOrNull(0)?.sizes?.get(0)?.url
+
+            imageViewMedia.load(url)
 
             textViewPost.setOnClickListener {
                 onClick(post.id)
