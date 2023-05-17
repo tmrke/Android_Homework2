@@ -67,10 +67,10 @@
 
     <fragment
         android:id="@+id/editFragment"
-        android:name="ru.ageev.android_homework2.ui.creator_post_screen.EditFragment"
+        android:name="ru.ageev.android_homework2.ui.edit_screen.EditFragment"
         android:label="EditFragment">
         <argument
-            android:name="imageUri"
+            android:name="uri"
             app:argType="string" />
         <argument
             android:name="name"
@@ -83,7 +83,11 @@
     <fragment
         android:id="@+id/imagesFragment"
         android:name="ru.ageev.android_homework2.ui.images_screen.ImagesFragment"
-        android:label="Images" />
+        android:label="Images">
+        <argument
+            android:name="profileId"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/profileFragment"

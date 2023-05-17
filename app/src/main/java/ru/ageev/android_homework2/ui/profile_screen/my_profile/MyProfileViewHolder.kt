@@ -21,14 +21,6 @@ class MyProfileViewHolder(
 
 
             buttonEdit.setOnClickListener {
-//                if (profile.subscribed) {
-//                    buttonSubscribe.text = "unsubscribe"
-//                    buttonSubscribe.setBackgroundColor(R.color.md_theme_light_onSurfaceVariant.hashCode())
-//                } else {
-//                    buttonSubscribe.text = "subscribe"
-//                    buttonSubscribe.setBackgroundColor(R.color.md_theme_dark_surfaceVariant.hashCode())
-//                }
-
                 onClick(profile.id)
             }
         }

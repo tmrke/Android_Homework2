@@ -62,26 +62,28 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
 //
 
 
-            myProfileAdapter.onClick = { profileId ->
-                navController.navigate(R.id.editFragment)
+            myProfileAdapter.onClick = {
+                navController.navigate(
+                    MyProfileFragmentDirections.actionProfileFragmentToEditFragment(
+                        profile.avatarSmall.toString(),
+                        profile.displayName.toString(),
+                        profile.bio?.toString() ?: ""
+                    )
+                )
             }
 
             postsAdapter.onClick = { postId ->
                 postViewModel.getPost(postId)
 
-//                navController.navigate(
-//                    ProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
-//                )
-
-                navController.navigate(R.id.postFragment)
+                navController.navigate(
+                    MyProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
+                )
             }
 
             collageAdapter.onClick = {
-//               navController.navigate(
-//                   ProfileFragmentDirections.actionProfileFragmentToImagesFragment()
-//               )
-
-                navController.navigate(R.id.imagesFragment)
+                navController.navigate(
+                    MyProfileFragmentDirections.actionProfileFragmentToImagesFragment(profile.id)
+                )
             }
 
             val concatAdapter = ConcatAdapter(myProfileAdapter, collageAdapter, postsAdapter)
