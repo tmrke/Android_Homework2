@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/myProfileFragment">
 
     <fragment
         android:id="@+id/feedFragment"
@@ -10,12 +10,15 @@
         android:label="feed">
         <action
             android:id="@+id/action_feedFragment_to_profileFragment"
+            app:destination="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_profileFragment2"
             app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="ru.ageev.android_homework2.ui.profile_screen.profile.ProfileFragment"
+        android:id="@+id/myProfileFragment"
+        android:name="ru.ageev.android_homework2.ui.profile_screen.my_profile.MyProfileFragment"
         android:label="ProfileFragment">
         <action
             android:id="@+id/action_profileFragment_to_postFragment"
@@ -27,8 +30,12 @@
             android:id="@+id/action_profileFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
         <action
+            android:id="@+id/action_profileFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+        <action
             android:id="@+id/action_profileFragment_to_imagesFragment"
             app:destination="@id/imagesFragment" />
+
     </fragment>
 
     <fragment
@@ -39,6 +46,9 @@
         <argument
             android:name="postId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_postFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -47,7 +57,7 @@
         android:label="auth">
         <action
             android:id="@+id/action_authFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/myProfileFragment" />
     </fragment>
 
     <fragment
@@ -56,16 +66,28 @@
         android:label="create" />
 
     <fragment
+        android:id="@+id/editFragment"
+        android:name="ru.ageev.android_homework2.ui.creator_post_screen.EditFragment"
+        android:label="EditFragment">
+        <argument
+            android:name="imageUri"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="bio"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
         android:id="@+id/imagesFragment"
         android:name="ru.ageev.android_homework2.ui.images_screen.ImagesFragment"
-        android:label="images">
-        <argument
-            android:name="profileId"
-            app:argType="string" />
+        android:label="Images" />
 
-        <action
-            android:id="@+id/action_imagesFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="ru.ageev.android_homework2.ui.profile.ProfileFragment"
+        android:label="Profile" />
 
 </navigation>

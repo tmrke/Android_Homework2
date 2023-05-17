@@ -1,4 +1,4 @@
-package ru.ageev.android_homework2.ui.profile_screen.profile
+package ru.ageev.android_homework2.ui.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,6 @@ import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.domain.auth_use_case.DeleteTokenUseCase
 import ru.ageev.android_homework2.domain.profile_use_case.GetProfileUseCase
 import ru.ageev.android_homework2.domain.GetUsernameUseCase
-import ru.ageev.android_homework2.domain.profile_use_case.SubscribeUseCase
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,7 +17,6 @@ class ProfileViewModel @Inject constructor(
     private val getProfileUseCase: GetProfileUseCase,
     private val getUsernameUseCase: GetUsernameUseCase,
     private val deleteTokenUseCase: DeleteTokenUseCase,
-    private val subscribeUseCase: SubscribeUseCase,
 ) : ViewModel() {
 
     private val _profileLiveData = MutableLiveData<Profile>()
@@ -40,10 +38,7 @@ class ProfileViewModel @Inject constructor(
         return getUsernameUseCase.execute()
     }
 
+    fun edit(profileId: String) {
 
-    fun subscribe(profileId: String) {
-        viewModelScope.launch {
-            subscribeUseCase.execute(profileId)
-        }
     }
 }

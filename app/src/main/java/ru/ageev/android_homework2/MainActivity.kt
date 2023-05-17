@@ -2,12 +2,7 @@ package ru.ageev.android_homework2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
-import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.data.PrefsStorage
@@ -43,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         navGraph.setStartDestination(
             if (token != null) {
-                R.id.profileFragment
+                R.id.myProfileFragment
             } else {
                 R.id.authFragment
             }

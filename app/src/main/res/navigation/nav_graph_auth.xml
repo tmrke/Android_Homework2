@@ -4,8 +4,8 @@
     android:id="@+id/nav_graph_auth"
     app:startDestination="@id/authFragment">
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="ru.ageev.android_homework2.ui.profile_screen.profile.ProfileFragment"
+        android:id="@+id/myProfileFragment"
+        android:name="ru.ageev.android_homework2.ui.profile_screen.my_profile.MyProfileFragment"
         android:label="ProfileFragment">
         <action
             android:id="@+id/action_profileFragment_to_postFragment"
@@ -28,7 +28,7 @@
         android:label="auth">
         <action
             android:id="@+id/action_authFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/myProfileFragment" />
     </fragment>
 
 </navigation>

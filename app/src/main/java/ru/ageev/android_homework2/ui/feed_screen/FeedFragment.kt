@@ -1,8 +1,6 @@
 package ru.ageev.android_homework2.ui.feed_screen
 
 import android.os.Bundle
-import android.util.Log
-import android.util.LogPrinter
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -37,7 +35,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
         binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.bottomMenuProfile -> {
-                    navController.navigate(R.id.profileFragment)
+                    navController.navigate(R.id.myProfileFragment)
                     true
                 }
 

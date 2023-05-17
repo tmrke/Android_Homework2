@@ -40,4 +40,7 @@
     <string name="long_password_warning">passwords length must be less than 16</string>
     <string name="passwords_must_coincide">passwords must coincide</string>
     <string name="incorrect_password">incorrect password</string>
+    <string name="edit">edit</string>
+    <string name="name">Name</string>
+    <string name="bio">Bio</string>
 </resources>

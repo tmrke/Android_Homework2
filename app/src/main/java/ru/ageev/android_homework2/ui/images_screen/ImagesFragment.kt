@@ -11,7 +11,6 @@ import androidx.paging.cachedIn
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.data.ImageData
 import ru.ageev.android_homework2.databinding.FragmentImagesBinding
 import ru.ageev.android_homework2.ui.insets.Inset
 
@@ -36,13 +35,13 @@ class ImagesFragment : Fragment(R.layout.fragment_images) {
         binding.recyclerView.adapter = imagesAdapter
 
         binding.toolBar.setNavigationOnClickListener {
-            navController.navigate(R.id.profileFragment)
+            navController.navigate(R.id.myProfileFragment)
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             navController = Navigation.findNavController(requireView())
             if (navController.currentDestination?.id == R.id.imagesFragment) {
-                navController.navigate(R.id.profileFragment)
+                navController.navigate(R.id.myProfileFragment)
             }
         }
 

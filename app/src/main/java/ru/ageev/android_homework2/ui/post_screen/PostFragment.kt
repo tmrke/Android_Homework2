@@ -33,7 +33,7 @@ class PostFragment : Fragment(R.layout.fragment_post) {
                 icon.setOnMenuItemClickListener {
 
                     viewModel.deletePost(postId)
-                    navController.navigate(R.id.profileFragment)
+                    navController.navigate(R.id.myProfileFragment)
 
                     return@setOnMenuItemClickListener true
                 }
@@ -62,14 +62,14 @@ class PostFragment : Fragment(R.layout.fragment_post) {
         }
 
         binding.toolBar.setNavigationOnClickListener {
-            navController.navigate(R.id.profileFragment)
+            navController.navigate(R.id.myProfileFragment)
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             navController = Navigation.findNavController(requireView())
 
             if (navController.currentDestination?.id == R.id.postFragment) {
-                navController.navigate(R.id.profileFragment)
+                navController.navigate(R.id.myProfileFragment)
             }
         }
     }
