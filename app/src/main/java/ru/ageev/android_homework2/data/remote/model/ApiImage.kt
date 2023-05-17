@@ -9,5 +9,5 @@ data class ApiImage(
     @SerialName("id") val id: String,
     @SerialName("sizes") val sizes: List<ApiImageSizes>,
     @SerialName("owner") val owner: ProfileCompact,
-    @SerialName("dateCreated") val dateCreated: String
+    @SerialName("dateCreated") val dateCreated: Long
 )

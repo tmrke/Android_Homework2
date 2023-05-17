@@ -146,8 +146,6 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
 
         authViewModel.loginLiveData.observe(viewLifecycleOwner) {
-
-
             navController.navigate(R.id.myProfileFragment)
         }
     }

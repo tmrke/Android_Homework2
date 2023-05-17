@@ -33,8 +33,9 @@
             android:id="@+id/action_profileFragment_to_editFragment"
             app:destination="@id/editFragment" />
         <action
-            android:id="@+id/action_profileFragment_to_imagesFragment"
+            android:id="@+id/action_myProfileFragment_to_imagesFragment"
             app:destination="@id/imagesFragment" />
+
 
     </fragment>
 

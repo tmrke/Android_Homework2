@@ -17,9 +17,9 @@ class PostMapper @Inject constructor(
 ) {
     fun toPost(apiModel: ApiPost) = Post(
 
-//        images = apiModel.images?.map { image ->
-//            imagesMapper.toImages(image)
-//        },
+        images = apiModel.images?.map { image ->
+            imagesMapper.toImages(image)
+        },
         id = apiModel.id,
         text = apiModel.text,
         likes = apiModel.likes,
