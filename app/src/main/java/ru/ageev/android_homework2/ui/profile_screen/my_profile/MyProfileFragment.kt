@@ -11,22 +11,18 @@ import androidx.paging.cachedIn
 import androidx.recyclerview.widget.ConcatAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.internal.userAgent
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.ImageData
 import ru.ageev.android_homework2.databinding.FragmentMyProfileBinding
 import ru.ageev.android_homework2.ui.insets.Inset
-import ru.ageev.android_homework2.ui.post_screen.PostViewModel
+import ru.ageev.android_homework2.ui.profile_screen.MyProfileViewModel
 import ru.ageev.android_homework2.ui.profile_screen.collage.CollageAdapter
 import ru.ageev.android_homework2.ui.profile_screen.posts.PostsAdapter
-import ru.ageev.android_homework2.ui.profile_screen.posts.PostsViewModel
 
 @AndroidEntryPoint
 class MyProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding by viewBinding(FragmentMyProfileBinding::bind)
     private val myProfileViewModel by viewModels<MyProfileViewModel>()
-    private val postsViewModel by viewModels<PostsViewModel>()
-    private val postViewModel by viewModels<PostViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,39 +41,40 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
                     true
                 }
             }
-
         }
 
         val username = myProfileViewModel.getUsername()
-
+        val argumentUsername = arguments?.getString("profileId")
 
         myProfileViewModel.getProfile(
-            username
+            argumentUsername ?: username
         )
 
         myProfileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
-            postsViewModel.loadPosts(profile.id)
+            myProfileViewModel.loadPosts(profile.id)
 
             val myProfileAdapter = MyProfileAdapter(profile)
             val postsAdapter = PostsAdapter()
             val collageAdapter = CollageAdapter(List(4) { ImageData() })
-//
 
+            myProfileAdapter.isMyProfile = argumentUsername == null
 
-            myProfileAdapter.onClick = {
+            myProfileAdapter.onEditClick = {
                 navController.navigate(
                     MyProfileFragmentDirections.actionProfileFragmentToEditFragment(
                         profile.avatarSmall.toString(),
                         profile.displayName ?: username,
-                        profile.bio?.toString() ?: "",
+                        profile.bio ?: "",
                         profile.id
                     )
                 )
             }
 
-            postsAdapter.onClick = { postId ->
-                postViewModel.getPost(postId)
+            myProfileAdapter.onSubscribeClick = {
+                myProfileViewModel.subscribe(profile.id)
+            }
 
+            postsAdapter.onPostClick = { postId ->
                 navController.navigate(
                     MyProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
                 )
@@ -91,7 +88,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
 
             val concatAdapter = ConcatAdapter(myProfileAdapter, collageAdapter, postsAdapter)
 
-            postsViewModel.postsLiveData.cachedIn(viewLifecycleOwner.lifecycleScope)
+            myProfileViewModel.postsLiveData.cachedIn(viewLifecycleOwner.lifecycleScope)
                 .observe(viewLifecycleOwner) { posts ->
                     postsAdapter.submitData(viewLifecycleOwner.lifecycle, posts)
                 }
@@ -100,7 +97,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         binding.swipeRefreshLayout.setOnRefreshListener {
-            postsViewModel.loadPosts(myProfileViewModel.getUsername())
+            myProfileViewModel.loadPosts(myProfileViewModel.getUsername())
 
             //TODO Paging обновить через адаптер (типа adapter.load)
 
@@ -109,7 +106,11 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
             binding.swipeRefreshLayout.isRefreshing = false
         }
 
-        binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
+        if (argumentUsername == null) {
+            binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
+        } else {
+            binding.bottomNavigationView.menu.findItem(R.id.bottomMenuFeed).isChecked = true
+        }
 
         binding.floatingActionButton.setOnClickListener {
             navController.navigate(R.id.createPostFragment)

@@ -43,4 +43,6 @@
     <string name="edit">edit</string>
     <string name="name">Name</string>
     <string name="bio">Bio</string>
+    <string name="subscribe">subscribe</string>
+    <string name="unsubscribe">unsubscribe</string>
 </resources>

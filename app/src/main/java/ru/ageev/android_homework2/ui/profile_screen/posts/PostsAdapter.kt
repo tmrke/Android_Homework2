@@ -21,14 +21,14 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
 class PostsAdapter @Inject constructor() :
     PagingDataAdapter<Post, PostsViewHolder>(diffUtilCallback) {
 
-    var onClick: (String) -> Unit = {}
+    var onPostClick: (String) -> Unit = {}
+    var onProfileClick: (String) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
         val binding: ViewPostCardBinding =
             ViewPostCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-
-        return PostsViewHolder(binding, onClick)
+        return PostsViewHolder(binding, onPostClick, onProfileClick)
     }
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
@@ -36,7 +36,7 @@ class PostsAdapter @Inject constructor() :
             holder.bind(post)
 
             holder.itemView.setOnClickListener {
-                onClick(post.id)
+                onPostClick(post.id)
             }
         }
     }
