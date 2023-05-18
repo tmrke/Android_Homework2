@@ -14,8 +14,10 @@ import ru.ageev.android_homework2.data.mappers.ProfileMapper
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.data.paging.PostPagingSource
+import ru.ageev.android_homework2.data.paging.ProfilePagingSource
 import ru.ageev.android_homework2.data.remote.NanopostApiService
 import ru.ageev.android_homework2.data.remote.model.EditProfileRequest
+import java.util.PropertyPermission
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(
@@ -38,8 +40,23 @@ class ProfileRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun searchProfile(query: String): Flow<PagingData<Profile>> {
+        return Pager(
+            config = PagingConfig(30, enablePlaceholders = false),
+            pagingSourceFactory = { ProfilePagingSource(query, apiService) }
+        ).flow.map { pagingData ->
+            pagingData.map { profile ->
+                profileMapper.toProfile(profile)
+            }
+        }
+    }
+
     override suspend fun subscribe(profileId: String) {
         apiService.subscribe(profileId)
+    }
+
+    override suspend fun unsubscribe(profileId: String) {
+        apiService.unsubscribe(profileId)
     }
 
     override suspend fun editProfile(editProfileRequest: EditProfileRequest) {

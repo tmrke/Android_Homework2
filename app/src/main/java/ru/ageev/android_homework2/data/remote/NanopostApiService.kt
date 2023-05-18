@@ -55,6 +55,11 @@ interface NanopostApiService {
         @Path("profileId") profileId: String
     ): ResultResponse
 
+    @DELETE("api/v1/profile/{profileId}/subscribe")
+    suspend fun unsubscribe(
+        @Path("profileId") profileId: String
+    ): ResultResponse
+
     @GET("api/v1/feed")
     suspend fun getFeed(
         @Query("count") count: Int,
@@ -76,4 +81,11 @@ interface NanopostApiService {
         @Part("bio") bio: RequestBody?,
         @Part avatar: MultipartBody.Part?,
     ): ResultResponse
+
+    @GET("api/v1/profile/search")
+    suspend fun searchProfile(
+        @Query("query") query: String,
+        @Query("count") count: Int,
+        @Query("offset") offset: String?
+    ): PagedDataResponse<ApiProfile>
 }

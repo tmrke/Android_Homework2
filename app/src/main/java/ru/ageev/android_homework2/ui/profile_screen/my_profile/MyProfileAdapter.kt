@@ -12,13 +12,14 @@ class MyProfileAdapter @Inject constructor(private val profile: Profile?) :
 
     var onEditClick: (String) -> Unit = {}
     var onSubscribeClick: (String) -> Unit = {}
+    var onUnsubscribeClick: (String) -> Unit = {}
     var isMyProfile: Boolean = true
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyProfileViewHolder {
         val binding =
             ViewMyProfileCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return MyProfileViewHolder(binding, onEditClick, onSubscribeClick, isMyProfile)
+        return MyProfileViewHolder(binding, onEditClick, onSubscribeClick, onUnsubscribeClick, isMyProfile)
     }
 
     override fun getItemCount(): Int {

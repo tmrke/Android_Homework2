@@ -16,8 +16,6 @@ class FeedPagingSource(
     }
 
     override suspend fun load(params: LoadParams<String>): LoadResult<String, ApiPost> {
-        Log.d("Ololo", "ololo")
-
         return try {
             val response = apiService.getFeed(
                 count = params.loadSize,

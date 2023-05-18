@@ -10,7 +10,6 @@ class PostsViewHolder(
     private val binding: ViewPostCardBinding,
     private val onPostClick: (String) -> Unit,
     private val onProfileClick: (String) -> Unit,
-
     ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
         with(binding) {

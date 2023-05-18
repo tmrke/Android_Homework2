@@ -16,6 +16,7 @@ import ru.ageev.android_homework2.domain.post_use_case.DeletePostUseCase
 import ru.ageev.android_homework2.domain.post_use_case.GetPostUseCase
 import ru.ageev.android_homework2.domain.post_use_case.GetPostsUseCase
 import ru.ageev.android_homework2.domain.profile_use_case.SubscribeUseCase
+import ru.ageev.android_homework2.domain.profile_use_case.UnsubscribeUseCase
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,7 +26,8 @@ class MyProfileViewModel @Inject constructor(
     private val deleteTokenUseCase: DeleteTokenUseCase,
     private val subscribeUseCase: SubscribeUseCase,
     private val getPostsUseCase: GetPostsUseCase,
-    private val deletePostUseCase: DeletePostUseCase
+    private val deletePostUseCase: DeletePostUseCase,
+    private val unsubscribeUseCase: UnsubscribeUseCase,
 ) : ViewModel() {
 
     private val _profileLiveData = MutableLiveData<Profile>()
@@ -51,6 +53,12 @@ class MyProfileViewModel @Inject constructor(
     fun subscribe(profileId: String) {
         viewModelScope.launch {
             subscribeUseCase.execute(profileId)
+        }
+    }
+
+    fun unsubscribe(profileId: String) {
+        viewModelScope.launch {
+            unsubscribeUseCase.execute(profileId)
         }
     }
 

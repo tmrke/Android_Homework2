@@ -76,8 +76,4 @@ class AuthViewModel @Inject constructor(
             }
         }
     }
-
-    fun setUsername(username: String) {
-        prefsStorage.username = username
-    }
 }

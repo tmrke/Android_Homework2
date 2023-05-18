@@ -20,7 +20,7 @@ import ru.ageev.android_homework2.ui.profile_screen.collage.CollageAdapter
 import ru.ageev.android_homework2.ui.profile_screen.posts.PostsAdapter
 
 @AndroidEntryPoint
-class MyProfileFragment : Fragment(R.layout.fragment_profile) {
+class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
     private val binding by viewBinding(FragmentMyProfileBinding::bind)
     private val myProfileViewModel by viewModels<MyProfileViewModel>()
 
@@ -74,6 +74,10 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
                 myProfileViewModel.subscribe(profile.id)
             }
 
+            myProfileAdapter.onUnsubscribeClick = {
+                myProfileViewModel.unsubscribe(profile.id)
+            }
+
             postsAdapter.onPostClick = { postId ->
                 navController.navigate(
                     MyProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
@@ -101,7 +105,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
 
             //TODO Paging обновить через адаптер (типа adapter.load)
 
-            myProfileViewModel.getProfile(myProfileViewModel.getUsername())
+            //myProfileViewModel.getProfile(myProfileViewModel.getUsername())
 
             binding.swipeRefreshLayout.isRefreshing = false
         }

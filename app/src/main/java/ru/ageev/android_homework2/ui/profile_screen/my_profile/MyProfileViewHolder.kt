@@ -10,7 +10,8 @@ import ru.ageev.android_homework2.databinding.ViewMyProfileCardBinding
 class MyProfileViewHolder(
     private val binding: ViewMyProfileCardBinding,
     private val onEditClick: (String) -> Unit,
-    private val onProfileClick: (String) -> Unit,
+    private val onSubscribeClick: (String) -> Unit,
+    private val onUnsubscribeClick: (String) -> Unit,
     private val isMyProfile: Boolean
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(profile: Profile) {
@@ -25,24 +26,27 @@ class MyProfileViewHolder(
             if (isMyProfile) {
                 buttonSubscribe.visibility = View.GONE
                 buttonEdit.visibility = View.VISIBLE
+
+                buttonEdit.setOnClickListener {
+                    onEditClick(profile.id)
+                }
             } else {
                 buttonSubscribe.visibility = View.VISIBLE
                 buttonEdit.visibility = View.GONE
 
                 if (profile.subscribed) {
                     buttonSubscribe.setText(R.string.unsubscribe)
+
+                    buttonSubscribe.setOnClickListener {
+                        onUnsubscribeClick(profile.id)
+                    }
                 } else {
                     buttonSubscribe.setText(R.string.subscribe)
+
+                    buttonSubscribe.setOnClickListener {
+                        onSubscribeClick(profile.id)
+                    }
                 }
-            }
-
-            buttonSubscribe.setOnClickListener {
-                buttonSubscribe.setText(R.string.unsubscribe)
-                onProfileClick(profile.id)
-            }
-
-            buttonEdit.setOnClickListener {
-                onEditClick(profile.id)
             }
         }
     }
