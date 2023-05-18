@@ -79,6 +79,9 @@
         <argument
             android:name="bio"
             app:argType="string" />
+        <argument
+            android:name="profileId"
+            app:argType="string" />
     </fragment>
 
     <fragment

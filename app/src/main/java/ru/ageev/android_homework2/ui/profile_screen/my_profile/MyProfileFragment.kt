@@ -11,6 +11,7 @@ import androidx.paging.cachedIn
 import androidx.recyclerview.widget.ConcatAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.internal.userAgent
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.ImageData
 import ru.ageev.android_homework2.databinding.FragmentMyProfileBinding
@@ -47,10 +48,11 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
 
         }
 
+        val username = myProfileViewModel.getUsername()
+
 
         myProfileViewModel.getProfile(
-            myProfileViewModel.getUsername()
-            //"evo"
+            username
         )
 
         myProfileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
@@ -66,8 +68,9 @@ class MyProfileFragment : Fragment(R.layout.fragment_profile) {
                 navController.navigate(
                     MyProfileFragmentDirections.actionProfileFragmentToEditFragment(
                         profile.avatarSmall.toString(),
-                        profile.displayName.toString(),
-                        profile.bio?.toString() ?: ""
+                        profile.displayName ?: username,
+                        profile.bio?.toString() ?: "",
+                        profile.id
                     )
                 )
             }

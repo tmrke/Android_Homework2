@@ -2,6 +2,7 @@ package ru.ageev.android_homework2.ui.edit_screen
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.activity.result.PickVisualMediaRequest
@@ -44,9 +45,11 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
 
         Inset.setInsets(binding.root)
 
+        val profileId = arguments?.getString("profileId")
         val uri = arguments?.getString("uri")
         val name = arguments?.getString("name")
         val bio = arguments?.getString("bio")
+
 
         with(binding) {
             editTextName.setText(name)
@@ -63,9 +66,6 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             }
         }
 
-        val profileId = arguments?.getString("profileId")
-
-
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             navController = Navigation.findNavController(requireView())
@@ -78,10 +78,10 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
         binding.toolBar.menu.findItem(R.id.createPostMenu).let { icon ->
             icon.setOnMenuItemClickListener {
                 val editProfileRequest = EditProfileRequest(
-                    profileId,
+                    profileId ?: "ololo",       //TODO
                     binding.editTextName.text.toString(),
                     binding.editTextBio.text.toString(),
-                    viewModel.getContent(avatar)            //TODO не создается ViewModel
+                    viewModel.getContent(avatar)
                 )
 
                 viewModel.editProfile(editProfileRequest)
