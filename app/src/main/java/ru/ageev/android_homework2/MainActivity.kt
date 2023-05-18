@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         val token = prefsStorage.token
 
+
         val navGraph = navController.navInflater.inflate(
             if (token != null) {
                 R.navigation.nav_graph

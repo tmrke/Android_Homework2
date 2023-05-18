@@ -43,6 +43,12 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
             )
         }
 
+        binding.toolBar.menu.findItem(R.id.searchMenu).setOnMenuItemClickListener {
+            navController.navigate(R.id.searchFragment)
+
+            return@setOnMenuItemClickListener true
+        }
+
         binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.bottomMenuProfile -> {
@@ -62,5 +68,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                 navController.navigate(R.id.myProfileFragment)
             }
         }
+
+
     }
 }

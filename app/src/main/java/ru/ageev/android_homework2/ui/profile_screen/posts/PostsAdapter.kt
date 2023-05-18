@@ -18,7 +18,7 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
     }
 }
 
-class PostsAdapter @Inject constructor() :
+class PostsAdapter:
     PagingDataAdapter<Post, PostsViewHolder>(diffUtilCallback) {
 
     var onPostClick: (String) -> Unit = {}

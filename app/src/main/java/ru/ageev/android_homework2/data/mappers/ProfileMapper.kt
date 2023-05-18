@@ -13,7 +13,7 @@ class ProfileMapper @Inject constructor() {
         avatarId = apiModel.avatarId,
         avatarSmall = apiModel.avatarSmall,
         avatarLarge = apiModel.avatarLarge,
-        subscribed =  apiModel.subscribed,
+        subscribed = apiModel.subscribed,
         imagesCount = apiModel.imagesCount,
         postsCount = apiModel.postsCount,
         subscribersCount = apiModel.subscribersCount,

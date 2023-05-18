@@ -11,12 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.databinding.FragmentCreatorPostBinding
 import ru.ageev.android_homework2.service.CreatePostService
 import ru.ageev.android_homework2.ui.insets.Inset
 
+@AndroidEntryPoint
 class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
     private val binding by viewBinding(FragmentCreatorPostBinding::bind)
     private val viewModel by viewModels<CreatorPostViewModel>()
