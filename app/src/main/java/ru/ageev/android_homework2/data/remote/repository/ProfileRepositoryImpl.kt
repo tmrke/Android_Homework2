@@ -52,7 +52,7 @@ class ProfileRepositoryImpl @Inject constructor(
         }
 
         apiService.editProfile(
-            editProfileRequest.profileId.toString(),
+            editProfileRequest.profileId,
             editProfileRequest.displayName?.toRequestBody(),
             editProfileRequest.bio?.toRequestBody(),
             requestBody
