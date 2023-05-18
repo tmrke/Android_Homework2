@@ -1,10 +1,12 @@
 package ru.ageev.android_homework2.ui.auth_screen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,7 +26,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
     lateinit var responseCodeLiveData: MutableLiveData<Int>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navController = Navigation.findNavController(view)
+        var navController = Navigation.findNavController(view)
 
         Inset.setInsets(binding.root)
 
@@ -146,7 +148,8 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
 
         authViewModel.loginLiveData.observe(viewLifecycleOwner) {
-            navController.navigate(R.id.myProfileFragment)
+            navController.navigate(R.id.toNavGraph)
+            //TODO посмотреть как перейти на другой навграф
         }
     }
 

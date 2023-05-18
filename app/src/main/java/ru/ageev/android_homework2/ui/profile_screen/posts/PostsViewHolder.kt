@@ -5,11 +5,11 @@ import coil.load
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
-import ru.ageev.android_homework2.ui.post_screen.PostViewModel
 
 class PostsViewHolder(
     private val binding: ViewPostCardBinding,
-    private val onClick: (String) -> Unit,
+    private val onPostClick: (String) -> Unit,
+    private val onProfileClick: (String) -> Unit,
 
     ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
@@ -24,11 +24,20 @@ class PostsViewHolder(
             imageViewMedia.load(url)
 
             textViewPost.setOnClickListener {
-                onClick(post.id)
+                onPostClick(post.id)
             }
 
             imageViewMedia.setOnClickListener {
-                onClick(post.id)
+                onPostClick(post.id)
+            }
+
+            imageViewPostProfileImage.setOnClickListener {
+                onProfileClick(textViewProfileName.text.toString())
+            }
+
+
+            textViewProfileName.setOnClickListener {
+                onProfileClick(textViewProfileName.text.toString())
             }
 
             imageButtonFavorite.setIconResource(

@@ -17,7 +17,6 @@ import ru.ageev.android_homework2.ui.profile_screen.posts.PostsAdapter
 class FeedFragment : Fragment(R.layout.fragment_feed) {
     private val binding by viewBinding(FragmentFeedBinding::bind)
     private val viewModel by viewModels<FeedViewModel>()
-
     private val adapter = PostsAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,6 +29,18 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
 
         viewModel.postsLiveData.observe(viewLifecycleOwner) { posts ->
             adapter.submitData(viewLifecycleOwner.lifecycle, posts)
+        }
+
+        adapter.onPostClick = { postId ->
+            navController.navigate(
+                FeedFragmentDirections.actionFeedFragmentToPostFragment(postId)
+            )
+        }
+
+        adapter.onProfileClick = { username ->
+            navController.navigate(
+                FeedFragmentDirections.actionFeedFragmentToMyProfileFragment(username)
+            )
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener { menuItem ->

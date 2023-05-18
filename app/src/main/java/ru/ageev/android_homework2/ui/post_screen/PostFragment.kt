@@ -46,7 +46,9 @@ class PostFragment : Fragment(R.layout.fragment_post) {
 
             if (post.images != null) {
                 for (i in post.images.indices) {
-                    val imageUrl = post.images[0].sizes[0].url
+
+
+                    val imageUrl = post.images[i].sizes[0].url
                     val imageView = when (i) {
                         0 -> binding.imageViewMedia1
                         1 -> binding.imageViewMedia2
