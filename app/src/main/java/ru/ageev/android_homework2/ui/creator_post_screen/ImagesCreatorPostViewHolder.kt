@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 
 import ru.ageev.android_homework2.databinding.ItemImageBinding
+import ru.ageev.android_homework2.databinding.ItemImageForCreatorBinding
 import java.text.FieldPosition
 
 class ImagesCreatorPostViewHolder(
-    private val binding: ItemImageBinding,
+    private val binding: ItemImageForCreatorBinding,
     private val onCancelClick: (Int) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(uri: Uri, position: Int) {

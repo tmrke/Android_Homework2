@@ -47,6 +47,11 @@ class PostFragment : Fragment(R.layout.fragment_post) {
             binding.textViewProfileName.text = post.owner.displayName
             binding.imageViewPostProfileImage.load(post.owner.avatarUrl)
 
+            binding.imageViewMedia1.visibility = View.GONE
+            binding.imageViewMedia2.visibility = View.GONE
+            binding.imageViewMedia3.visibility = View.GONE
+            binding.imageViewMedia4.visibility = View.GONE
+
             if (post.images != null) {
                 for (i in post.images.indices) {
 
@@ -65,7 +70,21 @@ class PostFragment : Fragment(R.layout.fragment_post) {
             }
 
             clickLike(post)
+
+            binding.imageViewPostProfileImage.setOnClickListener {
+                navController.navigate(
+                    PostFragmentDirections.actionPostFragmentToMyProfileFragment(post.owner.id)
+                )
+            }
+
+            binding.textViewProfileName.setOnClickListener {
+                navController.navigate(
+                    PostFragmentDirections.actionPostFragmentToMyProfileFragment(post.owner.id)
+                )
+            }
         }
+
+
 
         binding.toolBar.setNavigationOnClickListener {
             navController.navigate(R.id.myProfileFragment)

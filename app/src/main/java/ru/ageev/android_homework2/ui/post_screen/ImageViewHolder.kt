@@ -12,7 +12,6 @@ class ImageViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(image: Image) {
         binding.imageViewPost.load(image.sizes[1].url)
-        binding.imageButtonDelete.visibility = View.GONE
     }
 }
 
