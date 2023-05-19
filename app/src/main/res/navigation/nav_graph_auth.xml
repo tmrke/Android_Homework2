@@ -10,7 +10,8 @@
         android:label="auth">
         <action
             android:id="@+id/toNavGraph"
-            app:destination="@+id/nav_graph" />
+            app:destination="@id/nav_graph" />
     </fragment>
 
+    <include app:graph="@navigation/nav_graph" />
 </navigation>
