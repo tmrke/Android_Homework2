@@ -42,5 +42,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         binding.toolBar.setNavigationOnClickListener {
             navController.navigate(R.id.feedFragment)
         }
+
+        searchAdapter.onPostClick = { profileId ->
+            navController.navigate(
+                SearchFragmentDirections.actionSearchFragmentToMyProfileFragment(profileId)
+            )
+        }
     }
 }

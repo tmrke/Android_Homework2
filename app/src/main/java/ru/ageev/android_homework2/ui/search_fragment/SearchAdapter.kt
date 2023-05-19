@@ -22,6 +22,8 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<ProfileCompact>() {
 
 class SearchAdapter :
     PagingDataAdapter<ProfileCompact, SearchViewHolder>(diffUtilCallback) {
+
+    var onPostClick: (String) -> Unit = {}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val binding: ViewCardProfileCompactBinding =
             ViewCardProfileCompactBinding.inflate(
@@ -30,7 +32,7 @@ class SearchAdapter :
                 false
             )
 
-        return SearchViewHolder(binding)
+        return SearchViewHolder(binding, onPostClick)
     }
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {

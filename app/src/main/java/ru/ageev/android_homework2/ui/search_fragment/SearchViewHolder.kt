@@ -14,12 +14,19 @@ import ru.ageev.android_homework2.databinding.ViewCardProfileCompactBinding
 import ru.ageev.android_homework2.databinding.ViewMyProfileCardBinding
 
 
-class SearchViewHolder(private val binding: ViewCardProfileCompactBinding) :
+class SearchViewHolder(
+    private val binding: ViewCardProfileCompactBinding,
+    private var onPostClick: (String) -> Unit
+) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(profile: ProfileCompact) {
         with(binding) {
             imageViewUserProfileImage.load(profile.avatarUrl ?: R.drawable.profile)
             textViewUserName.text = profile.displayName ?: profile.username
+
+            root.setOnClickListener {
+                onPostClick(profile.id)
+            }
         }
     }
 }

@@ -13,5 +13,6 @@ data class Profile(
     val subscribed: Boolean,
     val subscribersCount: Int,
     val postsCount: Int,
-    val imagesCount: Int
+    val imagesCount: Int,
+    val images: List<Image>,
 )

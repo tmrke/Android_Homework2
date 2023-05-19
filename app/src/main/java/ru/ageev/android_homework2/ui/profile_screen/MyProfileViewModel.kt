@@ -26,7 +26,6 @@ class MyProfileViewModel @Inject constructor(
     private val deleteTokenUseCase: DeleteTokenUseCase,
     private val subscribeUseCase: SubscribeUseCase,
     private val getPostsUseCase: GetPostsUseCase,
-    private val deletePostUseCase: DeletePostUseCase,
     private val unsubscribeUseCase: UnsubscribeUseCase,
 ) : ViewModel() {
 
@@ -53,6 +52,7 @@ class MyProfileViewModel @Inject constructor(
     fun subscribe(profileId: String) {
         viewModelScope.launch {
             subscribeUseCase.execute(profileId)
+
         }
     }
 
@@ -70,12 +70,6 @@ class MyProfileViewModel @Inject constructor(
             getPostsUseCase.execute(profileId).collect { posts ->
                 _postsLiveData.postValue(posts)
             }
-        }
-    }
-
-    fun deletePost(postId: String) {
-        viewModelScope.launch {
-            deletePostUseCase.execute(postId)
         }
     }
 }
