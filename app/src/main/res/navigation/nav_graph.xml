@@ -103,5 +103,4 @@
         android:id="@+id/searchFragment"
         android:name="ru.ageev.android_homework2.ui.search_fragment.SearchFragment"
         android:label="@string/search"/>
-
 </navigation>
