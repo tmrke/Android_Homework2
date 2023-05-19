@@ -45,4 +45,5 @@
     <string name="bio">Bio</string>
     <string name="subscribe">subscribe</string>
     <string name="unsubscribe">unsubscribe</string>
+    <string name="image">image</string>
 </resources>

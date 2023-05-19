@@ -89,4 +89,14 @@ interface NanopostApiService {
         @Query("count") count: Int,
         @Query("offset") offset: String?
     ): PagedDataResponse<ApiProfileCompact>
+
+    @GET("api/v1/image/{imageId}")
+    suspend fun getImage(
+        @Path("imageId") imageId: String,
+    ): ApiImage
+
+    @DELETE("api/v1/image/{imageId}")
+    suspend fun deleteImage(
+        @Path("imageId") imageId: String
+    ): ResultResponse
 }

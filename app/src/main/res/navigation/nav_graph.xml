@@ -97,6 +97,9 @@
         <argument
             android:name="profileId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_imagesFragment_to_image"
+            app:destination="@id/imageFragment" />
     </fragment>
 
     <fragment
@@ -106,5 +109,20 @@
         <action
             android:id="@+id/action_searchFragment_to_myProfileFragment"
             app:destination="@id/myProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/imageFragment"
+        android:name="ru.ageev.android_homework2.ui.image_screen.ImageFragment"
+        android:label="Image">
+        <argument
+            android:name="imageId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_imageFragment_to_imagesFragment"
+            app:destination="@id/imagesFragment" />
+        <action
+            android:id="@+id/action_imageFragment_to_imagesFragment2"
+            app:destination="@id/imagesFragment" />
     </fragment>
 </navigation>

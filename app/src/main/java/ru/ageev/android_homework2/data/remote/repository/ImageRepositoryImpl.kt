@@ -27,4 +27,12 @@ class ImageRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override suspend fun getImage(imageId: String): Image {
+        return imagesMapper.toImages(apiService.getImage(imageId))
+    }
+
+    override suspend fun deleteImage(imageId: String) {
+        apiService.deleteImage(imageId)
+    }
 }
