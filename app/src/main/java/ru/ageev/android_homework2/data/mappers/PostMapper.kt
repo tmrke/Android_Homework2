@@ -17,14 +17,14 @@ class PostMapper @Inject constructor(
 ) {
     fun toPost(apiModel: ApiPost) = Post(
 
-        images = apiModel.images?.map { image ->
+        images = apiModel.images.map { image ->
             imagesMapper.toImages(image)
         },
         id = apiModel.id,
         text = apiModel.text,
         likes = apiModel.likes,
         owner = profileCompactMapper.toProfileCompact(apiModel.owner),
-        dateCreated = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        dateCreated = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
             .format(Date(apiModel.dateCreated))
     )
 }

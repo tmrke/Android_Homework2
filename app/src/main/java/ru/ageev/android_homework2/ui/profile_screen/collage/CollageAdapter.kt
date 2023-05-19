@@ -5,20 +5,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.ageev.android_homework2.data.ImageData
+import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.databinding.ViewCollageCardBinding
 import javax.inject.Inject
 
 class CollageAdapter @Inject constructor(
-    private val images: List<ImageData>
 ) :
     RecyclerView.Adapter<CollageViewHolder>() {
     var onClick: () -> Unit = {}
+    lateinit var profile: Profile
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollageViewHolder {
         val binding =
             ViewCollageCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return CollageViewHolder(binding, onClick, parent.context)
+        return CollageViewHolder(binding, onClick)
     }
 
     override fun getItemCount(): Int {
@@ -26,6 +27,14 @@ class CollageAdapter @Inject constructor(
     }
 
     override fun onBindViewHolder(holder: CollageViewHolder, position: Int) {
-        holder.bind(images[position])
+        val image0 = profile.images.getOrNull(0)?.sizes?.getOrNull(0)?.url
+        val image1 = profile.images.getOrNull(1)?.sizes?.getOrNull(0)?.url
+        val image2 = profile.images.getOrNull(2)?.sizes?.getOrNull(0)?.url
+        val image3 = profile.images.getOrNull(3)?.sizes?.getOrNull(0)?.url
+
+
+
+
+        holder.bind(image0, image1, image2, image3)
     }
 }

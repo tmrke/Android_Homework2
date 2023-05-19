@@ -50,14 +50,19 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
             argumentUsername ?: username
         )
 
+        if (argumentUsername != null) {
+            binding.toolBar.menu.findItem(R.id.actionExit).isVisible = false
+        }
+
         myProfileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
             myProfileViewModel.loadPosts(profile.id)
 
-            val myProfileAdapter = MyProfileAdapter(profile)
+            val myProfileAdapter = MyProfileAdapter()
             val postsAdapter = PostsAdapter()
-            val collageAdapter = CollageAdapter(List(4) { ImageData() })
+            val collageAdapter = CollageAdapter()
 
             myProfileAdapter.isMyProfile = argumentUsername == null
+            myProfileAdapter.profile = profile
 
             myProfileAdapter.onEditClick = {
                 navController.navigate(
@@ -83,6 +88,8 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
                     MyProfileFragmentDirections.actionProfileFragmentToPostFragment(postId)
                 )
             }
+
+            collageAdapter.profile = profile
 
             collageAdapter.onClick = {
                 navController.navigate(

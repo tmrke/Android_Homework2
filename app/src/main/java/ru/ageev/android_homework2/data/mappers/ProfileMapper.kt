@@ -1,10 +1,14 @@
 package ru.ageev.android_homework2.data.mappers
 
+import ru.ageev.android_homework2.data.model.Image
+import ru.ageev.android_homework2.data.model.ImageSize
 import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.data.remote.model.ApiProfile
 import javax.inject.Inject
 
-class ProfileMapper @Inject constructor() {
+class ProfileMapper @Inject constructor(
+    private val imagesMapper: ImagesMapper,
+) {
     fun toProfile(apiModel: ApiProfile) = Profile(
         id = apiModel.id,
         username = apiModel.username,
@@ -17,5 +21,8 @@ class ProfileMapper @Inject constructor() {
         imagesCount = apiModel.imagesCount,
         postsCount = apiModel.postsCount,
         subscribersCount = apiModel.subscribersCount,
+        images = apiModel.images.map { image ->
+            imagesMapper.toImages(image)
+        }
     )
 }
