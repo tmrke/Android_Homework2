@@ -4,7 +4,6 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.ageev.android_homework2.databinding.ItemImageBinding
 import ru.ageev.android_homework2.databinding.ItemImageForCreatorBinding
 
 class ImagesCreatorPostAdapter(private val imagesUri: List<Uri>) :

@@ -1,11 +1,7 @@
 package ru.ageev.android_homework2.ui.profile_screen.collage
 
-import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.data.ImageData
-import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.databinding.ViewCollageCardBinding
 
 class CollageViewHolder(

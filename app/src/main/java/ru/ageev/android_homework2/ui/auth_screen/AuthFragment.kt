@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
@@ -25,7 +24,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
     lateinit var responseCodeLiveData: MutableLiveData<Int>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainer)
+        val navController = Navigation.findNavController(requireActivity(), R.id.fragmentContainer)
 
         Inset.setInsets(binding.root)
 

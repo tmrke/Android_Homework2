@@ -1,6 +1,5 @@
 package ru.ageev.android_homework2.data.remote
 
-import android.app.DownloadManager.Request
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.DELETE

@@ -12,8 +12,6 @@ import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.domain.auth_use_case.DeleteTokenUseCase
 import ru.ageev.android_homework2.domain.profile_use_case.GetProfileUseCase
 import ru.ageev.android_homework2.domain.GetUsernameUseCase
-import ru.ageev.android_homework2.domain.post_use_case.DeletePostUseCase
-import ru.ageev.android_homework2.domain.post_use_case.GetPostUseCase
 import ru.ageev.android_homework2.domain.post_use_case.GetPostsUseCase
 import ru.ageev.android_homework2.domain.profile_use_case.SubscribeUseCase
 import ru.ageev.android_homework2.domain.profile_use_case.UnsubscribeUseCase

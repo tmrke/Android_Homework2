@@ -7,8 +7,6 @@ import javax.inject.Inject
 class GetContentUriUseCase @Inject constructor(
     private val contentResolver: ContentResolver
 ) {
-
-    //переопределяем оператор invoke / можно написать метод execute как в других юзкейсах
     operator fun invoke(uri: Uri?): ByteArray? {
         if (uri == null) {
             return null

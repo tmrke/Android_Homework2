@@ -7,7 +7,6 @@ import androidx.activity.addCallback
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -21,7 +20,6 @@ import ru.ageev.android_homework2.ui.insets.Inset
 @AndroidEntryPoint
 class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
     private val binding by viewBinding(FragmentCreatorPostBinding::bind)
-    private val viewModel by viewModels<CreatorPostViewModel>()
 
     private var imagesUriList: MutableList<Uri> = mutableListOf()
     private val adapter = ImagesCreatorPostAdapter(imagesUriList)
@@ -78,7 +76,7 @@ class CreatorPostFragment : Fragment(R.layout.fragment_creator_post) {
 
                 navController.navigate(R.id.myProfileFragment)
 
-                return@setOnMenuItemClickListener true      //сначала осуществляет переход на фрагмент, потом return true
+                return@setOnMenuItemClickListener true
             }
         }
 

@@ -11,7 +11,6 @@ import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
 import ru.ageev.android_homework2.databinding.FragmentImageBinding
-import ru.ageev.android_homework2.databinding.ItemImageBinding
 import ru.ageev.android_homework2.ui.insets.Inset
 
 @AndroidEntryPoint

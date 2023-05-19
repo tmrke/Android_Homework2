@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.map
 import ru.ageev.android_homework2.data.mappers.ImagesMapper
 import ru.ageev.android_homework2.data.model.Image
 import ru.ageev.android_homework2.data.paging.ImagePagingSource
-import ru.ageev.android_homework2.data.paging.PostPagingSource
 import ru.ageev.android_homework2.data.remote.NanopostApiService
 import javax.inject.Inject
 

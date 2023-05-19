@@ -1,9 +1,9 @@
 package ru.ageev.android_homework2.di
 
 import android.content.Context
-import android.util.Log
-import android.widget.Toast
+
 import androidx.lifecycle.MutableLiveData
+import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
@@ -15,7 +15,6 @@ import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.create
@@ -34,15 +33,14 @@ abstract class NetworkModule {
         private const val BASE_URL = "https://nanopost.evolitist.com/"
 
         @Qualifier
-        annotation class AuthClient     // создание своего маркера/аннотации
+        annotation class AuthClient
 
-        @Provides                       // запрос на авторизацию
+        @Provides
         @Singleton
         @AuthClient
         fun provideAuthRetrofit(
             httpClient: OkHttpClient,
             json: Converter.Factory,
-            authInterceptor: Interceptor
         ): Retrofit {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -115,7 +113,14 @@ abstract class NetworkModule {
             return OkHttpClient()
                 .newBuilder()
                 .addInterceptor(authInterceptor)
-                .addInterceptor(ChuckerInterceptor(context))
+                .addInterceptor(
+                    ChuckerInterceptor.Builder(context)
+                        .collector(ChuckerCollector(context))
+                        .maxContentLength(250000L)
+                        .redactHeaders(emptySet())
+                        .alwaysReadResponseBody(false)
+                        .build()
+                )
                 .build()
         }
 
@@ -132,7 +137,14 @@ abstract class NetworkModule {
                     OkHttpClient()
                         .newBuilder()
                         .addInterceptor(authInterceptor)
-                        .addInterceptor(ChuckerInterceptor(context))
+                        .addInterceptor(
+                            ChuckerInterceptor.Builder(context)
+                                .collector(ChuckerCollector(context))
+                                .maxContentLength(250000L)
+                                .redactHeaders(emptySet())
+                                .alwaysReadResponseBody(false)
+                                .build()
+                        )
                         .build()
                 )
 
