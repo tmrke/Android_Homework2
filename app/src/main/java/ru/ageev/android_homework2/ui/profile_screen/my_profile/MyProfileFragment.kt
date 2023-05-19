@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.ConcatAdapter
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.android_homework2.R
-import ru.ageev.android_homework2.data.ImageData
 import ru.ageev.android_homework2.databinding.FragmentMyProfileBinding
 import ru.ageev.android_homework2.ui.insets.Inset
 import ru.ageev.android_homework2.ui.profile_screen.MyProfileViewModel
@@ -52,6 +51,14 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
         if (argumentUsername != null) {
             binding.toolBar.menu.findItem(R.id.actionExit).isVisible = false
+
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+                navController.popBackStack()
+            }
+        } else{
+            requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+                requireActivity().moveTaskToBack(true)
+            }
         }
 
         myProfileViewModel.profileLiveData.observe(viewLifecycleOwner) { profile ->
@@ -125,10 +132,6 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
         binding.floatingActionButton.setOnClickListener {
             navController.navigate(R.id.createPostFragment)
-        }
-
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            requireActivity().moveTaskToBack(true)
         }
 
         binding.toolBar.menu.findItem(R.id.actionExit).setOnMenuItemClickListener {

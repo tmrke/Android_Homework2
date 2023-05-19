@@ -29,8 +29,13 @@ class ImagesFragment : Fragment(R.layout.fragment_images) {
 
         viewModel.getAllImages(profileId.toString())
 
-
         val imagesAdapter = ImagesAdapter()
+
+        imagesAdapter.onImageClick = { imageId ->
+            navController.navigate(
+                ImagesFragmentDirections.actionImagesFragmentToImage(imageId)
+            )
+        }
 
         binding.recyclerView.adapter = imagesAdapter
 
@@ -46,8 +51,7 @@ class ImagesFragment : Fragment(R.layout.fragment_images) {
         }
 
         binding.swipeRefreshLayout.setOnRefreshListener {
-            //TODO обновить
-
+            viewModel.getAllImages(profileId.toString())
             binding.swipeRefreshLayout.isRefreshing = false
         }
 

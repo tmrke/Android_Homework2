@@ -4,21 +4,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import ru.ageev.android_homework2.data.model.ImageSize
+import ru.ageev.android_homework2.data.model.Image
 import ru.ageev.android_homework2.databinding.ItemImageBinding
 
 
-val diffUtilCallback = object : DiffUtil.ItemCallback<ImageSize>() {
-    override fun areItemsTheSame(oldItem: ImageSize, newItem: ImageSize): Boolean {
-        return oldItem.url == newItem.url
+val diffUtilCallback = object : DiffUtil.ItemCallback<Image>() {
+    override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
+        return oldItem.sizes[0].url == newItem.sizes[0].url
     }
 
-    override fun areContentsTheSame(oldItem: ImageSize, newItem: ImageSize): Boolean {
+    override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
         return oldItem == newItem
     }
 }
 
-class ImageAdapter : ListAdapter<ImageSize, ImageViewHolder>(diffUtilCallback) {
+class ImageAdapter : ListAdapter<Image, ImageViewHolder>(diffUtilCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val binding: ItemImageBinding =
             ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)

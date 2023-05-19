@@ -11,8 +11,12 @@ import ru.ageev.android_homework2.databinding.ItemImageBinding
 class ImagesViewHolder(
     private val binding: ItemImageBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Image) {
-        binding.imageViewPost.load(item.sizes[0].url)
+    fun bind(item: Image, onImageClick: (String) -> Unit) {
+        binding.imageViewPost.load(item.sizes[1].url)
         binding.imageButtonDelete.visibility = View.GONE
+
+        binding.imageViewPost.setOnClickListener {
+            onImageClick(item.id)
+        }
     }
 }

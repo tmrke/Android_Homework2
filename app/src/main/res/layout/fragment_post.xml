@@ -108,8 +108,7 @@
                 android:src="@drawable/media"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textViewPostText"
-                />
+                app:layout_constraintTop_toBottomOf="@id/textViewPostText" />
 
             <ImageView
                 android:id="@+id/imageViewMedia2"
@@ -137,8 +136,7 @@
                 android:src="@drawable/media"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageViewMedia2"
-                />
+                app:layout_constraintTop_toBottomOf="@id/imageViewMedia2" />
 
             <ImageView
                 android:id="@+id/imageViewMedia4"
@@ -154,6 +152,14 @@
                 app:layout_constraintTop_toBottomOf="@id/imageViewMedia3"
                 />
 
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/recyclerView"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/textViewPostText"-->
+            <!--                tools:itemCount="4"-->
+            <!--                tools:listitem="@layout/item_image" />-->
 
 
             <com.google.android.material.button.MaterialButton

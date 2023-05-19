@@ -19,7 +19,7 @@ val diffUtilCallback = object : DiffUtil.ItemCallback<Image>() {
 
 class ImagesAdapter : PagingDataAdapter<Image, ImagesViewHolder>(diffUtilCallback) {
 
-    var onClick: (String) -> Unit = {}
+    var onImageClick: (String) -> Unit = {}
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImagesViewHolder {
         val binding =
             ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -30,11 +30,7 @@ class ImagesAdapter : PagingDataAdapter<Image, ImagesViewHolder>(diffUtilCallbac
 
     override fun onBindViewHolder(holder: ImagesViewHolder, position: Int) {
         getItem(position)?.let { image ->
-            holder.bind(image)
-
-            holder.itemView.setOnClickListener {
-                onClick(image.id)
-            }
+            holder.bind(image, onImageClick)
         }
     }
 }

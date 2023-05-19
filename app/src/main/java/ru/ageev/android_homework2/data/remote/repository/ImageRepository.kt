@@ -6,4 +6,8 @@ import ru.ageev.android_homework2.data.model.Image
 
 interface ImageRepository {
     suspend fun getAllImages(profileId: String): Flow<PagingData<Image>>
+
+    suspend fun getImage(imageId: String): Image
+
+    suspend fun deleteImage(imageId: String)
 }

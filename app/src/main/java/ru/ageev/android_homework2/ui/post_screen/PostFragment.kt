@@ -43,10 +43,12 @@ class PostFragment : Fragment(R.layout.fragment_post) {
 
         viewModel.postLiveData.observe(viewLifecycleOwner) { post ->
             binding.textViewPostText.text = post.text
+            binding.textViewDate.text = post.dateCreated
+            binding.textViewProfileName.text = post.owner.displayName
+            binding.imageViewPostProfileImage.load(post.owner.avatarUrl)
 
             if (post.images != null) {
                 for (i in post.images.indices) {
-
 
                     val imageUrl = post.images[i].sizes[0].url
                     val imageView = when (i) {
@@ -58,6 +60,7 @@ class PostFragment : Fragment(R.layout.fragment_post) {
                     }
 
                     imageView?.load(imageUrl)
+                    imageView?.visibility = View.VISIBLE
                 }
             }
 
@@ -68,13 +71,13 @@ class PostFragment : Fragment(R.layout.fragment_post) {
             navController.navigate(R.id.myProfileFragment)
         }
 
-//        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-//            navController = Navigation.findNavController(requireView())
-//
-//            if (navController.currentDestination?.id == R.id.postFragment) {
-//                navController.navigate(R.id.myProfileFragment)
-//            }
-//        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            navController = Navigation.findNavController(requireView())
+
+            if (navController.currentDestination?.id == R.id.postFragment) {
+                navController.navigate(R.id.myProfileFragment)
+            }
+        }
     }
 
     private fun clickLike(post: Post) {

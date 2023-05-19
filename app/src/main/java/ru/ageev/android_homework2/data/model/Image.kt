@@ -8,6 +8,6 @@ data class Image(
     @SerialName("id") val id: String,
     @SerialName("sizes") val sizes: List<ImageSize>,
     @SerialName("owner") val owner: ProfileCompact,
-    @SerialName("dateCreated") val dateCreated: Long
+    @SerialName("dateCreated") val dateCreated: String
 )
 
