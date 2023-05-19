@@ -28,7 +28,6 @@ class FeedPagingSource(
                 prevKey = null,
             )
         } catch (e: Exception) {
-            Log.e("Lol", e.message.toString())
             return LoadResult.Error(e)
         }
     }

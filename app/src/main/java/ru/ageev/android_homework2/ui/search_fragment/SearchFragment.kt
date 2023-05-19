@@ -3,6 +3,7 @@ package ru.ageev.android_homework2.ui.search_fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -37,5 +38,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             }
 
         binding.recyclerView.adapter = searchAdapter
+
+        binding.toolBar.setNavigationOnClickListener {
+            navController.navigate(R.id.feedFragment)
+        }
     }
 }

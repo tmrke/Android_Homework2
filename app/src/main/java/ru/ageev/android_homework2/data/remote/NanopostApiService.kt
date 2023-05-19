@@ -14,6 +14,7 @@ import retrofit2.http.Query
 import ru.ageev.android_homework2.data.remote.model.ApiImage
 import ru.ageev.android_homework2.data.remote.model.ApiPost
 import ru.ageev.android_homework2.data.remote.model.ApiProfile
+import ru.ageev.android_homework2.data.remote.model.ApiProfileCompact
 import ru.ageev.android_homework2.data.remote.model.response.ResultResponse
 import ru.ageev.android_homework2.data.remote.repository.PagedDataResponse
 
@@ -87,5 +88,5 @@ interface NanopostApiService {
         @Query("query") query: String,
         @Query("count") count: Int,
         @Query("offset") offset: String?
-    ): PagedDataResponse<ApiProfile>
+    ): PagedDataResponse<ApiProfileCompact>
 }
