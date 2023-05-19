@@ -19,7 +19,6 @@ import ru.ageev.android_homework2.data.paging.PostPagingSource
 import ru.ageev.android_homework2.data.paging.ProfilePagingSource
 import ru.ageev.android_homework2.data.remote.NanopostApiService
 import ru.ageev.android_homework2.data.remote.model.EditProfileRequest
-import java.util.PropertyPermission
 import javax.inject.Inject
 
 class ProfileRepositoryImpl @Inject constructor(

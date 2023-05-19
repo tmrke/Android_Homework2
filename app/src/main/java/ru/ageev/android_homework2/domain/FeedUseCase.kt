@@ -1,7 +1,5 @@
 package ru.ageev.android_homework2.domain
 
-import android.util.Log
-import android.util.LogPrinter
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import ru.ageev.android_homework2.data.model.Post

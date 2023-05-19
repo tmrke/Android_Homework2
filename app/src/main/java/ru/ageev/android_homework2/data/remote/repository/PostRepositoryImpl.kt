@@ -1,6 +1,5 @@
 package ru.ageev.android_homework2.data.remote.repository
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -13,7 +12,6 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import ru.ageev.android_homework2.data.mappers.PostMapper
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.data.paging.FeedPagingSource
-import ru.ageev.android_homework2.data.paging.PostPagingSource
 import ru.ageev.android_homework2.data.remote.NanopostApiService
 import javax.inject.Inject
 

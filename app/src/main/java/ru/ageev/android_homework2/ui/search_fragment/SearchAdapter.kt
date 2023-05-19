@@ -2,13 +2,10 @@ package ru.ageev.android_homework2.ui.search_fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import ru.ageev.android_homework2.data.model.Profile
 import ru.ageev.android_homework2.data.model.ProfileCompact
 import ru.ageev.android_homework2.databinding.ViewCardProfileCompactBinding
-import ru.ageev.android_homework2.databinding.ViewMyProfileCardBinding
 
 val diffUtilCallback = object : DiffUtil.ItemCallback<ProfileCompact>() {
     override fun areItemsTheSame(oldItem: ProfileCompact, newItem: ProfileCompact): Boolean {

@@ -1,7 +1,6 @@
 package ru.ageev.android_homework2.domain.post_use_case
 
 import ru.ageev.android_homework2.data.model.Post
-import ru.ageev.android_homework2.data.remote.repository.PostRepository
 import ru.ageev.android_homework2.data.remote.repository.PostRepositoryImpl
 import javax.inject.Inject
 

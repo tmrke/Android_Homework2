@@ -3,7 +3,6 @@ package ru.ageev.android_homework2.data.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import ru.ageev.android_homework2.data.remote.NanopostApiService
-import ru.ageev.android_homework2.data.remote.model.ApiProfile
 import ru.ageev.android_homework2.data.remote.model.ApiProfileCompact
 import java.lang.Exception
 

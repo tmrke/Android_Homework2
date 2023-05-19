@@ -6,7 +6,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.databinding.ViewPostCardBinding
-import javax.inject.Inject
 
 val diffUtilCallback = object : DiffUtil.ItemCallback<Post>() {
     override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {

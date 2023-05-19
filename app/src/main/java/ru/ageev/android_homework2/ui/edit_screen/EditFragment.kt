@@ -2,7 +2,6 @@ package ru.ageev.android_homework2.ui.edit_screen
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.activity.result.PickVisualMediaRequest
@@ -78,7 +77,7 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
         binding.toolBar.menu.findItem(R.id.createPostMenu).let { icon ->
             icon.setOnMenuItemClickListener {
                 val editProfileRequest = EditProfileRequest(
-                    profileId ?: "ololo",       //TODO
+                    profileId ?: "tmrke",
                     binding.editTextName.text.toString(),
                     binding.editTextBio.text.toString(),
                     viewModel.getContent(avatar)
@@ -88,7 +87,7 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
 
                 navController.navigate(R.id.myProfileFragment)
 
-                return@setOnMenuItemClickListener true      //сначала осуществляет переход на фрагмент, потом return true
+                return@setOnMenuItemClickListener true
             }
         }
 
