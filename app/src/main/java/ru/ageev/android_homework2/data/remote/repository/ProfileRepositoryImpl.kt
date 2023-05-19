@@ -10,9 +10,11 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import ru.ageev.android_homework2.data.mappers.PostMapper
+import ru.ageev.android_homework2.data.mappers.ProfileCompactMapper
 import ru.ageev.android_homework2.data.mappers.ProfileMapper
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.data.model.Profile
+import ru.ageev.android_homework2.data.model.ProfileCompact
 import ru.ageev.android_homework2.data.paging.PostPagingSource
 import ru.ageev.android_homework2.data.paging.ProfilePagingSource
 import ru.ageev.android_homework2.data.remote.NanopostApiService
@@ -23,7 +25,8 @@ import javax.inject.Inject
 class ProfileRepositoryImpl @Inject constructor(
     private val apiService: NanopostApiService,
     private val profileMapper: ProfileMapper,
-    private val postMapper: PostMapper
+    private val postMapper: PostMapper,
+    private val profileCompactMapper: ProfileCompactMapper,
 ) : ProfileRepository {
     override suspend fun getProfile(profileId: String): Profile {
         return profileMapper.toProfile(apiService.getProfile(profileId))
@@ -40,13 +43,13 @@ class ProfileRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun searchProfile(query: String): Flow<PagingData<Profile>> {
+    override suspend fun searchProfile(query: String): Flow<PagingData<ProfileCompact>> {
         return Pager(
             config = PagingConfig(30, enablePlaceholders = false),
             pagingSourceFactory = { ProfilePagingSource(query, apiService) }
         ).flow.map { pagingData ->
             pagingData.map { profile ->
-                profileMapper.toProfile(profile)
+                profileCompactMapper.toProfileCompact(profile)
             }
         }
     }

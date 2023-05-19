@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.data.model.Profile
+import ru.ageev.android_homework2.data.model.ProfileCompact
 import ru.ageev.android_homework2.data.remote.model.EditProfileRequest
 
 
@@ -20,5 +21,5 @@ interface ProfileRepository {
 
     suspend fun editProfile(editProfileRequest: EditProfileRequest)
 
-    suspend fun searchProfile(query: String): Flow<PagingData<Profile>>
+    suspend fun searchProfile(query: String): Flow<PagingData<ProfileCompact>>
 }

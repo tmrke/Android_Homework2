@@ -1,5 +1,6 @@
 package ru.ageev.android_homework2.ui.search_fragment
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ru.ageev.android_homework2.data.model.Post
 import ru.ageev.android_homework2.data.model.Profile
+import ru.ageev.android_homework2.data.model.ProfileCompact
 import ru.ageev.android_homework2.domain.profile_use_case.SearchUseCase
 import javax.inject.Inject
 
@@ -18,8 +20,8 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val searchUseCase: SearchUseCase,
 ) : ViewModel() {
-    private val _searchResultLiveData = MutableLiveData<PagingData<Profile>>()
-    val searchResultLiveData: LiveData<PagingData<Profile>> = _searchResultLiveData
+    private val _searchResultLiveData = MutableLiveData<PagingData<ProfileCompact>>()
+    val searchResultLiveData: LiveData<PagingData<ProfileCompact>> = _searchResultLiveData
 
     fun searchProfile(query: String) {
         viewModelScope.launch {
