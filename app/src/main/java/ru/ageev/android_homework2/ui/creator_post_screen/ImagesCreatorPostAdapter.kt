@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.ageev.android_homework2.databinding.ItemImageBinding
+import ru.ageev.android_homework2.databinding.ItemImageForCreatorBinding
 
 class ImagesCreatorPostAdapter(private val imagesUri: List<Uri>) :
     RecyclerView.Adapter<ImagesCreatorPostViewHolder>() {
@@ -15,7 +16,7 @@ class ImagesCreatorPostAdapter(private val imagesUri: List<Uri>) :
         viewType: Int
     ): ImagesCreatorPostViewHolder {
         val binding =
-            ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemImageForCreatorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ImagesCreatorPostViewHolder(binding, onCancelClick)
     }

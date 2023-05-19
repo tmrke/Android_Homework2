@@ -55,7 +55,7 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
                 navController.popBackStack()
             }
-        } else{
+        } else {
             requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
                 requireActivity().moveTaskToBack(true)
             }
@@ -113,6 +113,15 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
             binding.recyclerView.adapter = concatAdapter
         }
+
+        binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile)
+            .setOnMenuItemClickListener {
+                if (argumentUsername != null) {
+                    navController.navigate(R.id.myProfileFragment)
+                }
+
+                return@setOnMenuItemClickListener true
+            }
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             myProfileViewModel.loadPosts(myProfileViewModel.getUsername())
