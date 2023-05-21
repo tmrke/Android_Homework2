@@ -117,9 +117,6 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
                 postsAdapter.refresh()
                 myProfileViewModel.getProfile(myProfileViewModel.getUsername())
 
-//            myProfileViewModel.getProfile(myProfileViewModel.getUsername())
-//            myProfileViewModel.loadPosts(argumentUsername ?: username)
-
                 return@setOnRefreshListener
             }
         }
