@@ -112,6 +112,16 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
                 }
 
             binding.recyclerView.adapter = concatAdapter
+
+            binding.swipeRefreshLayout.setOnRefreshListener {
+                postsAdapter.refresh()
+                myProfileViewModel.getProfile(myProfileViewModel.getUsername())
+
+//            myProfileViewModel.getProfile(myProfileViewModel.getUsername())
+//            myProfileViewModel.loadPosts(argumentUsername ?: username)
+
+                return@setOnRefreshListener
+            }
         }
 
         binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile)
@@ -122,16 +132,6 @@ class MyProfileFragment : Fragment(R.layout.fragment_my_profile) {
 
                 return@setOnMenuItemClickListener true
             }
-
-        binding.swipeRefreshLayout.setOnRefreshListener {
-            myProfileViewModel.loadPosts(myProfileViewModel.getUsername())
-
-            //TODO Paging обновить через адаптер (типа adapter.load)
-
-            //myProfileViewModel.getProfile(myProfileViewModel.getUsername())
-
-            binding.swipeRefreshLayout.isRefreshing = false
-        }
 
         if (argumentUsername == null) {
             binding.bottomNavigationView.menu.findItem(R.id.bottomMenuProfile).isChecked = true
