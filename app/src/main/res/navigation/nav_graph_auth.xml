@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/authFragment"
-        android:name="ru.ageev.android_homework2.ui.auth_screen.AuthFragment"
+        android:name="ru.ageev.nanopost.ui.auth_screen.AuthFragment"
         android:label="auth">
         <action
             android:id="@+id/toNavGraph"

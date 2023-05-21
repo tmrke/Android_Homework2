@@ -10,11 +10,11 @@ plugins {
 }
 
 android {
-    namespace 'ru.ageev.android_homework2'
+    namespace 'ru.ageev.nanopost'
     compileSdk 33
 
     defaultConfig {
-        applicationId "ru.ageev.android_homework2"
+        applicationId "ru.ageev.nanopost"
         minSdk 24
         targetSdk 33
         versionCode 1
