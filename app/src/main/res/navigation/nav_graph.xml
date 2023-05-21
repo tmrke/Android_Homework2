@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/feedFragment"
-        android:name="ru.ageev.android_homework2.ui.feed_screen.FeedFragment"
+        android:name="ru.ageev.nanopost.ui.feed_screen.FeedFragment"
         android:label="feed">
         <action
             android:id="@+id/action_feedFragment_to_postFragment"
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/myProfileFragment"
-        android:name="ru.ageev.android_homework2.ui.profile_screen.my_profile.MyProfileFragment"
+        android:name="ru.ageev.nanopost.ui.profile_screen.my_profile.MyProfileFragment"
         android:label="ProfileFragment">
         <action
             android:id="@+id/action_profileFragment_to_postFragment"
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/postFragment"
-        android:name="ru.ageev.android_homework2.ui.post_screen.PostFragment"
+        android:name="ru.ageev.nanopost.ui.post_screen.PostFragment"
         android:label="post">
 
         <argument
@@ -63,7 +63,7 @@
 
     <fragment
         android:id="@+id/authFragment"
-        android:name="ru.ageev.android_homework2.ui.auth_screen.AuthFragment"
+        android:name="ru.ageev.nanopost.ui.auth_screen.AuthFragment"
         android:label="auth">
         <action
             android:id="@+id/action_authFragment_to_profileFragment"
@@ -72,12 +72,12 @@
 
     <fragment
         android:id="@+id/createPostFragment"
-        android:name="ru.ageev.android_homework2.ui.creator_post_screen.CreatorPostFragment"
+        android:name="ru.ageev.nanopost.ui.creator_post_screen.CreatorPostFragment"
         android:label="create" />
 
     <fragment
         android:id="@+id/editFragment"
-        android:name="ru.ageev.android_homework2.ui.edit_screen.EditFragment"
+        android:name="ru.ageev.nanopost.ui.edit_screen.EditFragment"
         android:label="EditFragment">
         <argument
             android:name="uri"
@@ -95,7 +95,7 @@
 
     <fragment
         android:id="@+id/imagesFragment"
-        android:name="ru.ageev.android_homework2.ui.images_screen.ImagesFragment"
+        android:name="ru.ageev.nanopost.ui.images_screen.ImagesFragment"
         android:label="Images">
         <argument
             android:name="profileId"
@@ -107,7 +107,7 @@
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="ru.ageev.android_homework2.ui.search_fragment.SearchFragment"
+        android:name="ru.ageev.nanopost.ui.search_fragment.SearchFragment"
         android:label="@string/search">
         <action
             android:id="@+id/action_searchFragment_to_myProfileFragment"
@@ -116,7 +116,7 @@
 
     <fragment
         android:id="@+id/imageFragment"
-        android:name="ru.ageev.android_homework2.ui.image_screen.ImageFragment"
+        android:name="ru.ageev.nanopost.ui.image_screen.ImageFragment"
         android:label="Image">
         <argument
             android:name="imageId"
