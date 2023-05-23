@@ -9,7 +9,6 @@ import androidx.navigation.Navigation
 import by.kirich1409.viewbindingdelegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import ru.ageev.nanopost.R
-import ru.ageev.nanopost.data.remote.model.RegistrationRequest
 import ru.ageev.nanopost.data.remote.model.response.CheckUsernameEnumResponse
 import ru.ageev.nanopost.databinding.FragmentAuthorizationBinding
 import ru.ageev.nanopost.ui.insets.Inset
@@ -37,7 +36,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                     ResultEnum.ToCheckUsername -> {
                         val username = binding.editTextUsername.text.toString()
 
-                        if(authViewModel.checkUsername(username)){
+                        if (authViewModel.checkUsername(username)) {
                             with(textInputLayoutTextUsername) {
                                 error = null
                                 setErrorIconDrawable(R.drawable.ic_cancel)
@@ -54,26 +53,16 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                     }
 
                     ResultEnum.ToRegister -> {
-                        val passwordLength = editTextPassword.text.toString().length
+                        val password = editTextPassword.text.toString()
 
-                        if (passwordLength < 8) {
-                            with(textInputLayoutTextPassword) {
-                                error = context.getString(R.string.short_password_warning)
-                            }
-
-                            resultEnum = ResultEnum.ToCheckUsername
-                        } else if (passwordLength >= 16) {
-                            with(textInputLayoutTextPassword) {
-                                error = context.getString(R.string.long_password_warning)
-                            }
-
-                            resultEnum = ResultEnum.ToCheckUsername
-                        } else {
-                            with(textInputLayoutTextPassword) {
-                                error = null
-                            }
-
+                        if (authViewModel.checkPassword(password)) {
+                            textInputLayoutTextPassword.error = null
                             resultEnum = ResultEnum.ToPasswordConfirm
+                        } else {
+                            textInputLayoutTextPassword.error =
+                                context?.getString(R.string.password_warning)
+                            resultEnum = ResultEnum.ToCheckUsername
+
                         }
                     }
 
@@ -84,12 +73,10 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                                 error = null
                             }
 
-                            val registrationRequest = RegistrationRequest(
+                            authViewModel.register(
                                 editTextUsername.text.toString(),
                                 editTextPasswordConfirm.text.toString()
                             )
-
-                            authViewModel.register(registrationRequest)
                         } else {
                             with(textInputLayoutTextPasswordConfirm) {
                                 error = context.getString(R.string.passwords_must_coincide)
@@ -99,13 +86,10 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
                     ResultEnum.ToLogin -> {
                         responseCodeLiveData.observe(viewLifecycleOwner) { response ->
-                            val registrationRequest =
-                                RegistrationRequest(
-                                    editTextUsername.text.toString(),
-                                    editTextPassword.text.toString()
-                                )
-
-                            authViewModel.login(registrationRequest)
+                            authViewModel.login(
+                                editTextUsername.text.toString(),
+                                editTextPassword.text.toString()
+                            )
 
                             if (response == 400) {
                                 with(textInputLayoutTextPassword) {
@@ -147,7 +131,6 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
         authViewModel.loginLiveData.observe(viewLifecycleOwner) {
             navController.navigate(R.id.toNavGraph)
-
         }
     }
 

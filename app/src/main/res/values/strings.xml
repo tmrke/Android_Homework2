@@ -36,7 +36,7 @@
     <string name="exit">exit</string>
     <string name="loading_post">загрузка поста...</string>
     <string name="incorrectUsernameLength">usernames length must be more than 2 and less than 17</string>
-    <string name="short_password_warning">passwords length must be 8 and more</string>
+    <string name="password_warning">passwords length must be 8 and more and less than 16</string>
     <string name="long_password_warning">passwords length must be less than 16</string>
     <string name="passwords_must_coincide">passwords must coincide</string>
     <string name="incorrect_password">incorrect password</string>
