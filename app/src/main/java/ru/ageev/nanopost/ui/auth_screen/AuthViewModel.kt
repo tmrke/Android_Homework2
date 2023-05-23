@@ -47,11 +47,21 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    fun checkPassword(password: String): Boolean {
+        return !(password.length < 8 || password.length >= 16)
+    }
+
 
     private val _registerLiveData = MutableLiveData<TokenResponse>()
     val registerLiveData: LiveData<TokenResponse> = _registerLiveData
 
-    fun register(registrationRequest: RegistrationRequest) {
+    fun register(username: String, password: String) {
+        val registrationRequest = RegistrationRequest(
+            username,
+            password
+        )
+
+
         prefsStorage.username = registrationRequest.username
 
         viewModelScope.launch {
@@ -69,7 +79,8 @@ class AuthViewModel @Inject constructor(
     private val _loginLiveData = MutableLiveData<TokenResponse>()
     val loginLiveData: LiveData<TokenResponse> = _loginLiveData
 
-    fun login(registrationRequest: RegistrationRequest) {
+    fun login(username: String, password: String) {
+        val registrationRequest = RegistrationRequest(username, password)
         prefsStorage.username = registrationRequest.username
 
         viewModelScope.launch {
