@@ -5,9 +5,8 @@ import androidx.paging.PagingState
 import ru.ageev.nanopost.data.remote.NanopostApiService
 import ru.ageev.nanopost.data.remote.model.ApiImage
 import java.lang.Exception
-import javax.inject.Inject
 
-class ImagePagingSource @Inject constructor(
+class ImagePagingSource(
     private val apiService: NanopostApiService,
     private val profileId: String,
 ) : PagingSource<String, ApiImage>() {

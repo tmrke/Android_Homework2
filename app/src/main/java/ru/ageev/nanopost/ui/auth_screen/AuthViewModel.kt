@@ -29,17 +29,24 @@ class AuthViewModel @Inject constructor(
     val checkUsernameLiveData: LiveData<CheckUsernameEnumResponse> = _checkUsernameLiveData
 
 
-    fun checkUsername(username: String) {
-        viewModelScope.launch {
-            try {
-                checkUsernameUseCase.execute(username).let { response ->
-                    _checkUsernameLiveData.postValue(response)
+    fun checkUsername(username: String): Boolean {
+        return if (username.length < 3 || username.length > 16) {
+            false
+        } else {
+            viewModelScope.launch {
+                try {
+                    checkUsernameUseCase.execute(username).let { response ->
+                        _checkUsernameLiveData.postValue(response)
+                    }
+                } catch (e: Exception) {
+                    Log.e("Auth", e.message ?: "")
                 }
-            } catch (e: Exception) {
-                Log.e("Auth", e.message ?: "")
             }
+
+            true
         }
     }
+
 
     private val _registerLiveData = MutableLiveData<TokenResponse>()
     val registerLiveData: LiveData<TokenResponse> = _registerLiveData

@@ -5,9 +5,8 @@ import androidx.paging.PagingState
 import ru.ageev.nanopost.data.remote.NanopostApiService
 import ru.ageev.nanopost.data.remote.model.ApiPost
 import java.lang.Exception
-import javax.inject.Inject
 
-class FeedPagingSource @Inject constructor(
+class FeedPagingSource(
     private val apiService: NanopostApiService,
 ) : PagingSource<String, ApiPost>() {
     override fun getRefreshKey(state: PagingState<String, ApiPost>): String? {

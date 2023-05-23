@@ -6,9 +6,9 @@ import androidx.paging.PagingState
 import ru.ageev.nanopost.data.remote.NanopostApiService
 import ru.ageev.nanopost.data.remote.model.ApiPost
 import java.lang.Exception
-import javax.inject.Inject
 
-class PostPagingSource @Inject constructor(
+class PostPagingSource
+    (
     private val apiService: NanopostApiService,
     private val profileId: String,
 ) :
