@@ -6,9 +6,9 @@ import ru.ageev.nanopost.data.remote.model.ApiImage
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import javax.inject.Inject
 
-class ImagesMapper @Inject constructor() {
+
+class ImagesMapper {
     fun toImages(apiImages: ApiImage) = Image(
         id = apiImages.id,
         sizes = apiImages.sizes.map { imageSize ->

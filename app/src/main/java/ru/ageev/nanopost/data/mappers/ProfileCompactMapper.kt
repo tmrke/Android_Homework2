@@ -2,9 +2,8 @@ package ru.ageev.nanopost.data.mappers
 
 import ru.ageev.nanopost.data.model.ProfileCompact
 import ru.ageev.nanopost.data.remote.model.ApiProfileCompact
-import javax.inject.Inject
 
-class ProfileCompactMapper @Inject constructor() {
+class ProfileCompactMapper{
     fun toProfileCompact(apiProfileCompact: ApiProfileCompact) = ProfileCompact(
         id = apiProfileCompact.id,
         username = apiProfileCompact.username,
