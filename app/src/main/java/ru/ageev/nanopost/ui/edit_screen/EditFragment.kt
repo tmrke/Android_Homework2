@@ -15,7 +15,6 @@ import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import ru.ageev.nanopost.R
-import ru.ageev.nanopost.data.remote.model.EditProfileRequest
 import ru.ageev.nanopost.databinding.FragmentEditBinding
 import ru.ageev.nanopost.ui.insets.Inset
 
