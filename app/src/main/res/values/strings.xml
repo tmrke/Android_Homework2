@@ -35,7 +35,7 @@
     <string name="add_image">add image</string>
     <string name="exit">exit</string>
     <string name="loading_post">загрузка поста...</string>
-    <string name="short_length_username">usernames length must be more than 2 and less than 17</string>
+    <string name="incorrectUsernameLength">usernames length must be more than 2 and less than 17</string>
     <string name="short_password_warning">passwords length must be 8 and more</string>
     <string name="long_password_warning">passwords length must be less than 16</string>
     <string name="passwords_must_coincide">passwords must coincide</string>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="continue_text">Continue</string>
-    <string name="short_length_username">usernames length must be more than 2 and less than 17</string>
+    <string name="incorrectUsernameLength">usernames length must be more than 2 and less than 17</string>
     <string name="short_password_warning">passwords length must be 8 and more</string>
     <string name="incorrect_password">incorrect password</string>
 </resources>

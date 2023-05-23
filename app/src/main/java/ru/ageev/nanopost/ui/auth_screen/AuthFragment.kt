@@ -37,12 +37,7 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
                     ResultEnum.ToCheckUsername -> {
                         val username = binding.editTextUsername.text.toString()
 
-                        if (username.length < 3 || username.length > 16) {
-                            with(textInputLayoutTextUsername) {
-                                error = getString(R.string.short_length_username)
-                                setErrorIconDrawable(R.drawable.ic_warning)
-                            }
-                        } else {
+                        if(authViewModel.checkUsername(username)){
                             with(textInputLayoutTextUsername) {
                                 error = null
                                 setErrorIconDrawable(R.drawable.ic_cancel)
@@ -50,6 +45,11 @@ class AuthFragment : Fragment(R.layout.fragment_authorization) {
 
                             authViewModel.checkUsername(username)
                             textInputLayoutTextPassword.visibility = View.VISIBLE
+                        } else {
+                            with(textInputLayoutTextUsername) {
+                                error = getString(R.string.incorrectUsernameLength)
+                                setErrorIconDrawable(R.drawable.ic_warning)
+                            }
                         }
                     }
 

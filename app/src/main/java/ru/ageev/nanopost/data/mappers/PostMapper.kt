@@ -8,7 +8,7 @@ import java.util.Date
 import java.util.Locale
 import javax.inject.Inject
 
-class PostMapper @Inject constructor(
+class PostMapper @Inject constructor (
     private val imagesMapper: ImagesMapper,
     private val profileCompactMapper: ProfileCompactMapper,
 ) {
