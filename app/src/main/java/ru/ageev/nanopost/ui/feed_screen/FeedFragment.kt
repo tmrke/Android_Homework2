@@ -68,7 +68,5 @@ class FeedFragment : Fragment(R.layout.fragment_feed) {
                 navController.navigate(R.id.myProfileFragment)
             }
         }
-
-
     }
 }
