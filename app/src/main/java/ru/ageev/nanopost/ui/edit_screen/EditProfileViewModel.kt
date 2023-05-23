@@ -15,7 +15,14 @@ class EditProfileViewModel @Inject constructor(
     private val editProfileUseCase: EditProfileUseCase,
     private val getContentUriUseCase: GetContentUriUseCase
 ) : ViewModel() {
-    fun editProfile(editProfileRequest: EditProfileRequest) {
+    fun editProfile(profileId: String, name: String?, bio: String?, avatar: ByteArray?) {
+        val editProfileRequest = EditProfileRequest(
+            profileId,
+            name,
+            bio,
+            avatar
+        )
+
         viewModelScope.launch {
             editProfileUseCase.execute(editProfileRequest)
         }

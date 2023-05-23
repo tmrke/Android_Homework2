@@ -76,14 +76,13 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
 
         binding.toolBar.menu.findItem(R.id.createPostMenu).let { icon ->
             icon.setOnMenuItemClickListener {
-                val editProfileRequest = EditProfileRequest(
+
+                viewModel.editProfile(
                     profileId ?: "tmrke",
                     binding.editTextName.text.toString(),
                     binding.editTextBio.text.toString(),
                     viewModel.getContent(avatar)
                 )
-
-                viewModel.editProfile(editProfileRequest)
 
                 navController.navigate(R.id.myProfileFragment)
 
