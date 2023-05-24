@@ -1,9 +1,9 @@
-package ru.ageev.nanopost.domain.image
+package ru.ageev.nanopost.domain.image_use_case
 
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import ru.ageev.nanopost.data.model.Image
-import ru.ageev.nanopost.data.remote.repository.ImageRepository
+import ru.ageev.nanopost.domain.repository.ImageRepository
 import javax.inject.Inject
 
 class GetImagesUseCase @Inject constructor(

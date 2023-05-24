@@ -1,7 +1,7 @@
 package ru.ageev.nanopost.domain.auth_use_case
 
 import ru.ageev.nanopost.data.remote.model.response.CheckUsernameEnumResponse
-import ru.ageev.nanopost.data.remote.repository.RegisterRepository
+import ru.ageev.nanopost.domain.repository.RegisterRepository
 import javax.inject.Inject
 
 class CheckUsernameUseCase @Inject constructor(

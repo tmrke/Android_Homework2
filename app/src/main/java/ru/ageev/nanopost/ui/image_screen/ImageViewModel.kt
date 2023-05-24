@@ -7,8 +7,8 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.ageev.nanopost.data.model.Image
-import ru.ageev.nanopost.domain.image.DeleteImageUseCase
-import ru.ageev.nanopost.domain.image.GetImageUseCase
+import ru.ageev.nanopost.domain.image_use_case.DeleteImageUseCase
+import ru.ageev.nanopost.domain.image_use_case.GetImageUseCase
 import javax.inject.Inject
 
 @HiltViewModel

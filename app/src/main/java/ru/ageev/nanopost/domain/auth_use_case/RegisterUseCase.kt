@@ -2,7 +2,7 @@ package ru.ageev.nanopost.domain.auth_use_case
 
 import ru.ageev.nanopost.data.remote.model.RegistrationRequest
 import ru.ageev.nanopost.data.remote.model.response.TokenResponse
-import ru.ageev.nanopost.data.remote.repository.RegisterRepository
+import ru.ageev.nanopost.domain.repository.RegisterRepository
 import javax.inject.Inject
 
 class RegisterUseCase @Inject constructor(

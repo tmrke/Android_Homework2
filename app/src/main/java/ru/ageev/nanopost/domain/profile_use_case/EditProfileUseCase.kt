@@ -1,7 +1,7 @@
 package ru.ageev.nanopost.domain.profile_use_case
 
 import ru.ageev.nanopost.data.remote.model.EditProfileRequest
-import ru.ageev.nanopost.data.remote.repository.ProfileRepository
+import ru.ageev.nanopost.domain.repository.ProfileRepository
 import javax.inject.Inject
 
 class EditProfileUseCase @Inject constructor(

@@ -1,4 +1,4 @@
-package ru.ageev.nanopost.data.remote.repository
+package ru.ageev.nanopost.domain.repository
 
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow

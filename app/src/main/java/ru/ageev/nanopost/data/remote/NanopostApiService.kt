@@ -15,7 +15,7 @@ import ru.ageev.nanopost.data.remote.model.ApiPost
 import ru.ageev.nanopost.data.remote.model.ApiProfile
 import ru.ageev.nanopost.data.remote.model.ApiProfileCompact
 import ru.ageev.nanopost.data.remote.model.response.ResultResponse
-import ru.ageev.nanopost.data.remote.repository.PagedDataResponse
+import ru.ageev.nanopost.domain.repository.PagedDataResponse
 
 interface NanopostApiService {
     @GET("api/v1/profile/{profileId}")

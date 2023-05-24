@@ -3,7 +3,7 @@ package ru.ageev.nanopost.domain.post_use_case
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import ru.ageev.nanopost.data.model.Post
-import ru.ageev.nanopost.data.remote.repository.ProfileRepository
+import ru.ageev.nanopost.domain.repository.ProfileRepository
 import javax.inject.Inject
 
 class GetPostsUseCase @Inject constructor(

@@ -8,7 +8,7 @@ import androidx.paging.PagingData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import ru.ageev.nanopost.data.model.Image
-import ru.ageev.nanopost.domain.image.GetImagesUseCase
+import ru.ageev.nanopost.domain.image_use_case.GetImagesUseCase
 import javax.inject.Inject
 
 @HiltViewModel
