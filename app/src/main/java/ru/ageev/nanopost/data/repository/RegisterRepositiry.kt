@@ -1,4 +1,4 @@
-package ru.ageev.nanopost.domain.repository
+package ru.ageev.nanopost.data.repository
 
 import ru.ageev.nanopost.data.remote.NanopostAuthApiService
 import ru.ageev.nanopost.data.remote.model.RegistrationRequest

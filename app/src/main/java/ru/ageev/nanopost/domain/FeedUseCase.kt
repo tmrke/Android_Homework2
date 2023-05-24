@@ -3,7 +3,7 @@ package ru.ageev.nanopost.domain
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import ru.ageev.nanopost.data.model.Post
-import ru.ageev.nanopost.domain.repository.PostRepository
+import ru.ageev.nanopost.data.repository.PostRepository
 import javax.inject.Inject
 
 class FeedUseCase @Inject constructor(

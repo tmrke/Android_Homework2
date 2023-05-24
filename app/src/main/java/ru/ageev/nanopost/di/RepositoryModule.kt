@@ -4,12 +4,12 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import ru.ageev.nanopost.domain.repository.ImageRepository
-import ru.ageev.nanopost.domain.repository.ImageRepositoryImpl
-import ru.ageev.nanopost.domain.repository.PostRepository
-import ru.ageev.nanopost.domain.repository.PostRepositoryImpl
-import ru.ageev.nanopost.domain.repository.ProfileRepository
-import ru.ageev.nanopost.domain.repository.ProfileRepositoryImpl
+import ru.ageev.nanopost.data.repository.ImageRepository
+import ru.ageev.nanopost.data.repository.ImageRepositoryImpl
+import ru.ageev.nanopost.data.repository.PostRepository
+import ru.ageev.nanopost.data.repository.PostRepositoryImpl
+import ru.ageev.nanopost.data.repository.ProfileRepository
+import ru.ageev.nanopost.data.repository.ProfileRepositoryImpl
 import javax.inject.Singleton
 
 @Module

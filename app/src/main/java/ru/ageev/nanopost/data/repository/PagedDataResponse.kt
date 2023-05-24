@@ -1,4 +1,4 @@
-package ru.ageev.nanopost.domain.repository
+package ru.ageev.nanopost.data.repository
 
 import kotlinx.serialization.Serializable
 

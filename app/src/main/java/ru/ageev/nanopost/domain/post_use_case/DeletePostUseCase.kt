@@ -1,6 +1,6 @@
 package ru.ageev.nanopost.domain.post_use_case
 
-import ru.ageev.nanopost.domain.repository.PostRepository
+import ru.ageev.nanopost.data.repository.PostRepository
 import javax.inject.Inject
 
 class DeletePostUseCase @Inject constructor(
